@@ -1,0 +1,303 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: rgb(230, 231, 175);
+    --background-color: rgb(39, 57, 71);
+    --navbar-height: 80px;
+}
+
+body {
+    font-family: "Quicksand", sans-serif;
+    background-color: var(--background-color);
+    color: var(--primary-color);
+    margin: 0;
+    min-height: 100vh;
+}
+
+/* LAYOUT PRINCIPAL CON CSS GRID & GRID-TEMPLATE-AREAS */
+.grid-layout {
+    display: grid;
+    grid-template-rows: auto 1fr auto; 
+    grid-template-columns: 300px 1fr; 
+    
+    grid-template-areas: 
+        "header  header"
+        "sidebar main"
+        "footer  footer";
+        
+    min-height: 100vh;
+}
+
+/* Asignación explícita de áreas */
+.area-header {
+    grid-area: header;
+}
+
+.area-sidebar {
+    grid-area: sidebar;
+    background-color: rgba(0, 0, 0, 0.15);
+    border-right: 2px dashed var(--primary-color);
+    padding: 20px;
+}
+
+.material-symbols-outlined {
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24
+}
+
+.area-main {
+    grid-area: main;
+    padding: 20px 20px 40px 20px;
+}
+
+.area-footer {
+    grid-area: footer;
+    background-color: rgba(0, 0, 0, 0.25);
+    border-top: 2px dashed var(--primary-color);
+    text-align: center;
+    padding: 15px;
+    font-size: 0.9rem;
+}
+
+/* ESTILOS DEL SIDEBAR */
+/* ===================================================
+   ESTILOS DEL SIDEBAR
+   Pseudo-clases: :hover, :nth-child()
+   Pseudo-elemento: ::after
+   =================================================== */
+
+.area-sidebar h3 {
+    margin-top: 0;
+    font-size: 1.2rem;
+    border-bottom: 2px dashed var(--primary-color);
+    padding-bottom: 8px;
+}
+
+.area-sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.area-sidebar li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* ---------------------------------------------------
+   1. PSEUDO-CLASE :nth-child()
+   Aplica un fondo intercalado sutil en los elementos pares e impares
+   --------------------------------------------------- */
+.area-sidebar li:nth-child(odd) {
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+.area-sidebar li:nth-child(even) {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* ---------------------------------------------------
+   2. PSEUDO-CLASE :hover en las filas (<li>) y enlaces (<a>)
+   Aumenta el contraste y desliza la fila hacia la derecha
+   --------------------------------------------------- */
+.area-sidebar li:hover {
+    background-color: rgba(230, 231, 175, 0.15);
+    transform: translateX(5px);
+}
+
+.area-sidebar li a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-left: 8px;
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    transition: color 0.2s ease;
+}
+
+.area-sidebar li:hover a {
+    font-weight: bold;
+}
+
+/* ---------------------------------------------------
+   3. PSEUDO-ELEMENTO ::after
+   Agrega un ícono/flecha decorativa después del texto del enlace
+   --------------------------------------------------- */
+.area-sidebar li a::after {
+    content: " ➔"; /* Ícono decorativo */
+    opacity: 0;
+    margin-left: 5px;
+    font-size: 0.9rem;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    transform: translateX(-5px);
+}
+
+/* Muestra el pseudo-elemento al hacer :hover */
+.area-sidebar li:hover a::after {
+    opacity: 1;
+    transform: translateX(3px);
+}
+
+/* BARRA DE NAVEGACIÓN */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: var(--primary-color);
+    border-bottom: 2px dashed var(--primary-color);
+    height: var(--navbar-height);
+}
+
+.logo {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--background-color);
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.logo img {
+    height: 80%;
+    width: auto;
+    filter: brightness(0) saturate(100%) invert(20%) sepia(4%) saturate(4193%) hue-rotate(165deg) brightness(93%) contrast(92%);
+}
+
+.logo span {
+    margin-left: 10px;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.nav-links a {
+    color: var(--background-color);
+    text-decoration: none;
+    font-size: 1rem;
+    transition: opacity 0.2s ease;
+    font-weight: bold;
+}
+
+.nav-links a:hover {
+    opacity: 0.7;
+    text-decoration: underline;
+}
+
+#main-header {
+    text-align: center;
+    border-bottom: 2px dashed var(--primary-color);
+    padding-bottom: 20px;
+    margin-bottom: 40px;
+}
+
+#main-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+#main-header p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+/* GALERÍA RESPONSIVA CON FLEXBOX DENTRO DEL MAIN GRID */
+.container {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 25px; 
+    justify-content: center;
+    align-items: stretch;
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-bottom: 40px;
+}
+
+.card {
+    box-sizing: border-box;
+    flex-basis: 280px;
+    flex-grow: 1;
+    max-width: 360px;
+    min-width: 360px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    padding: 20px;
+    border: 2px solid rgba(230, 231, 175, 0.4);
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-color);
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.card h2 {
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-size: 1.5rem;
+}
+
+.edad {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin: 5px 0 10px 0;
+    opacity: 0.95;
+}
+
+.card p {
+    color: var(--primary-color);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 8px 0;
+}
+
+.btn-card {
+    margin-top: 15px;
+    padding: 10px 15px;
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    border: none;
+    border-radius: 6px;
+    font-family: "Quicksand", sans-serif;
+    font-size: 0.95rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease, opacity 0.2s ease;
+}
+
+.btn-card:hover {
+    opacity: 0.85;
+}

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyDoggoSpace - Publicar Perrito</title>
+    <!-- Fuentes e Íconos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">    
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+</head>
+<body class="grid-layout">
+
+  <!-- Área: Header -->
+  <header class="area-header">
+    <nav class="navbar">
+      <div class="logo">
+          <img src="https://cdn-icons-png.flaticon.com/512/194/194228.png" alt="Logo de MyDoggoSpace" class="logo-img">
+          <span>MyDoggoSpace</span>
+      </div>
+      <div class="nav-links">
+        <a href="index.html">Galería</a>
+        <a href="nueva-publicacion.html" class="btn-nav-action active">+ Publicar Perrito</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Área: Sidebar -->
+  <aside class="area-sidebar">
+    <h3>Filtros & Menú</h3>
+    <ul>
+      <li><span class="material-symbols-outlined">pets</span><a href="index.html"> Todos los perritos</a></li>
+      <li><span class="material-symbols-outlined">pet_supplies</span><a href="index.html"> Cachorros (&lt; 1 año)</a></li>
+      <li><span class="material-symbols-outlined">sound_detection_dog_barking</span><a href="index.html"> Perros adultos</a></li>
+      <li><span class="material-symbols-outlined">add_circle</span><a href="nueva-publicacion.html"> Nueva publicación</a></li>
+    </ul>
+  </aside>
+
+  <!-- Área: Main Content -->
+  <main class="area-main">
+    <div id="main-header">
+      <h1>Nueva Publicación</h1>
+      <p>Subí los datos de tu perrito para incluirlo en la comunidad</p>
+    </div>
+
+    <!-- FORMULARIO DE NUEVA PUBLICACIÓN (PÁGINA EXCLUSIVA) -->
+    <section class="form-section">
+      <h2><span class="material-symbols-outlined">pets</span>Datos del Perrito</h2>
+      
+      <form action="#" method="POST" class="post-form">
+        
+        <div class="form-group">
+          <label for="dog-name">Nombre del perrito:</label>
+          <input type="text" id="dog-name" name="dog_name" placeholder="Ej: Firulais" required>
+        </div>
+
+        <div class="form-group">
+          <label for="dog-breed">Raza:</label>
+          <input type="text" id="dog-breed" name="dog_breed" placeholder="Ej: Beagle, Mestizo..." required>
+        </div>
+
+        <div class="form-group">
+          <label for="dog-age">Edad (años):</label>
+          <input type="number" id="dog-age" name="dog_age" min="0" max="30" placeholder="Ej: 3" required>
+        </div>
+
+        <div class="form-group">
+          <label for="dog-image">URL de la imagen:</label>
+          <input type="url" id="dog-image" name="dog_image" placeholder="https://ejemplo.com/foto.jpg" required>
+        </div>
+
+        <div class="form-group full-width">
+          <label for="dog-description">Descripción o historia:</label>
+          <textarea id="dog-description" name="dog_description" rows="5" placeholder="Contanos algo divertido sobre tu perrito..." required></textarea>
+        </div>
+
+        <div class="form-group full-width">
+          <button type="submit" class="btn btn-submit">Publicar Perrito</button>
+        </div>
+
+      </form>
+    </section>
+  </main>
+
+  <!-- Área: Footer -->
+  <footer class="area-footer">
+    <p>&copy; 2026 MyDoggoSpace — La red social canina favorita del mundo.</p>
+  </footer>
+
+</body>
+</html>

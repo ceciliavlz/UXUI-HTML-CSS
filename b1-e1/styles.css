@@ -1,0 +1,17 @@
+body{
+    background-color: rgb(39, 57, 71);
+    width: 80%;
+    margin: 20px;
+
+}
+h1{
+    color: rgb(230, 231, 175);
+    font-size: large;
+    font-family: 'Courier New', Courier, monospace;
+}
+p{
+    color: rgb(230, 231, 175);;
+}
+img{
+    width: 400px;
+}
