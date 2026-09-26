@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MyDoggoSpace es la red social de las familias de perritos: perfiles, galería de fotos, comunidades por raza, historias, encuentros y chat privado.">
+    <meta name="theme-color" content="#273947">
+    <title>MyDoggoSpace — La red social de los perritos</title>
+
+    <!-- Fuentes e íconos: los mismos que usa el resto del sitio -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+
+    <!-- Hojas de estilos de la landing.
+         El orden de los <link> ES el orden de la cascada: primero la
+         base (tokens + reset) y después un archivo por sección. -->
+    <link rel="stylesheet" href="css/base.css">          <!-- tokens · reset · botones · keyframes -->
+    <link rel="stylesheet" href="css/navbar.css">        <!-- navbar fija + menú responsive -->
+    <link rel="stylesheet" href="css/hero.css">          <!-- hero con imagen de fondo -->
+    <link rel="stylesheet" href="css/comunidad.css">      <!-- grilla de funcionalidades -->
+    <link rel="stylesheet" href="css/testimonios.css">   <!-- carrusel con scroll-snap -->
+    <link rel="stylesheet" href="css/contacto.css">      <!-- formulario de contacto -->
+    <link rel="stylesheet" href="css/footer.css">        <!-- footer -->
+</head>
+
+<body>
+
+    <!-- ACCESIBILIDAD: con el primer Tab de la página se saltea el menú -->
+    <a class="skip-link" href="#contenido">Saltar al contenido principal</a>
+
+
+    <!-- ============================================================
+         HEADER · NAVBAR FIJA
+         ============================================================ -->
+    <header class="site-header">
+        <nav class="navbar" aria-label="Navegación principal">
+
+            <!-- Menú desplegable SIN JavaScript: el input va PRIMERO
+                 para poder alcanzarlo con el selector de hermano
+                 general (~) desde el CSS. Está oculto pero sigue
+                 siendo enfocable con el teclado. -->
+            <input type="checkbox" id="nav-toggle" class="nav-checkbox">
+
+            <a class="brand" href="#inicio">
+                <img class="brand__logo"
+                     src="https://cdn-icons-png.flaticon.com/512/194/194228.png"
+                     alt="" width="36" height="36">
+                <span class="brand__name">MyDoggoSpace</span>
+            </a>
+
+            <!-- El ícono hamburguesa es un <label> del checkbox: al pulsarlo
+                 se marca el input y el CSS abre el panel. Los dos íconos
+                 se superponen y el CSS hace el canje (hamburguesa <-> X). -->
+            <label for="nav-toggle" class="nav-burger">
+                <span class="material-symbols-outlined nav-burger__abrir" aria-hidden="true">menu</span>
+                <span class="material-symbols-outlined nav-burger__cerrar" aria-hidden="true">close</span>
+                <span class="sr-only">Desplegar u ocultar el menú de navegación</span>
+            </label>
+
+            <ul class="nav-menu">
+                <li><a class="link-menu" href="#inicio">Inicio</a></li>
+                <li><a class="link-menu" href="#comunidad">La red</a></li>
+                <li><a class="link-menu" href="#testimonios">Testimonios</a></li>
+                <li><a class="link-menu" href="#contacto">Contacto</a></li>
+            </ul>
+
+            <!-- Barra de progreso de lectura: animación conducida por el
+                 propio scroll del documento, sin JavaScript. -->
+            <div class="nav-progress" aria-hidden="true"></div>
+        </nav>
+    </header>
+
+
+    <main id="contenido">
+
+        <!-- ============================================================
+             SECCIÓN 1 · HERO
+             Imagen de fondo + velos de gradiente para que el texto
+             siempre tenga contraste contra la foto.
+             ============================================================ -->
+        <section class="hero" id="inicio" aria-labelledby="hero-titulo">
+
+            <!-- La foto es decorativa: por eso va en un <div> con
+                 aria-hidden y la URL está en un token de CSS
+                 (--hero-imagen, en css/hero.css). -->
+            <div class="hero__fondo" aria-hidden="true"></div>
+
+            <div class="hero__contenido">
+
+                <p class="kicker">
+                    <span class="material-symbols-outlined" aria-hidden="true">verified</span>
+                    Red social canina
+                </p>
+
+                <h1 class="hero__titulo" id="hero-titulo">
+                    Tu perrito merece su propio <em>perfil</em> en la web
+                </h1>
+
+                <p class="hero__texto">
+                    MyDoggoSpace es la red social de las familias de perritos: subí fotos,
+                    sumate a comunidades por raza, compartí historias y conocé amiguitos
+                    cerca tuyo. Todo en un solo lugar y sin publicidad en el medio.
+                </p>
+
+                <!-- Flexbox: los dos botones en una fila que puede envolver -->
+                <div class="hero__acciones">
+                    <a class="btn btn--primary btn--lg" href="#inicio">
+                        Crear mi perfil gratis
+                        <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+                    </a>
+                    <a class="btn btn--ghost btn--lg" href="#comunidad">Ver cómo funciona</a>
+                </div>
+
+                <!-- Cifras: Flexbox con separadores verticales -->
+                <ul class="hero__cifras">
+                    <li class="hero__cifra">
+                        <span class="hero__numero">+12.400</span>
+                        <span class="hero__rotulo">perritos con perfil</span>
+                    </li>
+                    <li class="hero__cifra">
+                        <span class="hero__numero">480</span>
+                        <span class="hero__rotulo">comunidades activas</span>
+                    </li>
+                    <li class="hero__cifra">
+                        <span class="hero__numero">4,9/5</span>
+                        <span class="hero__rotulo">puntaje promedio</span>
+                    </li>
+                </ul>
+            </div>
+
+            <a class="hero__scroll" href="#como-funciona">
+                Bajá y mirá
+                <span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span>
+            </a>
+        </section>
+
+
+        <!-- ============================================================
+             SECCIÓN 2 · QUÉ ENCONTRÁS EN LA RED  ·  CSS Grid
+             En lugar de productos o servicios, las funciones de la
+             red social: perfiles, galería, comunidades, mensajes,
+             historias y encuentros.
+             ============================================================ -->
+        <section class="seccion" id="comunidad" aria-labelledby="comunidad-titulo">
+            <div class="container">
+
+                <header class="seccion__cabecera">
+                    <p class="kicker">
+                        <span class="kicker__num" aria-hidden="true">01</span>
+                        Qué encontrás
+                    </p>
+                    <h2 class="seccion__titulo" id="comunidad-titulo">Todo lo que hace grande a una manada</h2>
+                    <p class="seccion__intro">
+                        Seis funciones pensadas para lo que los perros hacen todos los días:
+                        hacerse fotos, hacerse amigos y organizar la vuelta a la casa.
+                    </p>
+                </header>
+
+                <!-- Grilla de funcionalidades: el <ul> es semántico,
+                     cada <li> es una función de la red. -->
+                <ul class="features">
+
+                    <li class="feature">
+                        <span class="feature__num" aria-hidden="true">01</span>
+                        <span class="feature__icono material-symbols-outlined" aria-hidden="true">pets</span>
+                        <h3 class="feature__titulo">Perfiles con identidad</h3>
+                        <p class="feature__texto">
+                            Foto, nombre, raza, edad y una bio corta. Cada perrito tiene su
+                            propia ficha: no es solo una foto suelta en un feed.
+                        </p>
+                        <div class="feature__pie">
+                            <span class="feature__tag">Ficha personal</span>
+                            <span class="feature__tag">Seguidores</span>
+                        </div>
+                    </li>
+
+                    <li class="feature">
+                        <span class="feature__num" aria-hidden="true">02</span>
+                        <span class="feature__icono material-symbols-outlined" aria-hidden="true">photo_camera</span>
+                        <h3 class="feature__titulo">Galería de fotos</h3>
+                        <p class="feature__texto">
+                            Subí las fotos de tu mejor amigo, armá álbumes por fechas o por
+                            paseo y guardá los favoritos con un clic.
+                        </p>
+                        <div class="feature__pie">
+                            <span class="feature__tag">Álbumes</span>
+                            <span class="feature__tag">Me gusta</span>
+                        </div>
+                    </li>
+
+                    <li class="feature">
+                        <span class="feature__num" aria-hidden="true">03</span>
+                        <span class="feature__icono material-symbols-outlined" aria-hidden="true">groups</span>
+                        <h3 class="feature__titulo">Comunidades por raza</h3>
+                        <p class="feature__texto">
+                            Entrá a grupos por raza, ciudad o tema. Ahí vas a encontrar debates,
+                            consejos y noticias del mundo perruno.
+                        </p>
+                        <div class="feature__pie">
+                            <span class="feature__tag">Debates</span>
+                            <span class="feature__tag">Razas</span>
+                        </div>
+                    </li>
+
+                    <li class="feature">
+                        <span class="feature__num" aria-hidden="true">04</span>
+                        <span class="feature__icono material-symbols-outlined" aria-hidden="true">chat_bubble</span>
+                        <h3 class="feature__titulo">Mensajes directos</h3>
+                        <p class="feature__texto">
+                            Escribile a otra familia para coordinar un paseo o pedir un consejo.
+                            El chat es privado y no lleva publicidad.
+                        </p>
+                        <div class="feature__pie">
+                            <span class="feature__tag">Privado</span>
+                            <span class="feature__tag">Sin anuncios</span>
+                        </div>
+                    </li>
+
+                    <li class="feature">
+                        <span class="feature__num" aria-hidden="true">05</span>
+                        <span class="feature__icono material-symbols-outlined" aria-hidden="true">campaign</span>
+                        <h3 class="feature__titulo">Historias y estados</h3>
+                        <p class="feature__texto">
+                            Subí un video corto, sumale un sticker y contá cómo viene el día.
+                            Se borran solos a las 24 horas.
+                        </p>
+                        <div class="feature__pie">
+                            <span class="feature__tag">Video</span>
+                            <span class="feature__tag">24 horas</span>
+                        </div>
+                    </li>
+
+                    <li class="feature">
+                        <span class="feature__num" aria-hidden="true">06</span>
+                        <span class="feature__icono material-symbols-outlined" aria-hidden="true">event</span>
+                        <h3 class="feature__titulo">Encuentros en tu barrio</h3>
+                        <p class="feature__texto">
+                            Mapeá meetups y adopciones cerca tuyo, y sumate a la causa que
+                            te interese con un clic.
+                        </p>
+                        <div class="feature__pie">
+                            <span class="feature__tag">Meetups</span>
+                            <span class="feature__tag">Adopciones</span>
+                        </div>
+                    </li>
+
+                    <!-- Tarjeta banner: grid-column 1 / -1, ocupa la fila
+                         entera de la grilla (ver css/comunidad.css) -->
+                    <li class="feature feature--banner">
+                        <span class="feature__icono material-symbols-outlined" aria-hidden="true">shield</span>
+                        <div>
+                            <h3 class="feature__titulo">Y algo que no vas a encontrar en otras redes</h3>
+                            <p class="feature__texto">
+                                Un equipo de «Buenos Perros» revisa los reportes todos los días
+                                y tus datos no se venden. De paso contanos: ¿falta alguna función
+                                que te gustaría tener?
+                            </p>
+                        </div>
+                        <a class="btn btn--primary" href="#contacto">
+                            Contanos
+                            <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+
+        <!-- ============================================================
+             SECCIÓN 3 · CÓMO FUNCIONA  ·  Grid de 3 pasos
+             Los números 01/02/03 los genera counter-increment: no
+             están escritos en el HTML.
+             ============================================================ -->
+        <section class="seccion seccion--alternativa" id="como-funciona" aria-labelledby="pasos-titulo">
+            <div class="container">
+
+                <header class="seccion__cabecera">
+                    <p class="kicker">
+                        <span class="kicker__num" aria-hidden="true">02</span>
+                        Cómo funciona
+                    </p>
+                    <h2 class="seccion__titulo" id="pasos-titulo">Tres pasos y listo</h2>
+                </header>
+
+                <ol class="pasos">
+                    <li class="paso">
+                        <strong>Creás el perfil</strong>
+                        Subís la mejor foto, escribís la raza y la edad. Listo, ya tiene perfil.
+                    </li>
+                    <li class="paso">
+                        <strong>Elegís sus comunidades</strong>
+                        Por raza, por ciudad o por tema. Ahí están las familias que te entienden.
+                    </li>
+                    <li class="paso">
+                        <strong>Presentás a los amigos</strong>
+                        Compartís el enlace y su familia empieza a seguirlo desde el primer día.
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+
+        <!-- ============================================================
+             SECCIÓN 4 · TESTIMONIOS  ·  carrusel con scroll-snap
+             ============================================================ -->
+        <section class="seccion" id="testimonios" aria-labelledby="testimonios-titulo">
+            <div class="container">
+
+                <header class="seccion__cabecera">
+                    <p class="kicker">
+                        <span class="kicker__num" aria-hidden="true">03</span>
+                        Testimonios
+                    </p>
+                    <h2 class="seccion__titulo" id="testimonios-titulo">Lo que cuentan las familias</h2>
+                    <p class="seccion__intro">
+                        Más de 12.400 perritos ya tienen su perfil. Estas son algunas de las
+                        historias que nos llegan todos los días.
+                    </p>
+                </header>
+
+                <!-- Contenedor deslizable. role="region" +
+                     aria-roledescription le anuncian al lector de pantalla
+                     que esto es un carrusel, y tabindex="0" lo hace
+                     enfocable para poder deslizarlo con el teclado. -->
+                <div class="carrusel"
+                     role="region"
+                     aria-roledescription="carrusel"
+                     aria-label="Testimonios de la comunidad"
+                     tabindex="0">
+
+                    <!-- Pista del carrusel: grid-auto-flow: column -->
+                    <ul class="carrusel__pista">
+
+                        <li class="testimonio" id="testimonio-1">
+                            <p class="estrellas" role="img" aria-label="5 de 5 estrellas">
+                                <span class="material-symbols-outlined estrellas__icono" aria-hidden="true">star</span>
+                                <span class="material-symbols-outlined estrellas__icono" aria-hidden="true">star</span>
+                                <span class="material-symbols-outlined estrellas__icono" aria-hidden="true">star</span>
+                                <span class="material-symbols-outlined estrellas__icono" aria-hidden="true">star</span>
+                                <span class="material-symbols-outlined estrellas__icono" aria-hidden="true">star</span>
+                            </p>
+                            <blockquote class="testimonio__texto">
+                                Subí a Numa hace dos meses y en una semana ya tenía 300 seguidores.
+                                La comunidad de Border Collies es un lugar con gente que de verdad
+                                sabe de perros, no de perros de catálogo.
+                            </blockquote>
+                            <footer class="testimonio__autor">
+                                <img class="testimonio__avatar" width="48" height="48" loading="lazy"
+                                     src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&amp;fit=crop&amp;w=160&amp;h=160&amp;q=70"
+                                     alt="Numa, un border collie de dos años">
+                                <span class="testimonio__datos">
+                                    <span class="testimonio__nombre">Lucía Fernández</span>
+                                    <span class="testimonio__perrito">Numa · Border Collie · Córdoba</span>
+                                </span>
+                            </footer>
+                        </li>
+
+                        <li class="testimonio" id="testimonio-2">
+                            <p class="estrellas" role="img" aria-label="5 de 5 estrellas">
+                                <span class="material-symbols-outlined estrellas__icono" aria-hidden="true">star</span>
+                                <span class="material-symbols-outlined estrellas__icono" aria-hidden="true">star</span>
+                                <span class="material-symbols-outlined estrellas__icono" aria-hidden="true">star</span>
+                                <span class="material-symbols-outlined estrellas__icono" aria-hidden="true">star</span>
+                                <span class="material-symbols-outlined estrellas__icono" aria-hidden="true">star</span>
+                            </p>
+                            <blockquote class="testimonio__texto">
+                                Después de mucho tiempo buscando, encontré a Toby en el grupo de
+                                rescate de Rosario. Hoy tiene su propia fanpage con 400 seguidores
+                                y se hace más foto que yo.
+                            </blockquote>
+                            <footer class="testimonio__autor">
+                                <img class="testimonio__avatar" width="48" height="48" loading="lazy"
+                                     src="https://images.unsplash.com/photo-1518717758536-85ae29035b6d?auto=format&amp;fit=crop&amp;w=160&amp;h=160&amp;q=70"
+                                     alt="Toby, un labrador chocolate de tres años">
+                                <span class="testimonio__datos">
+                                    <span class="testimonio__nombre">Marcos Duarte</span>
+                                    <span class="testimonio__perrito">Toby · Labrador · Rosario</span>
+                                </span>
+                            </footer>
+                        </li>
+
+                        <li class="testimonio" id="testimonio-3">
+                            <p class="estrellas" role="img" aria-label="4 de 5 estrellas">
+                                <span class="material-symbols-outlined estrellas__icono" aria-hidden="true">star</span>
+                                <span class="material-symbols-outlined estrellas__icono" aria-hidden="true">star</span>
+                                <span class="material-symbols-outlined estrellas__icono" aria-hidden="true">star</span>
+                                <span class="material-symbols-outlined estrellas__icono" aria-hidden="true">star</span>
+                                <span class="material-symbols-outlined estrellas__icono estrellas__icono--vacia" aria-hidden="true">star</span>
+                            </p>
+                            <blockquote class="testimonio__texto">
+                                Los meetups del sábado me cambiaron la rutina: salimos sin correa
+                                y volvemos agotados los dos. Falta poder filtrar los encuentros
+                                por barrio, pero es el mejor comienzo que probamos.
+                            </blockquote>
+                            <footer class="testimonio__autor">
+                                <img class="testimonio__avatar" width="48" height="48" loading="lazy"
+                                     src="https://images.unsplash.com/photo-1568572933382-74d440642117?auto=format&amp;fit=crop&amp;w=160&amp;h=160&amp;q=70"
+                                     alt="Rayo, un husky de dos años">
+                                <span class="testimonio__datos">
+                                    <span class="testimonio__nombre">Sofía Katz</span>
+                                    <span class="testimonio__perrito">Rayo · Husky · Buenos Aires</span>
+                                </span>
+                            </footer>
+                        </li>
+
+                        <li class="testimonio" id="testimonio-4">
+                            <p class="estrellas" role="img" aria-label="5 de 5 estrellas">
+                                <span class="material-symbols-outlined estrellas__icono" aria-hidden="true">star</span>
+                                <span class="material-symbols-outlined estrellas__icono" aria-hidden="true">star</span>
+                                <span class="material-symbols-outlined estrellas__icono" aria-hidden="true">star</span>
+                                <span class="material-symbols-outlined estrellas__icono" aria-hidden="true">star</span>
+                                <span class="material-symbols-outlined estrellas__icono" aria-hidden="true">star</span>
+                            </p>
+                            <blockquote class="testimonio__texto">
+                                El filtro por raza me ordenó todo el feed. Ahora veo perritos
+                                parecidos a Pepa y dejé de sentir que el algoritmo no me entiende.
+                                Ella tiene catorce años y sigue a otros de su edad.
+                            </blockquote>
+                            <footer class="testimonio__autor">
+                                <img class="testimonio__avatar" width="48" height="48" loading="lazy"
+                                     src="https://images.unsplash.com/photo-1561037404-61cd46aa615b?auto=format&amp;fit=crop&amp;w=160&amp;h=160&amp;q=70"
+                                     alt="Pepa, una rat terrier de catorce años">
+                                <span class="testimonio__datos">
+                                    <span class="testimonio__nombre">Tomás Ruiz</span>
+                                    <span class="testimonio__perrito">Pepa · Rat Terrier · La Plata</span>
+                                </span>
+                            </footer>
+                        </li>
+
+                        <li class="testimonio" id="testimonio-5">
+                            <p class="estrellas" role="img" aria-label="5 de 5 estrellas">
+                                <span class="material-symbols-outlined estrellas__icono" aria-hidden="true">star</span>
+                                <span class="material-symbols-outlined estrellas__icono" aria-hidden="true">star</span>
+                                <span class="material-symbols-outlined estrellas__icono" aria-hidden="true">star</span>
+                                <span class="material-symbols-outlined estrellas__icono" aria-hidden="true">star</span>
+                                <span class="material-symbols-outlined estrellas__icono" aria-hidden="true">star</span>
+                            </p>
+                            <blockquote class="testimonio__texto">
+                                Lo mejor es poder escribirle al consultorio de mi barrio y
+                                coordinar un turno en el momento. Sin publicidad en el medio
+                                y sin que la conversación se pierda entre cientos de comentarios.
+                            </blockquote>
+                            <footer class="testimonio__autor">
+                                <img class="testimonio__avatar" width="48" height="48" loading="lazy"
+                                     src="https://images.unsplash.com/photo-1591160690555-5debfba289f0?auto=format&amp;fit=crop&amp;w=160&amp;h=160&amp;q=70"
+                                     alt="Nube, una golden retriever de ocho meses">
+                                <span class="testimonio__datos">
+                                    <span class="testimonio__nombre">Carla Medina</span>
+                                    <span class="testimonio__perrito">Nube · Golden Retriever · Mendoza</span>
+                                </span>
+                            </footer>
+                        </li>
+
+                        <li class="testimonio" id="testimonio-6">
+                            <p class="estrellas" role="img" aria-label="5 de 5 estrellas">
+                                <span class="material-symbols-outlined estrellas__icono" aria-hidden="true">star</span>
+                                <span class="material-symbols-outlined estrellas__icono" aria-hidden="true">star</span>
+                                <span class="material-symbols-outlined estrellas__icono" aria-hidden="true">star</span>
+                                <span class="material-symbols-outlined estrellas__icono" aria-hidden="true">star</span>
+                                <span class="material-symbols-outlined estrellas__icono" aria-hidden="true">star</span>
+                            </p>
+                            <blockquote class="testimonio__texto">
+                                Bolt tiene su propia línea de tiempo y la uso de diario de paseo.
+                                Suena simple, pero me dejó de pedir fotos a mis amigos y ahora
+                                las tengo ordenadas por fecha.
+                            </blockquote>
+                            <footer class="testimonio__autor">
+                                <img class="testimonio__avatar" width="48" height="48" loading="lazy"
+                                     src="https://images.unsplash.com/photo-1601979031925-424e53b6caaa?auto=format&amp;fit=crop&amp;w=160&amp;h=160&amp;q=70"
+                                     alt="Bolt, un pastador australiano de cinco meses">
+                                <span class="testimonio__datos">
+                                    <span class="testimonio__nombre">Diego Ponce</span>
+                                    <span class="testimonio__perrito">Bolt · Australian Shepherd · Salta</span>
+                                </span>
+                            </footer>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Navegación del carrusel: son <a> puros. Al pulsarlos
+                     el navegador desplaza el contenedor hasta esa tarjeta.
+                     El aria-label es necesario porque lo visible es un
+                     puntito sin palabra. -->
+                <nav class="carrusel-nav" aria-label="Ir a un testimonio">
+                    <a class="carrusel-dot carrusel-dot--activo" href="#testimonio-1" aria-label="Ver el testimonio 1"></a>
+                    <a class="carrusel-dot" href="#testimonio-2" aria-label="Ver el testimonio 2"></a>
+                    <a class="carrusel-dot" href="#testimonio-3" aria-label="Ver el testimonio 3"></a>
+                    <a class="carrusel-dot" href="#testimonio-4" aria-label="Ver el testimonio 4"></a>
+                    <a class="carrusel-dot" href="#testimonio-5" aria-label="Ver el testimonio 5"></a>
+                    <a class="carrusel-dot" href="#testimonio-6" aria-label="Ver el testimonio 6"></a>
+                </nav>
+
+                <p class="carrusel__hint">
+                    <span class="material-symbols-outlined" aria-hidden="true">swipe</span>
+                    Deslizá el carrusel con el dedo, con la rueda o con la flecha del teclado
+                </p>
+            </div>
+        </section>
+
+
+        <!-- ============================================================
+             SECCIÓN 5 · CONTACTO
+             Grilla de dos columnas: información + formulario.
+             ============================================================ -->
+        <section class="seccion" id="contacto" aria-labelledby="contacto-titulo">
+            <div class="container contacto">
+
+                <!-- ---------- Panel de información ---------- -->
+                <div class="contacto__info">
+                    <p class="kicker">
+                        <span class="kicker__num" aria-hidden="true">04</span>
+                        Contacto
+                    </p>
+                    <h2 class="contacto__titulo" id="contacto-titulo">¿Tenés una pregunta? Escribinos</h2>
+                    <p class="contacto__intro">
+                        Somos un equipo chico de personas y perros. Leemos todos los mensajes
+                        y respondemos uno por uno, sin respuestas automáticas.
+                    </p>
+
+                    <ul class="canales">
+                        <li>
+                            <a class="canal" href="mailto:hola@mydoggospace.com">
+                                <span class="canal__icono material-symbols-outlined" aria-hidden="true">mail</span>
+                                <span class="canal__texto">
+                                    <span class="canal__rotulo">Email</span>
+                                    <span class="canal__valor">hola@mydoggospace.com</span>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <span class="canal">
+                                <span class="canal__icono material-symbols-outlined" aria-hidden="true">location_on</span>
+                                <span class="canal__texto">
+                                    <span class="canal__rotulo">Dónde estamos</span>
+                                    <span class="canal__valor">Concepción del Uruguay, Entre Rios, Argentina</span>
+                                </span>
+                            </span>
+                        </li>
+                        <li>
+                            <span class="canal">
+                                <span class="canal__icono material-symbols-outlined" aria-hidden="true">schedule</span>
+                                <span class="canal__texto">
+                                    <span class="canal__rotulo">Horarios</span>
+                                    <span class="canal__valor">Lunes a domingo, 9 a 20 h</span>
+                                </span>
+                            </span>
+                        </li>
+                        <li>
+                            <span class="canal">
+                                <span class="canal__icono material-symbols-outlined" aria-hidden="true">chat_bubble</span>
+                                <span class="canal__texto">
+                                    <span class="canal__rotulo">Chat interno</span>
+                                    <span class="canal__valor">Respondemos en minutos</span>
+                                </span>
+                            </span>
+                        </li>
+                    </ul>
+
+                    <p class="contacto__aviso">
+                        <span class="material-symbols-outlined" aria-hidden="true">verified_user</span>
+                        No compartimos tus datos: lo que escribas aquí solo lo vemos nosotros.
+                    </p>
+                </div>
+
+                <!-- ---------- Formulario ----------
+                     Cada campo tiene su <label for> explícito y los
+                     obligatorios se marcan con required + asterisco.
+                     La validación de verdad la hace el navegador
+                     (required, type="email"); el CSS sólo pinta el estado
+                     de error con :user-invalid, que recién se activa cuando
+                     el usuario intentó enviar el formulario. -->
+                <form class="formulario" action="#" method="post">
+
+                    <div class="campo">
+                        <label class="campo__label" for="nombre">
+                            Nombre y apellido <span class="campo__obligatorio" aria-hidden="true">*</span>
+                        </label>
+                        <input class="campo__control" type="text" id="nombre" name="nombre"
+                               placeholder="Ej: Lucía Fernández" autocomplete="name" required>
+                        <p class="campo__error">
+                            <span class="material-symbols-outlined" aria-hidden="true">error</span>
+                            Contanos cómo te llamás.
+                        </p>
+                    </div>
+
+                    <div class="campo">
+                        <label class="campo__label" for="email">
+                            Email <span class="campo__obligatorio" aria-hidden="true">*</span>
+                        </label>
+                        <input class="campo__control" type="email" id="email" name="email"
+                               placeholder="ej@correo.com" autocomplete="email" required>
+                        <p class="campo__error">
+                            <span class="material-symbols-outlined" aria-hidden="true">error</span>
+                            Revisá el email: le falta el @ o el dominio.
+                        </p>
+                    </div>
+
+                    <div class="campo">
+                        <label class="campo__label" for="motivo">
+                            Motivo <span class="campo__obligatorio" aria-hidden="true">*</span>
+                        </label>
+                        <select class="campo__control" id="motivo" name="motivo" required>
+                            <option value="" selected disabled>Elegí un motivo</option>
+                            <option value="perfil">Quiero crear el perfil de mi perrito</option>
+                            <option value="duda">Tengo una duda sobre la comunidad</option>
+                            <option value="reporte">Quiero reportar un contenido</option>
+                            <option value="prensa">Prensa y alianzas</option>
+                            <option value="otro">Otro motivo</option>
+                        </select>
+                        <p class="campo__error">
+                            <span class="material-symbols-outlined" aria-hidden="true">error</span>
+                            Elegí un motivo para saber dónde mandarlo.
+                        </p>
+                    </div>
+
+                    <div class="campo">
+                        <label class="campo__label" for="perrito">Nombre de tu perrito</label>
+                        <input class="campo__control" type="text" id="perrito" name="perrito"
+                               placeholder="Opcional: cómo lo llamamos en casa">
+                    </div>
+
+                    <div class="campo campo--ancho">
+                        <label class="campo__label" for="mensaje">
+                            Mensaje <span class="campo__obligatorio" aria-hidden="true">*</span>
+                        </label>
+                        <textarea class="campo__control" id="mensaje" name="mensaje" rows="4"
+                                  placeholder="Contanos qué necesitás..." required></textarea>
+                        <p class="campo__error">
+                            <span class="material-symbols-outlined" aria-hidden="true">error</span>
+                            Escribinos un mensaje para poder ayudarte.
+                        </p>
+                    </div>
+
+                    <!-- Fila de envío: nota + casilla + botón (Flexbox) -->
+                    <div class="formulario__envio">
+                        <div class="formulario__extras">
+                            <p class="formulario__nota">
+                                <span class="material-symbols-outlined" aria-hidden="true">lock</span>
+                                Tus datos no se comparten con nadie.
+                            </p>
+                            <label class="checkbox">
+                                <input class="checkbox__input formulario__boletin"
+                                       type="checkbox" name="boletin" value="si">
+                                <span>Quiero recibir novedades de la comunidad</span>
+                            </label>
+                        </div>
+                        <button class="btn btn--primary btn--lg btn--enviar" type="submit">
+                            Enviar mensaje
+                            <span class="material-symbols-outlined" aria-hidden="true">send</span>
+                        </button>
+                    </div>
+
+                    <!-- Aviso que aparece (con :has(), sin JavaScript)
+                         cuando la casilla de novedades queda marcada -->
+                    <p class="formulario__ok">
+                        <span class="material-symbols-outlined" aria-hidden="true">check_circle</span>
+                        Perfecto, te vamos a avisar cuando haya novedades de la comunidad.
+                    </p>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- ============================================================
+         FOOTER
+         ============================================================ -->
+    <footer class="site-footer">
+        <div class="container footer__grid">
+
+            <!-- Columna de la marca -->
+            <div class="footer__marca">
+                <a class="footer__logo" href="#inicio">
+                    <img src="https://cdn-icons-png.flaticon.com/512/194/194228.png"
+                         alt="" width="34" height="34" loading="lazy">
+                    <span>MyDoggoSpace</span>
+                </a>
+                <p class="footer__desc">
+                    La red social de las familias de perritos. Nació en Entre Rios y hoy vive
+                    en cada barrio donde alguien saca a su perro a pasear.
+                </p>
+                <ul class="footer__redes">
+                    <li><a class="footer__red" href="index.html">Galería</a></li>
+                    <li><a class="footer__red" href="nueva-publicacion.html">Publicar</a></li>
+                    <li><a class="footer__red" href="registro.html">Crear cuenta</a></li>
+                </ul>
+            </div>
+
+            <nav class="footer__col" aria-labelledby="foot-red">
+                <h3 id="foot-red">La red</h3>
+                <ul class="footer__lista">
+                    <li><a class="link-foot" href="#comunidad">Qué incluye</a></li>
+                    <li><a class="link-foot" href="#como-funciona">Cómo funciona</a></li>
+                    <li><a class="link-foot" href="#testimonios">Testimonios</a></li>
+                    <li><a class="link-foot" href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+
+            <nav class="footer__col" aria-labelledby="foot-sitio">
+                <h3 id="foot-sitio">El sitio</h3>
+                <ul class="footer__lista">
+                    <li><a class="link-foot" href="index.html">Galería de perritos</a></li>
+                    <li><a class="link-foot" href="nueva-publicacion.html">Publicar un perrito</a></li>
+                    <li><a class="link-foot" href="registro.html">Crear cuenta</a></li>
+                    <li><a class="link-foot" href="#inicio">Volver al inicio</a></li>
+                </ul>
+            </nav>
+
+            <nav class="footer__col" aria-labelledby="foot-contacto">
+                <h3 id="foot-contacto">Contacto</h3>
+                <ul class="footer__lista">
+                    <li><a class="link-foot" href="mailto:hola@mydoggospace.com">hola@mydoggospace.com</a></li>
+                    <!-- Los datos informativos NO son enlaces: llevan el
+                         modificador --texto, que no reacciona al hover. -->
+                    <li><span class="link-foot link-foot--texto">Entre Rios, Argentina</span></li>
+                    <li><span class="link-foot link-foot--texto">Lunes a domingo, 9 a 20 h</span></li>
+                    <li><span class="link-foot link-foot--texto">Estado: todo funcionando</span></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="container footer__barra">
+            <p class="footer__legal">&copy; 2026 MyDoggoSpace — Todos los derechos reservados.</p>
+            <a class="volver" href="#inicio">
+                <span class="material-symbols-outlined" aria-hidden="true">arrow_upward</span>
+                Volver arriba
+            </a>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,240 @@
+/* ============================================================
+   footer.css · <footer>
+   ------------------------------------------------------------
+   Grilla de 4 columnas (marca + 3 listas) arriba y una barra
+   inferior en Flexbox. La marca ocupa más ancho que las listas
+   porque su texto es más largo (1.5fr vs 1fr).
+   ============================================================ */
+
+.site-footer {
+    margin-top: var(--esp-6);
+    padding-block: var(--esp-7) var(--esp-4);
+    background: var(--color-overlay);
+    border-top: 1px solid var(--color-borde);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Halo decorativo arriba del footer (pseudo-elemento) */
+.site-footer::before {
+    content: "";
+    position: absolute;
+    inset-block-start: -60%;
+    inset-inline-start: 50%;
+    translate: -50% 0;
+    width: 40rem;
+    height: 40rem;
+    background: radial-gradient(circle,
+        color-mix(in srgb, var(--color-primario) 8%, transparent),
+        transparent 65%);
+    pointer-events: none;
+}
+
+
+/* ============================================================
+   1 · GRILLA PRINCIPAL
+   ============================================================ */
+
+.footer__grid {
+    position: relative;   /* por encima del halo decorativo */
+    display: grid;
+    grid-template-columns: 1.5fr repeat(3, minmax(0, 1fr));
+    gap: var(--esp-5) var(--gap-feature);
+    margin-bottom: var(--esp-6);
+}
+
+
+/* ============================================================
+   2 · COLUMNA DE LA MARCA
+   ============================================================ */
+
+.footer__marca {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--esp-3);
+    /* El texto largo se corta con puntos, no desborda */
+    max-width: 30ch;
+}
+
+.footer__logo {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--esp-2);
+    font-weight: var(--peso-fuerte);
+    font-size: var(--fs-md);
+    color: var(--color-primario-fuerte);
+    filter: brightness(0) saturate(100%) invert(91%) sepia(46%) saturate(239%) hue-rotate(1deg) brightness(97%) contrast(87%);
+}
+
+.footer__logo img {
+    width: 2.1rem;
+    height: 2.1rem;
+    object-fit: contain;
+}
+
+.footer__desc {
+    font-size: var(--fs-sm);
+    color: var(--color-texto-suave);
+}
+
+/* Fila de "redes" (texto, porque Material Symbols no trae
+   íconos de marcas: Facebook, Instagram, etc.) */
+.footer__redes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--esp-2);
+    margin: 0;
+    padding: 0;
+}
+
+.footer__red {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--esp-1);
+    padding: 0.4em 0.9em;
+    font-size: var(--fs-xs);
+    color: var(--color-texto-suave);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--r-full);
+    transition: color var(--dur-rapida) ease,
+                background-color var(--dur-rapida) ease,
+                border-color var(--dur-rapida) ease,
+                transform var(--dur-rapida) var(--ease-out);
+}
+
+.footer__red:hover {
+    color: var(--color-secundario);
+    background: var(--color-primario);
+    border-color: var(--color-primario);
+    transform: translateY(-2px);
+}
+
+
+/* ============================================================
+   3 · COLUMNAS DE ENLACES
+   ============================================================ */
+
+.footer__col h3 {
+    margin-bottom: var(--esp-3);
+    font-size: var(--fs-sm);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-primario);
+}
+
+.footer__lista {
+    display: flex;
+    flex-direction: column;
+    gap: var(--esp-1);
+    margin: 0;
+    padding: 0;
+}
+
+
+/* ============================================================
+   4 · BARRA INFERIOR
+   ============================================================ */
+
+.footer__barra {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--esp-3);
+    padding-top: var(--esp-4);
+    border-top: 1px solid var(--color-borde);
+    font-size: var(--fs-xs);
+    color: var(--color-texto-suave);
+}
+
+.footer__legal {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--esp-2) var(--esp-4);
+    margin: 0;
+}
+
+/* Enlace "Volver arriba" del footer */
+.volver {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--esp-2);
+    padding: 0.5em 1em;
+    color: var(--color-primario);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--r-full);
+    transition: background-color var(--dur-rapida) ease,
+                border-color var(--dur-rapida) ease,
+                gap var(--dur-rapida) var(--ease-out);
+}
+
+.volver:hover {
+    background: color-mix(in srgb, var(--color-primario) 14%, transparent);
+    border-color: var(--color-borde-fuerte);
+    /* Animación #2: el ícono se separa un poco al pasar el mouse */
+    gap: var(--esp-3);
+}
+
+.volver .material-symbols-outlined {
+    font-size: 1.1rem;
+}
+
+
+/* ============================================================
+   5 · BREAKPOINT · max-width: 1023px  (tablet horizontal)
+   ============================================================ */
+
+@media (max-width: 1023px) {
+    .footer__grid {
+        /* La marca pasa a ocupar la fila entera y las 3 listas
+           se reparten en 3 columnas debajo. */
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .footer__marca {
+        grid-column: 1 / -1;
+        max-width: none;
+    }
+}
+
+
+/* ============================================================
+   6 · BREAKPOINT · max-width: 767px  (móvil / tablet vertical)
+   ============================================================ */
+
+@media (max-width: 767px) {
+    .site-footer {
+        padding-block: var(--esp-6) var(--esp-4);
+    }
+
+    .footer__grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--esp-5) var(--esp-4);
+    }
+
+    /* La tercera lista de enlaces se pasa a fila propia */
+    .footer__col:last-child {
+        grid-column: 1 / -1;
+    }
+}
+
+
+/* ============================================================
+   7 · BREAKPOINT · max-width: 479px  (móviles chicos)
+   ============================================================ */
+
+@media (max-width: 479px) {
+    .footer__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer__barra {
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+    }
+}

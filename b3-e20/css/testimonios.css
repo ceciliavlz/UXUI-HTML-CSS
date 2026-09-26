@@ -1,0 +1,333 @@
+/* ============================================================
+   testimonios.css · CARRUSEL CON SCROLL-SNAP
+   ------------------------------------------------------------
+   Carrusel 100% CSS, sin JavaScript:
+     · el contenedor tiene overflow-x: auto + scroll-snap-type
+     · cada tarjeta se pega con scroll-snap-align
+     · la pista es una GRILLA con grid-auto-flow: column, así el
+       ancho de cada slide se controla desde un solo token
+     · la navegación son <a href="#id"> puros: al pulsarlos el
+       navegador desplaza el contenedor hasta esa tarjeta
+   ============================================================ */
+
+
+/* ============================================================
+   1 · CONTENEDOR DESLIZABLE
+   ============================================================ */
+
+.carrusel {
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    /* El corazón del carrusel: cada tarjeta se "pega" al centro
+       cuando el usuario deja de deslizar. mandatory = siempre
+       se pega a la tarjeta más cercana. */
+    scroll-snap-type: x mandatory;
+    /* El clic en el contenedor también desliza con suavidad */
+    scroll-behavior: smooth;
+    /* No hace falta que el scroll horizontal "pase" a la página */
+    overscroll-behavior-x: contain;
+
+    /* El padding vertical es espacio para que las sombras y el
+       hover de las tarjetas no queden recortados por el overflow. */
+    padding-block: var(--esp-2) var(--esp-4);
+    padding-inline: var(--gutter);
+    /* El margen negativo compensa el padding del .container: el
+       carrusel sale del canal de contenido y llega hasta el borde
+       de la pantalla (a sangre) cuando la ventana es angosta.
+       En pantallas anchas sigue:topado por el ancho máximo del
+       contenedor, así que la 1ª tarjeta queda al mismo borde que
+       los títulos de la sección. */
+    margin-inline: calc(var(--gutter) * -1);
+
+    /* Barra de desplazamiento propia, discreta pero visible:
+       el "deslizá acá" se intuye sin tener que decirlo. */
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-primario) rgba(0, 0, 0, 0.2);
+}
+
+.carrusel::-webkit-scrollbar {
+    height: 8px;
+}
+
+.carrusel::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: var(--r-full);
+}
+
+.carrusel::-webkit-scrollbar-thumb {
+    background: color-mix(in srgb, var(--color-primario) 70%, transparent);
+    border-radius: var(--r-full);
+}
+
+.carrusel::-webkit-scrollbar-thumb:hover {
+    background: var(--color-primario);
+}
+
+
+/* ============================================================
+   2 · PISTA  ·  grid-auto-flow: column
+   ------------------------------------------------------------
+   La pista es la grilla: cada hijo es una COLUMNA de ancho fijo
+   (el token --ancho-testimonio) y se va sumando a la derecha.
+   Al ser más ancha que el contenedor, el contenedor scrollea.
+   ============================================================ */
+
+.carrusel__pista {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: var(--ancho-testimonio);
+    gap: var(--gap-feature);
+    margin: 0;
+    padding: 0;
+    /* max-content: la pista toma el ancho de todas las columnas
+       juntas (si no, la grilla se quedaría con el ancho visible) */
+    width: max-content;
+}
+
+
+/* ============================================================
+   3 · TARJETA DE TESTIMONIO
+   ============================================================ */
+
+.testimonio {
+    scroll-snap-align: center;   /* se pega al centro del visor */
+    scroll-snap-stop: always;    /* no saltea más de una tarjeta */
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--esp-3);
+
+    padding: var(--esp-5) var(--esp-4);
+    background: var(--color-superficie);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--r-l);
+    box-shadow: var(--sombra-1);
+
+    /* quote enorme de fondo, decorativo */
+    position: relative;
+    overflow: hidden;
+    transition:
+        transform var(--dur-media) var(--ease-out),
+        border-color var(--dur-media) ease,
+        box-shadow var(--dur-media) ease;
+}
+
+.testimonio::before {
+    content: "\201C";                 /* comilla de apertura */
+    position: absolute;
+    inset-block-start: -1.5rem;
+    inset-inline-end: 0.5rem;
+    font-size: 8rem;
+    line-height: 1;
+    color: rgba(230, 231, 175, 0.1);
+    pointer-events: none;
+}
+
+.testimonio:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-borde-fuerte);
+    box-shadow: var(--sombra-2);
+}
+
+/* ---------- Estrellas ---------- */
+
+.estrellas {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.1rem;
+    color: var(--color-acento);
+    font-size: 1.15rem;
+    /* El <span class="sr-only"> de dentro es el que anuncia
+       "4 de 5 estrellas": los íconos están ocultos al lector. */
+}
+
+.estrellas__icono {
+    font-variation-settings:
+        'FILL' 1,        /* relleno lleno: se ve la estrella entera */
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24;
+    animation: latir 2.6s ease-in-out infinite;
+}
+
+/* Escalonado del latido: cada estrella late un poquito después */
+.estrellas__icono:nth-child(1) { animation-delay: 0s; }
+.estrellas__icono:nth-child(2) { animation-delay: 0.12s; }
+.estrellas__icono:nth-child(3) { animation-delay: 0.24s; }
+.estrellas__icono:nth-child(4) { animation-delay: 0.36s; }
+.estrellas__icono:nth-child(5) { animation-delay: 0.48s; }
+
+/* Estrella vacía de las reseñas de 4 puntos: mismo ícono pero con
+   FILL 0 (contorno) y más apagada. */
+.estrellas__icono--vacia {
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 300,
+        'GRAD' 0,
+        'opsz' 24;
+    color: color-mix(in srgb, var(--color-acento) 40%, transparent);
+}
+
+
+/* ---------- Texto ---------- */
+
+.testimonio__texto {
+    color: var(--color-texto);
+    font-size: var(--fs-sm);
+    line-height: var(--lh-normal);
+    flex-grow: 1;   /* empuja el autor al fondo: todas las
+                       citas quedan alineadas aunque varyen */
+}
+
+
+/* ---------- Autor ---------- */
+
+.testimonio__autor {
+    display: flex;
+    align-items: center;
+    gap: var(--esp-3);
+    padding-top: var(--esp-3);
+    border-top: 1px dashed var(--color-borde);
+}
+
+.testimonio__avatar {
+    width: 3rem;
+    height: 3rem;
+    flex-shrink: 0;
+    border-radius: var(--r-full);
+    object-fit: cover;
+    border: 2px solid var(--color-primario);
+}
+
+.testimonio__datos {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;   /* clave: sin esto el nombre no se encoge */
+}
+
+.testimonio__nombre {
+    font-weight: var(--peso-fuerte);
+    font-size: var(--fs-sm);
+    color: var(--color-primario-fuerte);
+    /* Si el nombre es larguísimo, se corta con puntos suspensivos
+       en vez de romper la fila. */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.testimonio__perrito {
+    font-size: var(--fs-xs);
+    color: var(--color-texto-suave);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+/* ============================================================
+   4 · NAVEGACIÓN POR PUNTOS
+   ------------------------------------------------------------
+   Son <a> puros: al hacer clic, el navegador lleva el scroll del
+   contenedor hasta esa tarjeta. Sin JS.
+   Cada punto es un cuadrado que crece hasta ser una pastilla.
+   ============================================================ */
+
+.carrusel-nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: var(--esp-2);
+    margin-top: var(--esp-4);
+}
+
+.carrusel-dot {
+    display: block;
+    width: 1.75rem;
+    height: 0.55rem;
+    background: color-mix(in srgb, var(--color-primario) 30%, transparent);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--r-full);
+    cursor: pointer;
+    transition:
+        width var(--dur-media) var(--ease-out),
+        background-color var(--dur-media) ease;
+}
+
+.carrusel-dot:hover {
+    background: color-mix(in srgb, var(--color-primario) 60%, transparent);
+}
+
+/* Punto "activo": el más largo.
+   Nota: sin JavaScript no se puede detectar cuál slide está a la
+   vista, así que se marca el primero como estado inicial. */
+.carrusel-dot--activo {
+    width: 3rem;
+    background: var(--color-primario);
+}
+
+/* Texto de ayuda: se oculta de la vista, se lee con lector */
+.carrusel__hint {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--esp-2);
+    margin-top: var(--esp-3);
+    font-size: var(--fs-xs);
+    color: var(--color-texto-suave);
+    text-align: center;
+}
+
+.carrusel__hint .material-symbols-outlined {
+    font-size: 1.1rem;
+}
+
+
+/* ============================================================
+   5 · BREAKPOINT · max-width: 1023px  (tablet horizontal)
+   ============================================================ */
+
+@media (max-width: 1023px) {
+    :root {
+        /* Tarjetas más anchas: entran ~2 y asoma la tercera */
+        --ancho-testimonio: 24rem;
+    }
+}
+
+
+/* ============================================================
+   6 · BREAKPOINT · max-width: 767px  (móvil / tablet vertical)
+   ============================================================ */
+
+@media (max-width: 767px) {
+    :root {
+        /* Una tarjeta y un pedacito de la siguiente: el "asomado"
+           es lo que avisa que hay más para deslizar.
+           Ojo: se mide en vw y NO en %, porque el ancho de una
+           pista con width:max-content es indeterminado y un %
+           no tendría contra qué resolverse. */
+        --ancho-testimonio: min(21.5rem, 82vw);
+    }
+
+    .testimonio {
+        padding: var(--esp-4);
+    }
+}
+
+
+/* ============================================================
+   7 · BREAKPOINT · max-width: 479px  (móviles chicos)
+   ============================================================ */
+
+@media (max-width: 479px) {
+    :root {
+        --ancho-testimonio: min(21.5rem, 88vw);
+    }
+
+    .testimonio__avatar {
+        width: 2.6rem;
+        height: 2.6rem;
+    }
+}

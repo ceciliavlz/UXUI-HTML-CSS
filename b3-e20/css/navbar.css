@@ -1,0 +1,324 @@
+/* ============================================================
+   navbar.css · <header> FIJO
+   ------------------------------------------------------------
+   Barra de navegación siempre visible + menú que se colapsa en
+   pantallas chicas. El menú se abre y cierra con el truco del
+   checkbox oculto (:checked), sin una línea de JavaScript.
+
+   Estructura HTML (el orden importa para el selector ~):
+     <nav class="navbar">
+       <input class="nav-checkbox" id="nav-toggle">   1º
+       <a class="brand">                              2º
+       <label class="nav-burger" for="nav-toggle">     3º
+       <ul class="nav-menu">                           4º
+       <div class="nav-progress">                      5º
+   ============================================================ */
+
+
+/* ============================================================
+   1 · CONTENEDOR FIJO
+   ============================================================ */
+
+.site-header {
+    position: fixed;      /* sale del flujo: queda pegado arriba */
+    inset-block-start: 0;
+    inset-inline: 0;      /* left:0 + right:0 = ancho completo */
+    z-index: var(--z-navbar);
+
+    /* Fondo semitransparente + desenfoque: se lee el contenido
+       que pasa por abajo sin taparlo del todo. */
+    background: color-mix(in srgb, var(--color-overlay) 78%, transparent);
+    backdrop-filter: blur(12px) saturate(140%);
+    -webkit-backdrop-filter: blur(12px) saturate(140%);
+    border-bottom: 1px solid var(--color-borde);
+}
+
+.navbar {
+    display: flex;              /* Flexbox: marca + menú en una fila */
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--esp-4);
+    min-height: var(--navbar-h);
+    width: 100%;
+    max-width: calc(var(--ancho-max) + var(--gutter) * 2);
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+}
+
+
+/* ============================================================
+   2 · MARCA
+   ============================================================ */
+
+.brand {
+    display: inline-flex;       /* ícono + nombre pegados */
+    align-items: center;
+    gap: var(--esp-2);
+    color: var(--color-primario-fuerte);
+    font-weight: var(--peso-fuerte);
+    font-size: var(--fs-md);
+    letter-spacing: -0.01em;
+    flex-shrink: 0;             /* la marca nunca se aplasta */
+}
+
+.brand__logo {
+    width: 2.25rem;
+    height: 2.25rem;
+    object-fit: contain;
+    /* Giro leve al pasar el mouse: un detalle vivo */
+    transition: transform var(--dur-media) var(--ease-bounce);
+    filter: brightness(0) saturate(100%) invert(91%) sepia(46%) saturate(239%) hue-rotate(1deg) brightness(97%) contrast(87%);
+}
+
+/* El nombre nunca se parte en dos líneas ni se comprime */
+.brand__name {
+    white-space: nowrap;
+}
+
+.brand:hover .brand__logo {
+    transform: rotate(-8deg) scale(1.08);
+}
+
+.brand:hover {
+    color: var(--color-primario-fuerte);
+}
+
+
+/* ============================================================
+   3 · MENÚ (escritorio)
+   ============================================================ */
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: clamp(var(--esp-3), 2vw, var(--esp-5));
+    /* Es lo que se anima en móvil: alto + visibilidad */
+    transition: max-height var(--dur-media) var(--ease-out),
+                opacity var(--dur-media) ease;
+}
+
+
+/* ============================================================
+   4 · CHECKBOX OCULTO  ·  el motor del menú
+   ------------------------------------------------------------
+   No se oculta con display:none ni visibility:hidden porque
+   entonces perdería el foco por teclado. Se apaga "fuera de
+   pantalla" conservando el tabulador.
+   ============================================================ */
+
+.nav-checkbox {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+    /* el área de clic real es el <label>: el input no intercepta */
+    pointer-events: none;
+}
+
+/* En escritorio el menú está siempre desplegado, así que el input
+   no sirve para nada y, si lo dejara, el teclado tabularía hasta
+   un input invisible SIN ninguna señal de foco (el label está en
+   display:none). Por eso, y sólo en escritorio, se saca del
+   recorrido con display:none. En móvil vuelve a ser enfocable. */
+@media (min-width: 768px) {
+    .nav-checkbox {
+        display: none;
+    }
+}
+
+/* En escritorio el menú está siempre desplegado, así que la única
+   consecuencia del :checked es el canje de los íconos del label
+   (sección 5). El panel desplegable se resuelve en el breakpoint
+   de móvil, más abajo. */
+
+
+/* ============================================================
+   5 · BOTÓN HAMBURGUESA  ·  visible sólo en móvil
+   ============================================================ */
+
+.nav-burger {
+    display: none;                 /* oculto en escritorio */
+    position: relative;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    margin-inline-end: calc(var(--gutter) * -0.4);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--r-m);
+    background: color-mix(in srgb, var(--color-primario) 10%, transparent);
+    cursor: pointer;
+    transition: background-color var(--dur-rapida) ease,
+                border-color var(--dur-rapida) ease;
+}
+
+.nav-burger:hover {
+    background: color-mix(in srgb, var(--color-primario) 20%, transparent);
+    border-color: var(--color-borde-fuerte);
+}
+
+.nav-burger .material-symbols-outlined {
+    grid-area: 1 / 1;              /* los dos íconos se apilan */
+    font-size: 1.5rem;
+    transition: opacity var(--dur-media) ease,
+                transform var(--dur-media) var(--ease-out);
+}
+
+/* Cerrado = hamburguesa (la X sale girando y encogida) */
+.nav-burger__cerrar {
+    opacity: 0;
+    transform: rotate(-90deg) scale(0.4);
+}
+
+/* El input no se puede "enfocar" visualmente (está invisible):
+   el anillo de foco se pinta sobre su <label>. */
+.nav-checkbox:focus-visible ~ .nav-burger {
+    outline: 3px solid var(--color-acento);
+    outline-offset: 3px;
+}
+
+/* Abierto = X visible, y la hamburguesa se desvanece girando */
+.nav-checkbox:checked ~ .nav-burger {
+    background: var(--color-primario);
+}
+
+.nav-checkbox:checked ~ .nav-burger .nav-burger__abrir {
+    opacity: 0;
+    transform: rotate(90deg) scale(0.4);
+}
+
+.nav-checkbox:checked ~ .nav-burger .nav-burger__cerrar {
+    opacity: 1;
+    transform: rotate(0) scale(1);
+    color: var(--color-secundario);
+}
+
+
+/* ============================================================
+   6 · BARRA DE PROGRESO DE LECTURA
+   ------------------------------------------------------------
+   Progreso del scroll DEL DOCUMENTO, hecho con una animación
+   conducida por el propio scroll (scroll-driven animations):
+   no hace falta JavaScript ni ningún evento scroll.
+   Va dentro de @supports para que en navegadores sin soporte
+   la línea simplemente no se muestre (queda en scaleX(0)).
+   ============================================================ */
+
+@supports (animation-timeline: scroll()) {
+    .nav-progress {
+        position: absolute;
+        inset-block-end: -1px;   /* se apoya sobre el borde inferior */
+        inset-inline-start: 0;
+        width: 100%;
+        height: 3px;
+        transform-origin: left center;
+        transform: scaleX(0);
+        background: linear-gradient(90deg,
+                    var(--color-primario),
+                    var(--color-acento));
+        animation: progreso-lectura linear both;
+        animation-timeline: scroll(root block);  /* sigue al scroll del <html> */
+    }
+}
+
+
+/* ============================================================
+   7 · BREAKPOINT · max-width: 767px  (móvil / tablet vertical)
+   ------------------------------------------------------------
+   El menú pasa de "fila" a "panel desplegable" debajo de la
+   barra. Se anima con max-height porque es la única propiedad
+   que se puede interpolar sin saber la altura real del panel.
+   ============================================================ */
+
+@media (max-width: 767px) {
+    :root {
+        /* Barra un poquito más baja en pantallas chicas */
+        --navbar-h: 4rem;
+    }
+
+    .navbar {
+        gap: var(--esp-2);
+    }
+
+    .nav-burger {
+        display: grid;
+    }
+
+    /* Panel: cerrado = altura 0 y sin visibilidad (así no roba
+       los clics del contenido de abajo). */
+    .nav-menu {
+        position: absolute;
+        inset-block-start: 100%;     /* pegado al borde inferior de la barra */
+        inset-inline: 0;
+        z-index: calc(var(--z-navbar) - 1);
+
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: var(--esp-2) var(--gutter) var(--esp-4);
+
+        max-height: 0;               /* cerrado */
+        overflow: hidden;
+        visibility: hidden;
+        opacity: 0;
+
+        background: color-mix(in srgb, var(--color-overlay) 96%, transparent);
+        border-bottom: 1px solid var(--color-borde);
+        box-shadow: var(--sombra-2);
+    }
+
+    /* Abierto: el alto máximo se anima y el :checked del checkbox
+       es lo que dispara todo el cambio. */
+    .nav-checkbox:checked ~ .nav-menu {
+        max-height: 22rem;           /* suficiente para los 5 links */
+        visibility: visible;
+        opacity: 1;
+    }
+
+    /* Cada link ocupa una fila completa y comfy para el dedo */
+    .nav-menu > li + li {
+        border-top: 1px solid rgba(230, 231, 175, 0.12);
+    }
+
+    .nav-menu .link-menu {
+        display: block;
+        padding: var(--esp-3) var(--esp-1);
+        font-size: var(--fs-md);
+    }
+
+    .nav-menu .link-menu::after {
+        display: none;   /* sin subrayado: la fila ya separa */
+    }
+
+    /* El botón de la nav pasa a ocupar todo el ancho del panel */
+    .nav-menu .btn {
+        margin-top: var(--esp-3);
+        width: 100%;
+    }
+}
+
+
+/* ============================================================
+   8 · BREAKPOINT · max-width: 479px  (móviles chicos)
+   ============================================================ */
+
+@media (max-width: 479px) {
+    .brand {
+        font-size: var(--fs-sm);
+    }
+
+    .brand__logo {
+        width: 1.9rem;
+        height: 1.9rem;
+    }
+
+    .nav-burger {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+}

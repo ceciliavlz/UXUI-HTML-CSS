@@ -1,0 +1,1015 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+:root {
+    --color-primario: rgb(230, 231, 175);
+    --color-secundario: rgb(39, 57, 71);
+    --color-superficie: rgb(47, 65, 78);
+    --color-borde: rgba(230, 231, 175, 0.4);
+    --espaciado: 20px;
+    --radio-borde: 12px;
+    --fuente-principal: "Quicksand", sans-serif;
+    --navbar-height: 80px;
+
+    /* Tokens del layout responsivo (se re-declaran en cada @media) */
+    --sidebar-width: 300px;   /* ancho de la columna del sidebar */
+    --gap-cards: 25px;        /* separación entre tarjetas */
+    --gap-form: 15px;         /* separación entre campos del formulario */
+    --min-card: 280px;        /* ancho mínimo ideal de una tarjeta */
+    --max-card: 360px;        /* ancho máximo de una tarjeta */
+    --nav-menu-max: 320px;    /* alto máximo del panel de navegación desplegado */
+
+    /* Tokens de animación (control de duration / timing-function) */
+    --dur-spinner: 0.9s;                        /* duración del giro */
+    --dur-entrada: 0.55s;                       /* duración de la entrada */
+    --ease-entrada: cubic-bezier(0.22, 0.61, 0.36, 1); /* timing-function (ease-out) */
+    --stagger-card: 80ms;                       /* retraso entre tarjetas */
+    --dur-menu: 0.3s;                           /* apertura/cierre del menú */
+    --ease-menu: cubic-bezier(0.22, 0.61, 0.36, 1); /* mismo ease-out que la entrada */
+}
+
+body.light-mode {
+    --color-primario: rgb(39, 57, 71);
+    --color-secundario: rgb(230, 231, 175);
+    --color-superficie: rgb(241, 241, 199);
+    --color-borde: rgb(39, 57, 71, 0.2);
+    
+    .logo img {
+        filter: brightness(0) saturate(100%) invert(91%) sepia(46%) saturate(239%) hue-rotate(1deg) brightness(97%) contrast(87%);
+    }
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Quicksand", sans-serif;
+    background-color: var(--color-secundario);
+    color: var(--color-primario);
+    margin: 0;
+    min-height: 100vh;
+}
+
+.btn{
+    width: 100%;
+    padding: 10px 15px;
+    background-color: var(--color-primario);
+    color: var(--color-secundario);
+    border: none;
+    border-radius: 6px;
+    font-family: "Quicksand", sans-serif;
+    font-size: 0.95rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease, opacity 0.2s ease;
+}
+
+.btn:hover{
+    opacity: 0.85;
+}
+
+.btn:active{
+    transform: translateY(1px);
+}
+
+/* ============================================================
+   LAYOUT PRINCIPAL CON CSS GRID
+   Enfoque: DESKTOP FIRST (base = escritorio, se degrada hacia abajo)
+   Breakpoints (desktop first con max-width):
+     · <  480px  -> movil chico: compactacion extrema (menu colapsado)
+     · <  768px  -> movil/tablet vertical: 1 COLUMNA, SIN SIDEBAR y menu colapsable
+     · < 1024px  -> tablet horizontal: sidebar angosto
+     · >= 1024px -> escritorio: sidebar de 300px (estilos base)
+   ============================================================ */
+.grid-layout {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    /* minmax(0, 1fr) + min-width:0 en los hijos evitan que el contenido
+       ancho desborde la grilla (overflow horizontal) */
+    grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
+
+    grid-template-areas: 
+        "header  header"
+        "sidebar main"
+        "footer  footer";
+        
+    min-height: 100vh;
+    /* transicion fluida entre breakpoints */
+    transition: grid-template-columns 0.3s ease;
+}
+
+.area-header,
+.area-sidebar,
+.area-main,
+.area-footer {
+    min-width: 0; /* clave: los grid items tienen min-width:auto por defecto */
+}
+
+.area-header {
+    grid-area: header;
+}
+
+.area-sidebar {
+    grid-area: sidebar;
+    background-color: rgba(0, 0, 0, 0.15);
+    border-right: 2px dashed var(--color-primario);
+    padding: var(--espaciado);
+}
+
+.material-symbols-outlined {
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
+}
+
+.area-main {
+    grid-area: main;
+    padding: var(--espaciado) var(--espaciado) calc(var(--espaciado) * 2);
+    transition: padding 0.3s ease;
+}
+
+.area-footer {
+    grid-area: footer;
+    background-color: rgba(0, 0, 0, 0.25);
+    border-top: 2px dashed var(--color-primario);
+    text-align: center;
+    padding: 15px;
+    font-size: 0.9rem;
+}
+
+/* ESTILOS DEL SIDEBAR */
+.area-sidebar h3 {
+    margin-top: 0;
+    font-size: 1.2rem;
+    border-bottom: 2px dashed var(--color-primario);
+    padding-bottom: 8px;
+}
+
+.area-sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.area-sidebar li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.area-sidebar li:nth-child(odd) {
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+.area-sidebar li:nth-child(even) {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.area-sidebar li:hover {
+    background-color: rgba(230, 231, 175, 0.15);
+    transform: translateX(5px);
+}
+
+.area-sidebar li a {
+    color: var(--color-primario);
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-left: 8px;
+    display: inline-flex;
+    align-items: center;
+    transition: color 0.2s ease;
+}
+
+.area-sidebar li:hover a {
+    font-weight: bold;
+}
+
+.area-sidebar li a::after {
+    content: " ➔";
+    opacity: 0;
+    margin-left: 5px;
+    font-size: 0.9rem;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    transform: translateX(-5px);
+}
+
+.area-sidebar li:hover a::after {
+    opacity: 1;
+    transform: translateX(3px);
+}
+
+/* BARRA DE NAVEGACIÓN */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 15px 30px;
+    background-color: var(--color-primario);
+    border-bottom: 2px dashed var(--color-primario);
+    min-height: var(--navbar-height);
+    transition: padding 0.3s ease, min-height 0.3s ease;
+}
+
+.logo {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--color-secundario);
+    display: flex;
+    align-items: center;
+    min-width: 0;
+}
+
+.logo img {
+    height: 80%;
+    max-height: 50px;
+    width: auto;
+    flex: 0 0 auto;
+    filter: brightness(0) saturate(100%) invert(20%) sepia(4%) saturate(4193%) hue-rotate(165deg) brightness(93%) contrast(92%);
+}
+
+.logo span {
+    margin-left: 10px;
+    font-weight: bold;
+    font-size: 1.5rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    flex: 0 0 auto;
+}
+
+.nav-links a {
+    color: var(--color-secundario);
+    text-decoration: none;
+    font-size: 1rem;
+    transition: opacity 0.2s ease;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.nav-links a:hover {
+    opacity: 0.75;
+    text-decoration: underline;
+}
+
+.nav-links a.btn-nav-action {
+    background-color: var(--color-secundario);
+    color: var(--color-primario);
+    padding: 8px 14px;
+    border-radius: 6px;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.nav-links a.btn-nav-action:hover {
+    text-decoration: none;
+    opacity: 1;
+    transform: translateY(-2px);
+}
+
+/* Foco visible de los links de la navbar (teclado) */
+.nav-links a:focus-visible {
+    outline: 2px dashed var(--color-secundario);
+    outline-offset: 3px;
+}
+
+/* ============================================================
+   MENÚ DESPLEGABLE SIN JAVASCRIPT (truco del checkbox :checked)
+   Idea: un <input type="checkbox"> oculto marca su estado, un <label>
+   lo activa al pulsarlo y, desde CSS, el hermano general (~) del input
+   con :checked abre/cierra el panel de enlaces.
+
+   Reglas de accesibilidad que respeta:
+   · el input NO se oculta con display:none ni visibility:hidden, porque
+     eso lo saca del recorrido de tabulación y del árbol de accesibilidad:
+     se oculta con tamaño 1px + opacity 0, así sigue siendo enfocable y
+     announcing "activado/no activado" junto a su label.
+   · el foco de teclado se dibuja sobre el <label> (el input es invisible).
+   · el panel cerrado usa visibility:hidden, así sus links no son
+     alcanzables con el Tab mientras están ocultos.
+   ============================================================ */
+
+/* Oculto visualmente pero ENFOCABLE (nunca display:none) */
+.nav-toggle-input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+    /* el área de clic real es el <label>: el input no intercepta el clic */
+    pointer-events: none;
+}
+
+/* El ícono hamburguesa es un <label for="nav-toggle">: al pulsarlo
+   alterna el checkbox. En escritorio el menú no se colapsa, así que
+   el ícono se oculta (el breakpoint lo vuelve a mostrar) */
+.nav-toggle-label {
+    display: none;
+    position: relative;
+    flex: 0 0 auto;
+    width: 44px;   /* área táctil mínima recomendada (WCAG 2.5.5) */
+    height: 44px;
+    border-radius: 8px;
+    color: var(--color-secundario);
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: background-color var(--dur-menu) ease, opacity var(--dur-menu) ease;
+}
+
+.nav-toggle-label:hover {
+    background-color: rgba(39, 57, 71, 0.1);
+}
+
+/* Los dos íconos se superponen exactamente en el mismo cuadrado
+   (inset:0 + place-items:center) para poder canjearlos con opacidad */
+.nav-toggle-label .material-symbols-outlined {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    font-size: 1.9rem;
+    line-height: 1;
+    pointer-events: none;
+    transition: opacity var(--dur-menu) ease, transform var(--dur-menu) var(--ease-menu);
+}
+
+/* Cerrado = hamburguesa (X oculta girada y en escala 0) */
+.nav-icon-close {
+    opacity: 0;
+    transform: rotate(-90deg) scale(0.5);
+}
+
+/* Abierto = X visible, y la hamburguesa se desvanece girando */
+.nav-toggle-input:checked ~ .nav-toggle-label .nav-icon-menu {
+    opacity: 0;
+    transform: rotate(90deg) scale(0.5);
+}
+
+.nav-toggle-input:checked ~ .nav-toggle-label .nav-icon-close {
+    opacity: 1;
+    transform: rotate(0) scale(1);
+}
+
+/* El input es invisible: el anillo de foco se pinta en su label */
+.nav-toggle-input:focus-visible ~ .nav-toggle-label {
+    outline: 3px solid var(--color-secundario);
+    outline-offset: 2px;
+}
+
+/* Texto solo para lectores de pantalla (utilidad reutilizable) */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+}
+
+#main-header {
+    text-align: center;
+    border-bottom: 2px dashed var(--color-primario);
+    padding-bottom: 20px;
+    margin-bottom: 40px;
+    transition: margin-bottom 0.3s ease, padding-bottom 0.3s ease;
+}
+
+#main-header h1 {
+    /* clamp() evita que el titulo desborde en pantallas angostas */
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    margin-bottom: 10px;
+    overflow-wrap: break-word;
+}
+
+#main-header p {
+    font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+    opacity: 0.9;
+    margin-top: 0;
+}
+
+/* GALERÍA DE TARJETAS · CSS GRID CON ITEMS DE TAMAÑO DESIGUAL
+   · repeat(auto-fill, minmax(...)) calcula cuántas columnas entran en el
+     ancho disponible: cada track mide entre --min-card y --max-card, así
+     las tarjetas conservan el ancho acotado que tenían con Flexbox.
+   · grid-auto-flow: dense permite que una tarjeta que "salte" una fila
+     (por ejemplo la destacada 2x2) deje huecos que las siguientes
+     ocupan atrás, en lugar de un vacío al final de la grilla. */
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(var(--min-card), var(--max-card)));
+    grid-auto-flow: dense;
+    gap: var(--gap-cards);
+    justify-content: center;
+    align-items: stretch;
+    max-width: 1200px;
+    margin: 0 auto 40px auto;
+    transition: gap 0.3s ease;
+}
+
+.card {
+    box-sizing: border-box;
+    /* el ancho lo define el track del contenedor; min-width:0 permite
+       que la tarjeta se encolhe sin desbordar la grilla */
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    padding: 20px;
+    border: 2px solid var(--color-borde);
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease, border-color 0.2s ease, padding 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: var(--color-primario);
+}
+
+/* TILE DESTACADO · span 2 columnas x 2 filas
+   La tarjeta grande se ubica con grid-column/grid-row: span (no con
+   líneas explícitas), así el flujo "dense" la reubica sola según
+   cuántas columnas haya en cada breakpoint. */
+.card--destacada {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+/* Al ocupar el doble de filas, su imagen crece (flex:1) para llenar la
+   altura extra en vez de dejar el texto estirado contra el borde. */
+.card--destacada img {
+    flex: 1 1 auto;
+    min-height: 260px;
+}
+
+.card img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.card h2 {
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-size: 1.5rem;
+}
+
+.edad {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--color-primario);
+    margin: 5px 0 10px 0;
+    opacity: 0.95;
+}
+
+.card p {
+    color: var(--color-primario);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 8px 0;
+}
+
+/* TOOLTIP */
+.tooltip-container {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.tooltip-text {
+    position: absolute;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    background-color: rgba(0, 0, 0, 0.9);
+    color: var(--color-primario);
+    border: 1px solid var(--color-primario);
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    /* topte de seguridad: nunca wider que la pantalla -> sin overflow */
+    max-width: min(90vw, 260px);
+    
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 10;
+}
+
+.tooltip-container:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* FORMULARIO ESTILIZADO CON TRANSICIONES */
+.form-section {
+    max-width: 700px;
+    margin: 0 auto 40px auto;
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.04);
+    border: 2px solid var(--color-borde);
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transition: padding 0.3s ease;
+}
+
+.form-section h2 {
+    margin: 0 0 20px 0;
+    font-size: 1.6rem;
+    color: var(--color-primario);
+    border-bottom: 1px dashed var(--color-borde);
+    padding-bottom: 10px;
+}
+
+.form-section h2 span {
+    margin-right: 8px;  
+}
+
+.post-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gap-form);
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    /* 240px de basis + wrap = 2 columnas en escritorio, 1 en movil.
+       min-width:0 permite que el campo se encolhe sin desbordar */
+    flex: 1 1 240px;
+    min-width: 0;
+}
+
+.form-group.full-width {
+    flex: 1 1 100%;
+}
+
+.form-group label {
+    font-size: 0.95rem;
+    font-weight: bold;
+    margin-bottom: 6px;
+    color: var(--color-primario);
+}
+
+.post-form input,
+.post-form textarea {
+    width: 100%;
+    padding: 10px 14px;
+    font-family: "Quicksand", sans-serif;
+    font-size: 0.95rem;
+    color: var(--color-secundario);
+    background-color: var(--color-primario);
+    border: 2px solid transparent;
+    border-radius: 8px;
+    outline: none;
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.post-form input::placeholder,
+.post-form textarea::placeholder {
+    color: rgba(39, 57, 71, 0.6);
+}
+
+.post-form input:focus,
+.post-form textarea:focus {
+    background-color: #ffffff;
+    border-color: var(--color-primario);
+    transform: translateY(-2px);
+}
+
+.post-form textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* BOTÓN "VOLVER ARRIBA" */
+.btn-scroll-top {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    
+    width: 50px;
+    height: 50px;
+    background-color: var(--color-primario);
+    color: var(--color-secundario);
+    border-radius: 50%;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    z-index: 100;
+    transition: transform 0.2s ease, opacity 0.2s ease, bottom 0.3s ease, right 0.3s ease;
+}
+
+.btn-scroll-top:hover {
+    transform: translateY(-3px) scale(1.05);
+    opacity: 0.9;
+}
+
+/*
+   FILTROS RAPIDOS (solo movil)
+   El sidebar se oculta por debajo de 768px, asi que estos chips
+   reemplazan sus filtros en un scroll horizontal contenido
+   (el scroll es del bloque, no de la pagina -> no hay overflow global)*/
+.mobile-filters {
+    display: none;
+}
+
+/* BREAKPOINT 1 · max-width: 1023px  (tablet horizontal) Sidebar mas angosto + generalizacion de espaciados*/
+@media (max-width: 1023px) {
+    :root {
+        --espaciado: 16px;
+        --sidebar-width: 230px;
+        --gap-cards: 18px;
+        --gap-form: 12px;
+    }
+
+    .navbar {
+        padding: 14px 20px;
+    }
+
+    .logo span {
+        font-size: 1.3rem;
+    }
+
+    .nav-links {
+        gap: 14px;
+    }
+
+    .card {
+        padding: 16px;
+    }
+
+    .card img {
+        height: 180px;
+    }
+
+    #main-header {
+        margin-bottom: 28px;
+    }
+
+    .form-section {
+        padding: 22px;
+    }
+}
+
+/* BREAKPOINT 2 · max-width: 767px  (movil / tablet vertical) el sidebar desaparece y el grid pasa a UNA SOLA COLUMNA*/
+@media (max-width: 767px) {
+    :root {
+        --espaciado: 14px;
+        --navbar-height: 64px;
+        --gap-cards: 14px;
+        --gap-form: 14px;
+        --min-card: 240px;
+        --max-card: 480px;
+    }
+
+    /* --- Grid de una sola columna --- */
+    .grid-layout {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-areas:
+            "header"
+            "main"
+            "footer";
+    }
+
+    /* --- El sidebar deja de existir en el layout --- */
+    .area-sidebar {
+        display: none;
+    }
+
+    /* --- Navbar mas compacta + menu desplegable --- */
+    .navbar {
+        /* ancla del panel desplegable que cuelga del header */
+        position: relative;
+        padding: 12px 16px;
+    }
+
+    .logo img {
+        max-height: 44px;
+    }
+
+    .logo span {
+        font-size: 1.15rem;
+    }
+
+    .nav-toggle-label {
+        display: block;
+    }
+
+    /* Panel desplegable: en columna, pegado debajo de la navbar */
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        z-index: 50;
+
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+        padding: 14px 16px 18px;
+        background-color: var(--color-primario);
+        border-bottom: 2px dashed var(--color-secundario);
+        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.35);
+
+        /* Estado CERRADO: alto 0 + invisible. visibility:hidden saca los
+           links del recorrido de Tab y del árbol de accesibilidad. */
+        max-height: 0;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-12px);
+        pointer-events: none;
+        overflow: hidden;
+
+        /* visibility es discreto: se APLAZA para recién ocultarse al
+           terminar la transición de cierre (al abrir, el retardo es 0) */
+        transition:
+            max-height var(--dur-menu) var(--ease-menu),
+            opacity var(--dur-menu) var(--ease-menu),
+            transform var(--dur-menu) var(--ease-menu),
+            visibility 0s linear var(--dur-menu);
+    }
+
+    .nav-links a {
+        width: 100%;
+        text-align: center;
+        padding: 10px 12px;
+        border-radius: 8px;
+        font-size: 0.9rem;
+    }
+
+    /* Los links simples reciben una "pildora" para que el panel se lea
+       como un menu (el boton de publicar ya trae la suya) */
+    .nav-links a:not(.btn-nav-action) {
+        background-color: rgba(39, 57, 71, 0.12);
+        transition: background-color var(--dur-menu) ease, opacity var(--dur-menu) ease;
+    }
+
+    .nav-links a:not(.btn-nav-action):hover {
+        background-color: rgba(39, 57, 71, 0.22);
+    }
+
+    .nav-links a.btn-nav-action {
+        padding: 10px 12px;
+        font-size: 0.85rem;
+    }
+
+    /* Estado ABIERTO: hermano general (~) del checkbox marcado.
+       Cambia la visibilidad al instante (delay 0) y el resto transiciona. */
+    .nav-toggle-input:checked ~ .nav-links {
+        max-height: var(--nav-menu-max);
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        pointer-events: auto;
+        transition:
+            max-height var(--dur-menu) var(--ease-menu),
+            opacity var(--dur-menu) var(--ease-menu),
+            transform var(--dur-menu) var(--ease-menu),
+            visibility 0s;
+    }
+
+    /* --- Contenido --- */
+    #main-header {
+        padding-bottom: 14px;
+        margin-bottom: 20px;
+    }
+
+    .container {
+        /* una tarjeta por fila en movil: una sola columna al 100% */
+        grid-template-columns: minmax(0, 1fr);
+        margin-bottom: 28px;
+    }
+
+    .card img {
+        height: clamp(160px, 45vw, 220px);
+    }
+
+    .card h2 {
+        font-size: 1.3rem;
+    }
+
+    /* El tooltip no puede depender del nowrap en pantallas angostas */
+    .tooltip-text {
+        white-space: normal;
+        text-align: center;
+        max-width: min(85vw, 240px);
+    }
+
+    /* Los filtros del sidebar se reemplazan por chips con scroll propio */
+    .mobile-filters {
+        display: flex;
+        gap: 8px;
+        max-width: 100%;
+        margin-bottom: 20px;
+        padding-bottom: 4px;
+        overflow-x: auto;
+        overscroll-behavior-x: contain;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+
+    .mobile-filters::-webkit-scrollbar {
+        display: none;
+    }
+
+    .mobile-filters a {
+        flex: 0 0 auto;
+        white-space: nowrap;
+        padding: 8px 14px;
+        border: 1px solid var(--color-borde);
+        border-radius: 999px;
+        background-color: rgba(255, 255, 255, 0.05);
+        color: var(--color-primario);
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 600;
+    }
+
+    .mobile-filters a:hover {
+        background-color: rgba(230, 231, 175, 0.15);
+    }
+
+    /* --- Formulario a una sola columna --- */
+    .form-section {
+        padding: 18px 16px;
+        margin-bottom: 28px;
+    }
+
+    .form-section h2 {
+        font-size: 1.3rem;
+    }
+
+    .form-group,
+    .form-group.full-width {
+        flex: 1 1 100%;
+        min-width: 0;
+    }
+
+    /* --- Boton volver arriba --- */
+    .btn-scroll-top {
+        width: 44px;
+        height: 44px;
+        bottom: 16px;
+        right: 16px;
+    }
+}
+
+/* BREAKPOINT 3 · max-width: 479px  (moviles chicos: 320-479px) Compactacion extrema para que nada se corte ni desborde*/
+@media (max-width: 479px) {
+    :root {
+        --espaciado: 12px;
+        --gap-cards: 12px;
+    }
+
+    /* Los links ya NO ocupan una segunda fila (son un panel desplegable
+       anclado a la navbar), asi que alcanza con Compactar el padding:
+       el logo queda a la izquierda y el ícono del menú a la derecha. */
+    .navbar {
+        padding: 10px 12px;
+    }
+
+    .card {
+        padding: 14px;
+    }
+
+    .card img {
+        height: 180px;
+    }
+
+    .form-section {
+        padding: 16px 12px;
+    }
+}
+
+/* ============================================================
+   ANIMACIONES CON @keyframes
+   · .spinner                 -> carga (giro continuo)
+   · .card / .form-section    -> aparición (fade-in + slide-up)
+   duration, timing-function e iteration-count se controlan desde
+   los tokens de :root y en cada regla con la forma abreviada:
+   animation: <nombre> <duration> <timing-function> <iteration-count> <fill-mode>
+   ============================================================ */
+
+/* Giro completo del spinner */
+@keyframes girar {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Entrada de las tarjetas: aparecen desde abajo con fade */
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Fade-in + slide-up. fill-mode "backwards" deja la tarjeta oculta
+   durante su animation-delay y, al terminar, suelta opacity/transform
+   para que el :hover (translateY) y los transitions sigan funcionando */
+.container .card {
+    animation: aparecer var(--dur-entrada) var(--ease-entrada) 1 backwards;
+}
+
+.form-section {
+    animation: aparecer var(--dur-entrada) var(--ease-entrada) 1 backwards;
+    animation-delay: calc(var(--stagger-card) * 2);
+}
+
+/* Escalonado: cada tarjeta entra un poquito después que la anterior */
+.container .card:nth-child(1) { animation-delay: calc(var(--stagger-card) * 0); }
+.container .card:nth-child(2) { animation-delay: calc(var(--stagger-card) * 1); }
+.container .card:nth-child(3) { animation-delay: calc(var(--stagger-card) * 2); }
+.container .card:nth-child(4) { animation-delay: calc(var(--stagger-card) * 3); }
+.container .card:nth-child(5) { animation-delay: calc(var(--stagger-card) * 4); }
+.container .card:nth-child(6) { animation-delay: calc(var(--stagger-card) * 5); }
+
+/* SPINNER DE CARGA
+   Aro con currentColor: se adapta solo al color del botón, así que
+   funciona igual en el tema oscuro y en el claro sin tocar los tokens */
+.spinner {
+    display: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid color-mix(in srgb, currentColor 25%, transparent);
+    border-top-color: currentColor;
+    border-radius: 50%;
+    /* iteration-count: infinite -> gira solo mientras dure el estado de carga */
+    animation: girar var(--dur-spinner) linear infinite;
+}
+
+.btn-submit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* Estado de carga del envío: lo activa el script del formulario */
+.btn-submit.is-loading {
+    opacity: 0.85;
+    pointer-events: none;
+}
+
+.btn-submit.is-loading .spinner {
+    display: block;
+}
+
+/* Accesibilidad: si el usuario pide menos movimiento, se apaga todo */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        /* sin esto el spinner (infinite) giraría miles de veces por segundo */
+        animation-iteration-count: 1 !important;
+    }
+}

@@ -1,0 +1,630 @@
+/* ============================================================
+   base.css · MyDoggoSpace — LANDING PAGE
+   ------------------------------------------------------------
+   Hoja BASE: reset, tokens de CSS, elementos base, utilidades,
+   botones y la definición de los @keyframes.
+   El resto del layout vive en un archivo por sección:
+     · navbar.css      → <header> fijo + menú responsive
+     · hero.css        → <section> hero con imagen de fondo
+     · comunidad.css   → grilla de funcionalidades
+     · testimonios.css → carrusel con scroll-snap
+     · contacto.css    → formulario de contacto
+     · footer.css      → <footer>
+   Todas se cargan en este orden (ver <head> de landing.html)
+   porque el orden de las hojas ES el orden de la cascada.
+   ============================================================ */
+
+
+/* ============================================================
+   1 · RESET
+   ============================================================ */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* El margin por defecto de los contenedores de texto rompe
+   cualquier cálculo de alto y los separados de la grilla. */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+ul,
+ol,
+dl,
+dd {
+    margin: 0;
+}
+
+ul[class],
+ol[class] {
+    list-style: none;
+    padding: 0;
+}
+
+/* Los <img> son inline por defecto: eso deja un hueco de 4px
+   abajo del lado de la línea. */
+img,
+picture,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+img {
+    height: auto;
+}
+
+/* Reemplaza el foco por defecto del navegador por uno consistente
+   y sólo visible cuando se navega con teclado (ver sección 8). */
+
+
+/* ============================================================
+   2 · TOKENS  ·  todas las variables CSS del proyecto
+   ------------------------------------------------------------
+   Un token = un valor que se reutiliza. Si mañana cambia el
+   color de marca, se cambia UNA vez acá y se actualiza toda la
+   página. Los grupos se separan por tema.
+   ============================================================ */
+
+:root {
+    /* ---------- COLOR ---------- */
+    /* Mismos colores que el resto del sitio, para que la landing
+       se vea como parte de la misma marca. */
+    --color-primario: rgb(230, 231, 175);        /* amarillo crema: acento */
+    --color-primario-fuerte: rgb(244, 243, 199);  /* crema: texto sobre oscuro */
+    --color-acento: rgb(255, 191, 111);          /* naranja: estrellas y detalles */
+    --color-secundario: rgb(39, 57, 71);         /* azul noche: fondo de página */
+    --color-superficie: rgb(47, 65, 78);         /* azul medio: tarjetas */
+    --color-superficie-alta: rgb(58, 79, 94);    /* azul más claro: campos y hover */
+    --color-texto: rgb(238, 243, 246);
+    --color-texto-suave: rgba(226, 234, 240, 0.72);
+    --color-borde: rgba(230, 231, 175, 0.22);
+    --color-borde-fuerte: rgba(230, 231, 175, 0.45);
+    --color-error: rgb(255, 138, 138);
+    --color-ok: rgb(126, 226, 168);
+    --color-overlay: rgb(14, 22, 30);             /* velo del hero y del footer */
+
+    /* ---------- ESPACIADO (escala corta) ---------- */
+    --esp-1: 0.375rem;   /*  6px */
+    --esp-2: 0.75rem;    /* 12px */
+    --esp-3: 1rem;      /* 16px */
+    --esp-4: 1.5rem;    /* 24px */
+    --esp-5: 2rem;      /* 32px */
+    --esp-6: 3rem;      /* 48px */
+    --esp-7: 4.5rem;    /* 72px */
+
+    /* Padding vertical de las <section> grandes.
+       clamp() = min - ideal - max según el ancho de pantalla.
+       Es responsividad sin necesidad de un solo breakpoint. */
+    --seccion-pad: clamp(3.5rem, 7vw, 7rem);
+
+    /* ---------- MEDIDAS DE LAYOUT ---------- */
+    --ancho-max: 1180px;                            /* ancho del contenido */
+    --gutter: clamp(1.125rem, 4vw, 2.5rem);         /* margen lateral del contenido */
+    --navbar-h: 4.5rem;                             /* alto de la navbar (scroll-padding) */
+    --min-feature: 19rem;                           /* ancho mínimo de una tarjeta */
+    --gap-feature: clamp(1rem, 2vw, 1.75rem);       /* gap de las grillas */
+    --ancho-testimonio: 21.5rem;                    /* ancho de un slide del carrusel */
+
+    /* ---------- TIPOGRAFÍA ---------- */
+    --fuente: "Quicksand", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --peso-normal: 400;
+    --peso-medio: 600;
+    --peso-fuerte: 700;
+    --fs-xs: 0.8125rem;
+    --fs-sm: 0.9375rem;
+    --fs-md: 1.0625rem;
+    --fs-lead: clamp(1.05rem, 0.35vw + 0.95rem, 1.3rem);
+    --fs-h3: clamp(1.15rem, 0.4vw + 1.05rem, 1.4rem);
+    --fs-h2: clamp(1.75rem, 1.7vw + 1.15rem, 2.8rem);
+    --fs-h1: clamp(2.1rem, 3.4vw + 1rem, 4.25rem);
+    --fs-kicker: 0.78rem;
+    --lh-corta: 1.25;
+    --lh-normal: 1.65;
+    --tracking-kicker: 0.14em;
+
+    /* ---------- BORDES, SOMBRAS Y CAPAS ---------- */
+    --r-s: 0.5rem;
+    --r-m: 0.875rem;
+    --r-l: 1.25rem;
+    --r-full: 999px;
+    --sombra-1: 0 2px 10px rgba(0, 0, 0, 0.18);
+    --sombra-2: 0 14px 34px -14px rgba(0, 0, 0, 0.55);
+    --sombra-3: 0 28px 64px -22px rgba(0, 0, 0, 0.6);
+    --sombra-acento: 0 12px 32px -14px color-mix(in srgb, var(--color-primario) 60%, transparent);
+    --z-navbar: 100;
+    --z-saltar: 200;
+
+    /* ---------- TRANSICIONES Y ANIMACIONES ---------- */
+    --dur-rapida: 0.2s;
+    --dur-media: 0.35s;
+    --dur-lenta: 0.8s;
+    --dur-hero: 24s;                                    /* duración del Ken Burns */
+    --ease-out: cubic-bezier(0.22, 0.61, 0.36, 1);
+    --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);   /* leve rebote */
+    --stagger: 90ms;                                    /* retraso entre hijos */
+}
+
+
+/* ============================================================
+   3 · ELEMENTOS BASE
+   ============================================================ */
+
+html {
+    /* Navegación por anclas con scroll suave: requisito del TP.
+       Enlace directo desde la URL. */
+    scroll-behavior: smooth;
+    /* Deja libre el alto de la navbar fija: sin esto, el título de
+       cada sección quedaría tapado al llegar con el ancla. */
+    scroll-padding-top: calc(var(--navbar-h) + var(--esp-2));
+    /* Evita el zoom automático de iOS al enfocar un input */
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    font-family: var(--fuente);
+    font-size: var(--fs-md);
+    font-weight: var(--peso-normal);
+    line-height: var(--lh-normal);
+    color: var(--color-texto);
+    background-color: var(--color-secundario);
+    /* Texturas de fondo: dos gradientes radiales muy sutiles que
+       le dan profundidad al azul plano. Cero requests extra. */
+    background-image:
+        radial-gradient(circle at 12% 0%, rgba(230, 231, 175, 0.07), transparent 45%),
+        radial-gradient(circle at 92% 100%, rgba(120, 160, 190, 0.1), transparent 50%);
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    /* Cinturón de seguridad: el carrusel de testimonios es
+       "a sangre" (se sale del .container) y en una pantalla con
+       zoom alto podría generar scroll horizontal. */
+    overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    line-height: var(--lh-corta);
+    font-weight: var(--peso-fuerte);
+    color: var(--color-primario-fuerte);
+    text-wrap: balance;   /* reparte las líneas de los títulos cortos */
+}
+
+p {
+    text-wrap: pretty;    /* evita la línea huérfana al final del párrafo */
+}
+
+a {
+    color: var(--color-primario);
+    text-decoration: none;
+    transition: color var(--dur-rapida) ease;
+}
+
+a:hover {
+    color: var(--color-primario-fuerte);
+}
+
+strong {
+    color: var(--color-primario-fuerte);
+    font-weight: var(--peso-fuerte);
+}
+
+em {
+    font-style: normal;
+    color: var(--color-primario);
+}
+
+/* Texto de la marca dentro de los títulos */
+.marca {
+    color: var(--color-primario);
+}
+
+
+/* ============================================================
+   4 · UTILIDADES
+   ============================================================ */
+
+/* Centra el contenido y le da el margen lateral responsive.
+   Es el contenedor padre de casi todas las secciones. */
+.container {
+    width: 100%;
+    max-width: calc(var(--ancho-max) + var(--gutter) * 2);
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+}
+
+/* Visible sólo para lectores de pantalla.
+   NO usar display:none ni visibility:hidden: el elemento tiene que
+   seguir siendo enfocable y legible por un lector de pantalla. */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Primer elemento enfocable de la página: permite saltar el menú
+   con la tecla Tab. Sólo aparece al recibir el foco. */
+.skip-link {
+    position: fixed;
+    top: var(--esp-2);
+    left: var(--esp-2);
+    z-index: var(--z-saltar);
+    padding: var(--esp-2) var(--esp-4);
+    background: var(--color-primario);
+    color: var(--color-secundario);
+    font-weight: var(--peso-fuerte);
+    border-radius: var(--r-s);
+    box-shadow: var(--sombra-2);
+    transform: translateY(-200%);
+    transition: transform var(--dur-media) var(--ease-out);
+}
+
+.skip-link:focus {
+    transform: translateY(0);
+    color: var(--color-secundario);
+}
+
+/* Antetítulo de las secciones ("01 · Qué encontrás") */
+.kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--esp-2);
+    font-size: var(--fs-kicker);
+    font-weight: var(--peso-medio);
+    letter-spacing: var(--tracking-kicker);
+    text-transform: uppercase;
+    color: var(--color-primario);
+}
+
+.kicker__num {
+    display: inline-grid;
+    place-items: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    background: color-mix(in srgb, var(--color-primario) 18%, transparent);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--r-full);
+    letter-spacing: 0;
+}
+
+/* Encabezado común de las secciones: texto arriba, centrado. */
+.seccion__cabecera {
+    max-width: 46rem;
+    margin-inline: auto;
+    margin-bottom: clamp(2.25rem, 5vw, 3.75rem);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--esp-3);
+}
+
+.seccion__titulo {
+    font-size: var(--fs-h2);
+}
+
+.seccion__intro {
+    color: var(--color-texto-suave);
+    font-size: var(--fs-lead);
+    max-width: 40rem;
+}
+
+/* Iconos de Material Symbols */
+.material-symbols-outlined {
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24;
+    line-height: 1;
+    /* La fuente de íconos es "ligature-based": sin esto el navegador
+       deja espacio vertical de más. */
+    user-select: none;
+}
+
+
+/* ============================================================
+   5 · BOTONES
+   ------------------------------------------------------------
+   Componente reutilizado por el hero, la navbar y el formulario.
+   Flexbox: el ícono y el texto quedan en una sola línea centrada.
+   ============================================================ */
+
+.btn {
+    --btn-bg: var(--color-primario);
+    --btn-fg: var(--color-secundario);
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--esp-2);
+    padding: 0.8em 1.5em;
+    min-height: 2.9rem;
+
+    font-family: inherit;
+    font-size: var(--fs-sm);
+    font-weight: var(--peso-fuerte);
+    line-height: 1.1;
+    text-align: center;
+    text-decoration: none;
+
+    color: var(--btn-fg);
+    background: var(--btn-bg);
+    border: 2px solid transparent;
+    border-radius: var(--r-full);
+    cursor: pointer;
+    white-space: nowrap;
+
+    transition:
+        transform var(--dur-rapida) var(--ease-out),
+        box-shadow var(--dur-rapida) ease,
+        background-color var(--dur-rapida) ease,
+        border-color var(--dur-rapida) ease,
+        opacity var(--dur-rapida) ease;
+}
+
+.btn:hover {
+    color: var(--btn-fg);
+    transform: translateY(-2px);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+/* Anillo de foco visible también en el botón (no sólo en el <a>) */
+.btn:focus-visible {
+    outline: 3px solid var(--color-acento);
+    outline-offset: 3px;
+}
+
+/* Variante principal: crema sobre azul, con sombra de color */
+.btn--primary {
+    box-shadow: var(--sombra-acento);
+}
+
+.btn--primary:hover {
+    --btn-bg: var(--color-primario-fuerte);
+    box-shadow: 0 16px 38px -14px color-mix(in srgb, var(--color-primario) 75%, transparent);
+}
+
+/* Variante fantasma: para el fondo con imagen del hero */
+.btn--ghost {
+    --btn-bg: transparent;
+    --btn-fg: var(--color-primario-fuerte);
+    border-color: var(--color-borde-fuerte);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+.btn--ghost:hover {
+    --btn-bg: color-mix(in srgb, var(--color-primario) 14%, transparent);
+    border-color: var(--color-primario);
+    box-shadow: none;
+}
+
+/* Tamaños */
+.btn--lg {
+    padding: 1em 2em;
+    font-size: var(--fs-md);
+    min-height: 3.4rem;
+}
+
+.btn--sm {
+    padding: 0.55em 1.1em;
+    font-size: var(--fs-xs);
+    min-height: 2.3rem;
+}
+
+/* Ícono que acompaña al texto del botón */
+.btn .material-symbols-outlined {
+    font-size: 1.2em;
+    transition: transform var(--dur-media) var(--ease-out);
+}
+
+.btn:hover .material-symbols-outlined {
+    transform: translateX(3px);
+}
+
+
+/* ============================================================
+   6 · ANIMACIONES  ·  @keyframes
+   ------------------------------------------------------------
+   Se definen todas acá (archivo base) y se aplican desde el
+   archivo de cada sección, para tenerlas juntas y poder leer
+   de un vistazo cuáles existen.
+   Cada animación se "engancha" con la regla que la usa:
+       animation: <nombre> <duración> <timing> <iteraciones> <fill-mode>
+   ============================================================ */
+
+/* Entrada estándar: aparece desde abajo con un fundido. */
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(26px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Versión sólo-desplazamiento, para bloques de texto del hero */
+@keyframes aparecer-texto {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Zooms lentos de la imagen de fondo del hero (efecto "Ken Burns") */
+@keyframes ken-burns {
+    from {
+        transform: scale(1) translate3d(0, 0, 0);
+    }
+    to {
+        transform: scale(1.12) translate3d(-1.5%, -1%, 0);
+    }
+}
+
+/* Rebote suave de la flecha "bajá y mirá" */
+@keyframes rebotar {
+    0%,
+    100% {
+        transform: translateY(0);
+        opacity: 0.75;
+    }
+    50% {
+        transform: translateY(7px);
+        opacity: 1;
+    }
+}
+
+/* Latido de los "me gusta" de las tarjetas */
+@keyframes latir {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.15);
+    }
+}
+
+/* Barra de progreso de lectura: la escala en X la conduce el
+   scroll del documento (animation-timeline, ver navbar.css). */
+@keyframes progreso-lectura {
+    from {
+        transform: scaleX(0);
+    }
+    to {
+        transform: scaleX(1);
+    }
+}
+
+
+/* ============================================================
+   7 · ESTADOS INTERACTIVOS COMPARTIDOS
+   ============================================================ */
+
+/* Enlace del menú: subrayado que crece desde el centro */
+.link-menu {
+    position: relative;
+    padding: var(--esp-1) 0;
+    color: var(--color-texto-suave);
+    font-size: var(--fs-sm);
+    font-weight: var(--peso-medio);
+}
+
+.link-menu::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--color-primario);
+    border-radius: var(--r-full);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform var(--dur-media) var(--ease-out);
+}
+
+.link-menu:hover,
+.link-menu:focus-visible {
+    color: var(--color-primario-fuerte);
+}
+
+.link-menu:hover::after,
+.link-menu:focus-visible::after {
+    transform: scaleX(1);
+}
+
+/* Enlace del footer */
+.link-foot {
+    display: inline-block;
+    padding-block: 0.3em;
+    color: var(--color-texto-suave);
+    font-size: var(--fs-sm);
+}
+
+.link-foot:hover {
+    color: var(--color-primario);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+/* Ítem informativo que NO es un enlace (horarios, ubicación...):
+   se ve igual que un link pero no reacciona al puntero. */
+.link-foot--texto {
+    color: var(--color-texto-suave);
+    cursor: default;
+}
+
+.link-foot--texto:hover {
+    color: var(--color-texto-suave);
+    text-decoration: none;
+}
+
+
+/* ============================================================
+   8 · FOCUS VISIBLE
+   ------------------------------------------------------------
+   Anillo de foco consistente para TODO elemento navegable.
+   :focus-visible lo muestra sólo con teclado / navegación
+   asistida, así el mouse no activa el anillo.
+   ============================================================ */
+
+:focus-visible {
+    outline: 3px solid var(--color-acento);
+    outline-offset: 3px;
+    border-radius: var(--r-s);
+}
+
+
+/* ============================================================
+   9 · PREFERS-REDUCED-MOTION
+   ------------------------------------------------------------
+   Accesibilidad: si el usuario pidió menos movimiento en el
+   sistema, se apagan las animaciones, las transiciones y el
+   scroll suave. Va al final para ganar la cascata.
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        /* sin esto las animaciones infinitas (Ken Burns, rebote)
+           seguirían corriendo miles de veces por segundo */
+        animation-iteration-count: 1 !important;
+    }
+
+    /* La imagen del hero se muestra tal cual, sin zoom */
+    .hero__fondo {
+        animation: none !important;
+    }
+}

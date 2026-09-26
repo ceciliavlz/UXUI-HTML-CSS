@@ -1,0 +1,434 @@
+/* ============================================================
+   contacto.css · FORMULARIO DE CONTACTO
+   ------------------------------------------------------------
+   La sección usa una grilla de 2 columnas (información +
+   formulario) y, adentro, el formulario es otra grilla de 2
+   columnas: los campos cortos se reparten de a dos y los
+   anchos (mensaje, botones) ocupan la fila completa con
+   grid-column: 1 / -1.
+   ============================================================ */
+
+
+/* ============================================================
+   1 · GRILLA DE LA SECCIÓN
+   ============================================================ */
+
+.contacto {
+    display: grid;
+    /* La primera columna se queda con el ancho de su contenido
+       (fr), la segunda toma todo el resto (1fr). */
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    gap: clamp(var(--esp-5), 4vw, var(--esp-7));
+    align-items: start;   /* las columnas no tienen por qué igualar alto */
+}
+
+
+/* ============================================================
+   2 · PANEL DE INFORMACIÓN
+   ============================================================ */
+
+.contacto__info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--esp-4);
+    padding: var(--esp-5);
+    background: var(--color-superficie);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--r-l);
+    box-shadow: var(--sombra-2);
+}
+
+.contacto__titulo {
+    font-size: var(--fs-h2);
+}
+
+.contacto__intro {
+    color: var(--color-texto-suave);
+    font-size: var(--fs-sm);
+}
+
+/* ---------- Canales de contacto ---------- */
+
+.canales {
+    display: flex;
+    flex-direction: column;
+    /* width:100% para que los <li> se estiren y el hover se
+       vea como una fila completa */
+    width: 100%;
+    gap: var(--esp-2);
+    margin: 0;
+    padding: 0;
+}
+
+.canal {
+    display: flex;
+    align-items: center;
+    gap: var(--esp-3);
+    padding: var(--esp-3);
+    /* el mismo bloque se usa como <a> y como <span>: se neutraliza
+       el estilo de enlace para que ambos se vean iguales */
+    color: inherit;
+    text-decoration: none;
+    border: 1px solid transparent;
+    border-radius: var(--r-m);
+    transition: background-color var(--dur-rapida) ease,
+                border-color var(--dur-rapida) ease,
+                transform var(--dur-rapida) var(--ease-out);
+}
+
+.canal:hover {
+    background: color-mix(in srgb, var(--color-primario) 8%, transparent);
+    border-color: var(--color-borde);
+    transform: translateX(4px);
+}
+
+.canal__icono {
+    display: grid;
+    place-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    flex-shrink: 0;
+    font-size: 1.2rem;
+    color: var(--color-primario);
+    background: color-mix(in srgb, var(--color-primario) 14%, transparent);
+    border-radius: var(--r-s);
+}
+
+.canal__texto {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.canal__rotulo {
+    font-size: var(--fs-xs);
+    color: var(--color-texto-suave);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.canal__valor {
+    font-size: var(--fs-sm);
+    font-weight: var(--peso-medio);
+    color: var(--color-primario-fuerte);
+    /* Un email largo se corta en vez de romper la columna */
+    overflow-wrap: anywhere;
+}
+
+/* ---------- Aviso de tiempo de respuesta ---------- */
+
+.contacto__aviso {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--esp-2);
+    width: 100%;
+    padding: var(--esp-3);
+    font-size: var(--fs-xs);
+    color: var(--color-texto-suave);
+    background: color-mix(in srgb, var(--color-ok) 10%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-ok) 35%, transparent);
+    border-radius: var(--r-m);
+}
+
+.contacto__aviso .material-symbols-outlined {
+    color: var(--color-ok);
+    font-size: 1.15rem;
+    flex-shrink: 0;
+}
+
+
+/* ============================================================
+   3 · TARJETA DEL FORMULARIO
+   ============================================================ */
+
+.formulario {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--esp-4);
+
+    padding: var(--esp-5);
+    background: color-mix(in srgb, var(--color-superficie) 92%, var(--color-secundario));
+    border: 1px solid var(--color-borde);
+    border-radius: var(--r-l);
+    box-shadow: var(--sombra-2);
+}
+
+/* Campo que ocupa la fila completa */
+.campo--ancho {
+    grid-column: 1 / -1;
+}
+
+
+/* ============================================================
+   4 · CAMPOS
+   ============================================================ */
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: var(--esp-2);
+    min-width: 0;
+}
+
+.campo__label {
+    display: flex;
+    align-items: center;
+    gap: var(--esp-1);
+    font-size: var(--fs-xs);
+    font-weight: var(--peso-medio);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--color-texto-suave);
+}
+
+/* Asterisco de campo obligatorio */
+.campo__obligatorio {
+    color: var(--color-primario);
+    font-weight: var(--peso-fuerte);
+}
+
+/* Estilo común de input, select y textarea: mismo alto, mismo
+   borde y mismo fondo para los tres controles. */
+.campo__control {
+    width: 100%;
+    padding: 0.8rem var(--esp-3);
+    min-height: 2.9rem;
+
+    font-family: inherit;
+    font-size: var(--fs-sm);
+    color: var(--color-texto);
+    background-color: var(--color-superficie-alta);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--r-m);
+
+    transition: border-color var(--dur-rapida) ease,
+                box-shadow var(--dur-rapida) ease,
+                background-color var(--dur-rapida) ease;
+}
+
+.campo__control::placeholder {
+    color: rgba(226, 234, 240, 0.45);
+}
+
+/* OJO: se cambia background-COLOR y no el atajo "background",
+   porque el atajo borraría la flecha del <select> (que vive en
+   background-image). */
+.campo__control:focus {
+    outline: none;   /* el foco lo dibuja el box-shadow de abajo */
+    border-color: var(--color-primario);
+    background-color: color-mix(in srgb, var(--color-superficie-alta) 80%, var(--color-primario));
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-primario) 22%, transparent);
+}
+
+textarea.campo__control {
+    min-height: 8.5rem;
+    resize: vertical;   /* el usuario puede estirarlo, no encogerlo */
+}
+
+/* Select: flecha propia (mismo trick que el checkbox de la navbar) */
+select.campo__control {
+    appearance: none;
+    -webkit-appearance: none;
+    padding-inline-end: 2.5rem;
+    cursor: pointer;
+    /* La flecha es un ícono embebido como data URI (sin request).
+       El color #e6e7af es una copia del token --color-primario:
+       dentro de un data URI no se pueden usar var(). */
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23e6e7af'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.7rem center;
+    background-size: 1.3rem;
+}
+
+select.campo__control option {
+    color: var(--color-texto);
+    background-color: var(--color-secundario);
+}
+
+/* ---------- Estado de error ----------
+   :user-invalid se activa recién cuando el usuario intentó
+   mandar el formulario (a diferencia de :invalid, que marca
+   los campos vacíos desde el primer momento). */
+.campo__control:user-invalid {
+    border-color: var(--color-error);
+    background-color: color-mix(in srgb, var(--color-error) 12%, var(--color-superficie-alta));
+}
+
+.campo__error {
+    display: none;      /* oculto en reposo */
+    align-items: center;
+    gap: var(--esp-1);
+    font-size: var(--fs-xs);
+    color: var(--color-error);
+}
+
+.campo__control:user-invalid ~ .campo__error {
+    display: flex;
+}
+
+/* ---------- Casilla de "quiero novedades" ---------- */
+
+.checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--esp-3);
+    font-size: var(--fs-xs);
+    color: var(--color-texto-suave);
+    cursor: pointer;
+}
+
+.checkbox__input {
+    appearance: none;
+    width: 1.35rem;
+    height: 1.35rem;
+    flex-shrink: 0;
+    margin: 0;
+    background: var(--color-superficie-alta);
+    border: 2px solid var(--color-borde-fuerte);
+    border-radius: var(--r-s);
+    cursor: pointer;
+    transition: background-color var(--dur-rapida) ease,
+                border-color var(--dur-rapida) ease;
+}
+
+/* El tilde dibujado con dos bordes rotados (sin ícono) */
+.checkbox__input::after {
+    content: "";
+    display: block;
+    width: 0.4rem;
+    height: 0.75rem;
+    margin: 0.1rem auto 0;
+    border: solid var(--color-secundario);
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg) scale(0);
+    transition: transform var(--dur-rapida) var(--ease-bounce);
+}
+
+.checkbox__input:checked {
+    background: var(--color-primario);
+    border-color: var(--color-primario);
+}
+
+.checkbox__input:checked::after {
+    transform: rotate(45deg) scale(1);
+}
+
+
+/* ============================================================
+   5 · FILA DE ENVÍO
+   ------------------------------------------------------------
+   Flexbox: la nota de privacidad crece (flex:1) y empuja el
+   botón contra el borde derecho. En móvil se apilan.
+   ============================================================ */
+
+.formulario__envio {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--esp-4);
+    padding-top: var(--esp-3);
+    border-top: 1px dashed var(--color-borde);
+}
+
+/* Columna izquierda de la fila de envío: la nota arriba y la
+   casilla abajo. flex:1 hace que ocupe todo el espacio sobrante
+   y empuje el botón contra el borde derecho. */
+.formulario__extras {
+    display: flex;
+    flex-direction: column;
+    gap: var(--esp-3);
+    flex: 1 1 auto;
+}
+
+.formulario__nota {
+    display: flex;
+    align-items: center;
+    gap: var(--esp-2);
+    font-size: var(--fs-xs);
+    color: var(--color-texto-suave);
+}
+
+.formulario__nota .material-symbols-outlined {
+    color: var(--color-primario);
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+.formulario .btn--enviar {
+    flex-shrink: 0;   /* el botón nunca se deforma */
+}
+
+
+/* ============================================================
+   6 · CONFIRMACIÓN  ·  sin JavaScript
+   ------------------------------------------------------------
+   Truco del TP: :has() permite que un contenedor reaccione al
+   estado de un input que está ADENTRO suyo. Si el visitante
+   marca "Quiero recibir novedades", el formulario se entera y
+   muestra la caja de confirmación al final de la grilla.
+   ============================================================ */
+
+.formulario__ok {
+    display: none;   /* oculta en reposo */
+    grid-column: 1 / -1;
+    align-items: center;
+    gap: var(--esp-2);
+    padding: var(--esp-3) var(--esp-4);
+    font-size: var(--fs-sm);
+    color: var(--color-ok);
+    background: color-mix(in srgb, var(--color-ok) 12%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-ok) 40%, transparent);
+    border-radius: var(--r-m);
+}
+
+.formulario__ok .material-symbols-outlined {
+    color: var(--color-ok);
+    flex-shrink: 0;
+}
+
+.formulario:has(.formulario__boletin:checked) .formulario__ok {
+    display: flex;
+}
+
+
+/* ============================================================
+   7 · BREAKPOINT · max-width: 1023px  (tablet horizontal)
+   ============================================================ */
+
+@media (max-width: 1023px) {
+    .contacto {
+        grid-template-columns: 1fr;   /* una sola columna */
+    }
+
+    .contacto__info {
+        gap: var(--esp-3);
+    }
+}
+
+
+/* ============================================================
+   8 · BREAKPOINT · max-width: 767px  (móvil / tablet vertical)
+   ============================================================ */
+
+@media (max-width: 767px) {
+    .formulario {
+        grid-template-columns: 1fr;   /* un campo por fila */
+        padding: var(--esp-4);
+    }
+
+    .contacto__info {
+        padding: var(--esp-4);
+    }
+
+    .formulario__envio {
+        flex-direction: column-reverse;  /* botón primero, nota después */
+        align-items: stretch;
+        gap: var(--esp-3);
+    }
+
+    .formulario .btn--enviar {
+        width: 100%;
+    }
+}

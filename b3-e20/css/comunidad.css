@@ -1,0 +1,383 @@
+/* ============================================================
+   comunidad.css · <section> DE FUNCIONALIDADES
+   ------------------------------------------------------------
+   La grilla principal de la landing. Cada <li> es una función
+   de la red social (perfiles, galería, comunidades, chat,
+   historias, eventos) + un banner final a todo el ancho.
+
+   Técnica: CSS Grid con repeat(3, 1fr) y minmax(0, 1fr) para que
+   ningún texto desborde. La última tarjeta usa
+   grid-column: 1 / -1 para ocupar la fila entera.
+   ============================================================ */
+
+
+/* ============================================================
+   1 · BASE DE TODA SECCIÓN
+   ============================================================ */
+
+.seccion {
+    padding-block: var(--seccion-pad);
+}
+
+/* Variante con fondo propio: separa visualmente los bloques */
+.seccion--alternativa {
+    background:
+        linear-gradient(180deg,
+            color-mix(in srgb, var(--color-superficie) 55%, transparent),
+            transparent 30%);
+    border-block: 1px solid var(--color-borde);
+}
+
+
+/* ============================================================
+   2 · GRILLA DE FUNCIONALIDADES
+   ============================================================ */
+
+.features {
+    display: grid;
+    /* minmax(0, 1fr) en vez de 1fr a secas: el 0 le dice al
+       navegador que la columna puede encogerse por debajo del
+       contenido, y así un texto largo NUNCA se desborda. */
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--gap-feature);
+    margin: 0;
+    padding: 0;
+    align-items: stretch;   /* todas las tarjetas miden lo mismo */
+}
+
+
+/* ============================================================
+   3 · TARJETA
+   ------------------------------------------------------------
+   Flexbox en columna: ícono arriba, texto al medio, metadatos
+   abajo. El margen-top:auto en el pie empuja los metadatos al
+   fondo, así quedan alineados aunque el texto varíe de largo.
+   ============================================================ */
+
+.feature {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--esp-3);
+
+    padding: var(--esp-5) var(--esp-4) var(--esp-4);
+    background: var(--color-superficie);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--r-l);
+    box-shadow: var(--sombra-1);
+    overflow: hidden;   /* recorta el brillo que se dibuja abajo */
+
+    transition:
+        transform var(--dur-media) var(--ease-out),
+        border-color var(--dur-media) ease,
+        box-shadow var(--dur-media) ease;
+}
+
+/* Brillo de fondo que se enciende al pasar el mouse.
+   ::before + z-index:0 hace que el contenido quede por encima
+   sin tener que repetir el z-index en cada hijo. */
+.feature::before {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    inset-block-start: 0;
+    height: 3px;
+    background: linear-gradient(90deg,
+                var(--color-primario),
+                var(--color-acento));
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform var(--dur-media) var(--ease-out);
+}
+
+.feature:hover,
+.feature:focus-within {
+    transform: translateY(-6px);
+    border-color: var(--color-borde-fuerte);
+    box-shadow: var(--sombra-3);
+}
+
+.feature:hover::before,
+.feature:focus-within::before {
+    transform: scaleX(1);
+}
+
+/* Ícono: cuadrado redondeado con fondo translúcido */
+.feature__icono {
+    display: grid;
+    place-items: center;
+    width: 3.25rem;
+    height: 3.25rem;
+    flex-shrink: 0;
+    font-size: 1.65rem;
+    color: var(--color-primario);
+    background: color-mix(in srgb, var(--color-primario) 14%, transparent);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--r-m);
+    transition: transform var(--dur-media) var(--ease-bounce),
+                background-color var(--dur-media) ease;
+}
+
+.feature:hover .feature__icono {
+    transform: rotate(-6deg) scale(1.08);
+    background: color-mix(in srgb, var(--color-primario) 24%, transparent);
+}
+
+.feature__titulo {
+    font-size: var(--fs-h3);
+}
+
+.feature__texto {
+    color: var(--color-texto-suave);
+    font-size: var(--fs-sm);
+}
+
+/* Pie de la tarjeta: queda pegado al borde inferior */
+.feature__pie {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--esp-2);
+    margin-top: auto;
+    padding-top: var(--esp-3);
+    border-top: 1px dashed var(--color-borde);
+}
+
+/* Etiqueta chiquita */
+.feature__tag {
+    font-size: var(--fs-xs);
+    color: var(--color-texto-suave);
+    padding: 0.25em 0.7em;
+    background: rgba(0, 0, 0, 0.18);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--r-full);
+}
+
+/* Contador decorativo de la esquina ("01", "02"...) */
+.feature__num {
+    position: absolute;
+    inset-block-start: var(--esp-3);
+    inset-inline-end: var(--esp-4);
+    font-size: 2.6rem;
+    font-weight: var(--peso-fuerte);
+    line-height: 1;
+    color: rgba(230, 231, 175, 0.08);
+    pointer-events: none;
+    transition: color var(--dur-media) ease;
+}
+
+.feature:hover .feature__num {
+    color: rgba(230, 231, 175, 0.18);
+}
+
+
+/* ============================================================
+   4 · TARJETA BANNER  ·  ocupa la fila completa
+   ------------------------------------------------------------
+   grid-column: 1 / -1 = "de la primera a la última columna".
+   El contenido se pone en dos columnas con Flexbox, así el
+   texto y el botón quedan uno al lado del otro.
+   ============================================================ */
+
+.feature--banner {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: var(--esp-4);
+    background:
+        linear-gradient(120deg,
+            color-mix(in srgb, var(--color-primario) 12%, var(--color-superficie)),
+            var(--color-superficie) 60%);
+}
+
+.feature--banner .feature__num {
+    display: none;   /* en el banner no aporta */
+}
+
+.feature--banner .feature__texto {
+    max-width: 56ch;
+}
+
+
+/* ============================================================
+   5 · ENTRADA DE LAS TARJETAS
+   ------------------------------------------------------------
+   Escalonado por posición: cada tarjeta entra un poquito después
+   de la anterior. El retraso sale del token --stagger.
+   ============================================================ */
+
+.feature {
+    animation: aparecer var(--dur-media) var(--ease-out) 1 backwards;
+}
+
+.feature:nth-child(1) { animation-delay: 0s; }
+.feature:nth-child(2) { animation-delay: var(--stagger); }
+.feature:nth-child(3) { animation-delay: calc(var(--stagger) * 2); }
+.feature:nth-child(4) { animation-delay: calc(var(--stagger) * 3); }
+.feature:nth-child(5) { animation-delay: calc(var(--stagger) * 4); }
+.feature:nth-child(6) { animation-delay: calc(var(--stagger) * 5); }
+.feature:nth-child(7) { animation-delay: calc(var(--stagger) * 6); }
+
+
+/* ============================================================
+   6 · REVELADO DE LOS TÍTULOS AL HACER SCROLL
+   ------------------------------------------------------------
+   Animación conducida por la posición del elemento en la
+   ventana (view()): los encabezados de sección aparecen solos
+   cuando entran en pantalla, sin JavaScript ni observadores.
+   Si el navegador no la soporta, el bloque se ve normal.
+   ============================================================ */
+
+@supports (animation-timeline: view()) {
+    .seccion__cabecera {
+        animation: aparecer-texto linear both;
+        animation-timeline: view();
+        /* Termina de entrar al 45% de su recorrido de entrada */
+        animation-range: entry 0% entry 45%;
+    }
+}
+
+
+/* ============================================================
+   7 · BLOQUE "CÓMO FUNCIONA"  ·  3 pasos
+   ------------------------------------------------------------
+   Otra grilla, ahora con 3 pasos numerados. En < 768px pasa a
+   una columna y los pasos se numeran hacia abajo.
+   ============================================================ */
+
+.pasos {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--gap-feature);
+    counter-reset: paso;   /* el numerito se genera solo */
+    margin: 0;
+    padding: 0;
+}
+
+.paso {
+    position: relative;
+    counter-increment: paso;
+    padding-top: var(--esp-6);
+    text-align: center;
+    color: var(--color-texto-suave);
+    font-size: var(--fs-sm);
+}
+
+.paso::before {
+    content: counter(paso, decimal-leading-zero);
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-start: 50%;
+    translate: -50% 0;
+
+    display: grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+
+    font-weight: var(--peso-fuerte);
+    font-size: var(--fs-sm);
+    color: var(--color-primario);
+    background: var(--color-superficie);
+    border: 1px solid var(--color-borde-fuerte);
+    border-radius: var(--r-full);
+    box-shadow: 0 0 0 6px color-mix(in srgb, var(--color-secundario) 70%, transparent);
+}
+
+.paso strong {
+    display: block;
+    margin-bottom: var(--esp-1);
+    font-size: var(--fs-md);
+    color: var(--color-primario-fuerte);
+}
+
+/* Línea que une los tres pasos en escritorio */
+.paso:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    inset-block-start: 1.35rem;   /* a la altura del centro del círculo */
+    inset-inline-start: calc(50% + 2rem);
+    width: calc(100% - 4rem);
+    height: 1px;
+    background: repeating-linear-gradient(90deg,
+                var(--color-borde) 0 6px, transparent 6px 12px);
+}
+
+
+/* ============================================================
+   8 · BREAKPOINT · max-width: 1023px  (tablet horizontal)
+   ============================================================ */
+
+@media (max-width: 1023px) {
+    /* Tres columnas ya no alcanzan el ancho: bajamos a 2 y el
+       banner sigue ocupando la fila entera. */
+    .features {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .feature--banner {
+        /* Sigue en dos columnas (icono + texto) pero el botón
+           pasa a una fila propia debajo. */
+        grid-template-columns: auto minmax(0, 1fr);
+    }
+
+    .feature--banner .btn {
+        grid-column: 1 / -1;
+        justify-self: start;
+    }
+}
+
+
+/* ============================================================
+   9 · BREAKPOINT · max-width: 767px  (móvil / tablet vertical)
+   ------------------------------------------------------------
+   auto-fit con minmax(min(100%, --min-feature), 1fr): la grilla
+   se adapta sola al ancho disponible (2 columnas en una tablet
+   vertical, 1 en el teléfono) sin tocar el HTML.
+   ============================================================ */
+
+@media (max-width: 767px) {
+    .features {
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--min-feature)), 1fr));
+    }
+
+    .feature {
+        padding: var(--esp-4);
+    }
+
+    .feature--banner {
+        grid-template-columns: 1fr;   /* todo apilado */
+        text-align: center;
+        justify-items: center;
+    }
+
+    .feature--banner .btn {
+        justify-self: stretch;
+    }
+
+    /* Los pasos se apilan y el conector se esconde */
+    .pasos {
+        grid-template-columns: 1fr;
+        gap: var(--esp-6);
+    }
+
+    .paso:not(:last-child)::after {
+        display: none;
+    }
+}
+
+
+/* ============================================================
+   10 · BREAKPOINT · max-width: 479px  (móviles chicos)
+   ============================================================ */
+
+@media (max-width: 479px) {
+    .features {
+        grid-template-columns: 1fr;   /* una sola columna */
+    }
+
+    .feature__num {
+        display: none;
+    }
+}

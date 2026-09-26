@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyDoggoSpace - Crear cuenta</title>
+    <!-- Fuentes e Íconos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">    
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+</head>
+<body class="grid-layout">
+
+  <!-- Área: Header -->
+  <header class="area-header">
+    <nav class="navbar" aria-label="Navegación principal">
+      <!-- Menú desplegable SIN JavaScript (truco del checkbox :checked).
+           El input va PRIMERO dentro de la navbar para poder alcanzarlo
+           con el selector de hermano general (~) desde el CSS. -->
+      <input type="checkbox" id="nav-toggle" class="nav-toggle-input">
+
+      <div class="logo">
+          <img src="https://cdn-icons-png.flaticon.com/512/194/194228.png" alt="Logo de MyDoggoSpace" class="logo-img">
+          <span>MyDoggoSpace</span>
+      </div>
+
+      <!-- Ícono hamburguesa: es un <label> del checkbox, por eso al
+           pulsarlo se marca el input y el CSS abre el panel. Los dos
+           iconos se superponen y el CSS hace el canje (hamburguesa <-> X). -->
+      <label for="nav-toggle" class="nav-toggle-label">
+        <span class="material-symbols-outlined nav-icon-menu" aria-hidden="true">menu</span>
+        <span class="material-symbols-outlined nav-icon-close" aria-hidden="true">close</span>
+        <span class="sr-only">Desplegar u ocultar el menú de navegación</span>
+      </label>
+
+      <div class="nav-links">
+        <a href="index.html">Galería</a>
+        <a href="registro.html" class="active" aria-current="page">Crear cuenta</a>
+        <a href="nueva-publicacion.html" class="btn btn-nav-action">+ Publicar Perrito</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Área: Sidebar -->
+  <aside class="area-sidebar">
+    <h3>Filtros & Menú</h3>
+    <ul>
+      <li><span class="material-symbols-outlined">pets</span><a href="index.html"> Todos los perritos</a></li>
+      <li><span class="material-symbols-outlined">person_add</span><a href="registro.html"> Crear cuenta</a></li>
+      <li><span class="material-symbols-outlined">add_circle</span><a href="nueva-publicacion.html"> Nueva publicación</a></li>
+    </ul>
+  </aside>
+
+  <!-- Área: Main Content -->
+  <main class="area-main">
+    <div id="main-header">
+      <h1>Crear tu cuenta</h1>
+      <p>Registrate en MyDoggoSpace en dos pasos cortos</p>
+    </div>
+
+    <!-- Filtros rapidos: sustituyen al sidebar en < 768px (oculto por CSS) -->
+    <nav class="mobile-filters" aria-label="Filtros rápidos">
+      <a href="index.html">Galería</a>
+      <a href="registro.html">Crear cuenta</a>
+      <a href="nueva-publicacion.html">Nueva publicación</a>
+    </nav>
+
+    <!-- ============================================================
+         FORMULARIO DE REGISTRO EN 2 PASOS · SOLO HTML + CSS (sin JS)
+         · El paso activo lo guardan dos <input type="radio">. Cada
+           <label for> hace de botón: al pulsarlo marca el radio y el CSS
+           muestra su panel con el hermano general (~) del input marcado.
+         · Los dos paneles viven en el MISMO <form>, así lo que se carga
+           en el Paso 1 no se pierde y ambos se validan juntos al enviar.
+         · El feedback de error lo dan :required + :invalid + :valid
+           (bordes rojos/verdes), con :user-invalid para no marcar en
+           rojo los campos que el usuario todavía no tocó.
+         · Para teclado: el grupo de radios se recorre con las flechas
+           ← → y el anillo de foco se dibuja en el stepper de arriba.
+         ============================================================ -->
+    <section class="form-section">
+      <h2><span class="material-symbols-outlined">badge</span>Registro en 2 pasos</h2>
+
+      <form action="#" method="POST" class="wizard">
+
+        <!-- Paso activo. Ocultos a la vista pero ENFOCABLES (nunca
+             display:none): el CSS dibuja el foco en el stepper. -->
+        <input class="wizard__radio" type="radio" name="wizard-paso" id="wizard-paso-1" checked>
+        <input class="wizard__radio" type="radio" name="wizard-paso" id="wizard-paso-2">
+
+        <!-- Barra de progreso: el relleno crece con el paso activo -->
+        <div class="wizard__progress">
+          <span class="wizard__progress-fill"></span>
+        </div>
+
+        <!-- Stepper: los <label> también cambian de paso, así que el
+             teclado tiene su propio camino (flechas sobre el radio) -->
+        <ol class="wizard__stepper">
+          <li class="wizard__stepper-item">
+            <label class="wizard__step wizard__step--1" for="wizard-paso-1">
+              <span class="wizard__step-dot" aria-hidden="true">
+                <span class="wizard__step-num">1</span>
+                <span class="material-symbols-outlined wizard__step-check">check</span>
+              </span>
+              <span class="wizard__step-name">Tu cuenta</span>
+            </label>
+          </li>
+          <li class="wizard__stepper-item">
+            <label class="wizard__step wizard__step--2" for="wizard-paso-2">
+              <span class="wizard__step-dot" aria-hidden="true">
+                <span class="wizard__step-num">2</span>
+                <span class="material-symbols-outlined wizard__step-check">check</span>
+              </span>
+              <span class="wizard__step-name">Tu perrito</span>
+            </label>
+          </li>
+        </ol>
+
+        <div class="wizard__body">
+
+          <!-- ===================== PASO 1 · DATOS DE LA CUENTA ===================== -->
+          <section class="wizard__panel wizard__panel--1" aria-labelledby="titulo-paso-1">
+            <h3 id="titulo-paso-1">Paso 1 de 2 · Tus datos</h3>
+            <p class="wizard__intro">Lo esencial para poder entrar a MyDoggoSpace.</p>
+
+            <div class="post-form">
+              <div class="form-group">
+                <label for="reg-nombre">Nombre y apellido</label>
+                <input type="text" id="reg-nombre" name="nombre" placeholder="Ej: Ana Gómez" autocomplete="name" minlength="3" maxlength="40" required>
+                <p class="field-msg">Escribí tu nombre (entre 3 y 40 letras).</p>
+              </div>
+
+              <div class="form-group">
+                <label for="reg-email">Email</label>
+                <input type="email" id="reg-email" name="email" placeholder="Ej: ana@ejemplo.com" autocomplete="email" required>
+                <p class="field-msg">Necesitamos un email válido, tipo ana@ejemplo.com.</p>
+              </div>
+
+              <div class="form-group">
+                <label for="reg-password">Contraseña</label>
+                <input type="password" id="reg-password" name="password" placeholder="Mínimo 8 caracteres" autocomplete="new-password" minlength="8" pattern="(?=.*[a-zA-Z])(?=.*\d).{8,}" title="Mínimo 8 caracteres, con al menos una letra y un número" required>
+                <p class="field-msg">Mínimo 8 caracteres, con al menos una letra y un número.</p>
+              </div>
+
+              <div class="form-group">
+                <label for="reg-ciudad">¿Dónde vivís?</label>
+                <select id="reg-ciudad" name="ciudad" required>
+                  <option value="" selected disabled>Elegí tu ciudad</option>
+                  <option value="rosario">Rosario</option>
+                  <option value="cordoba">Córdoba</option>
+                  <option value="bsas">Buenos Aires</option>
+                  <option value="mendoza">Mendoza</option>
+                  <option value="la-plata">La Plata</option>
+                  <option value="otra">Otra ciudad</option>
+                </select>
+                <p class="field-msg">Elegí una ciudad de la lista.</p>
+              </div>
+            </div>
+
+            <div class="wizard__actions">
+              <!-- <label> = botón "Siguiente": cambia el radio del paso -->
+              <label class="btn wizard__btn" for="wizard-paso-2">
+                Siguiente: mi perrito
+                <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+              </label>
+            </div>
+          </section>
+
+          <!-- ===================== PASO 2 · DATOS DEL PERRITO ===================== -->
+          <section class="wizard__panel wizard__panel--2" aria-labelledby="titulo-paso-2">
+            <h3 id="titulo-paso-2">Paso 2 de 2 · Tu perrito</h3>
+            <p class="wizard__intro">Ya casi estás: contanos de quién se trata.</p>
+
+            <!-- Aviso CSS-only: si al enviar faltan datos del Paso 1, el
+                 navegador bloquea el envío y este cartel indica cuál es el
+                 paso incompleto. Nada se ve en rojo todavía, por eso acá
+                 alcanza con :invalid a secas. -->
+            <p class="wizard__guard">
+              <span class="material-symbols-outlined" aria-hidden="true">warning</span>
+              <span>Te faltan datos del <strong>Paso 1</strong>: volvé atrás y completá los campos obligatorios.</span>
+            </p>
+
+            <div class="post-form">
+              <div class="form-group">
+                <label for="reg-perro">Nombre del perrito</label>
+                <input type="text" id="reg-perro" name="perro_nombre" placeholder="Ej: Firulais" minlength="2" maxlength="30" required>
+                <p class="field-msg">Poné el nombre de tu perrito.</p>
+              </div>
+
+              <div class="form-group">
+                <label for="reg-raza">Raza</label>
+                <input type="text" id="reg-raza" name="perro_raza" placeholder="Ej: Beagle, Mestizo..." required>
+                <p class="field-msg">Contanos la raza (si es mestizo, poné “mestizo”).</p>
+              </div>
+
+              <div class="form-group">
+                <label for="reg-edad">Edad (años)</label>
+                <input type="number" id="reg-edad" name="perro_edad" placeholder="Ej: 3" min="0" max="30" step="1" required>
+                <p class="field-msg">La edad va entre 0 y 30 años.</p>
+              </div>
+
+              <div class="form-group">
+                <label for="reg-caracter">Carácter</label>
+                <select id="reg-caracter" name="perro_caracter" required>
+                  <option value="" selected disabled>Elegí uno</option>
+                  <option value="tranquilo">Tranquilo</option>
+                  <option value="jugueton">Juguetón</option>
+                  <option value="nervioso">Nervioso</option>
+                  <option value="guardian">Guardián</option>
+                </select>
+                <p class="field-msg">Elegí cómo es de carácter tu perrito.</p>
+              </div>
+
+              <div class="form-group full-width">
+                <label for="reg-bio">Contanos un poquito más</label>
+                <textarea id="reg-bio" name="perro_bio" rows="4" placeholder="Su routines, manías, el mejor truco que sabe..." minlength="20" maxlength="200" required></textarea>
+                <p class="field-msg">Escribí al menos 20 caracteres sobre tu perrito.</p>
+              </div>
+
+              <!-- Casilla de términos: el input real queda invisible y
+                   enfocable, y la caja dibujada es un <span>. -->
+              <div class="form-group form-group--check full-width">
+                <input class="check__input" type="checkbox" id="reg-terminos" name="terminos" required>
+                <label class="check" for="reg-terminos">
+                  <span class="check__box" aria-hidden="true"></span>
+                  <span class="check__text">Acepto los <a href="#">términos y condiciones</a> de MyDoggoSpace.</span>
+                </label>
+                <p class="field-msg">Tenés que aceptar los términos para crear la cuenta.</p>
+              </div>
+            </div>
+
+            <div class="wizard__actions">
+              <label class="btn wizard__btn wizard__btn--ghost" for="wizard-paso-1">
+                <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
+                Atrás
+              </label>
+              <button type="submit" class="btn wizard__btn">
+                Crear mi cuenta
+                <span class="material-symbols-outlined" aria-hidden="true">pets</span>
+              </button>
+            </div>
+          </section>
+
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <!-- Área: Footer -->
+  <footer class="area-footer">
+    <p>&copy; 2026 MyDoggoSpace — La red social canina favorita del mundo.</p>
+  </footer>
+
+  <!-- Botón Fijo "Volver Arriba" -->
+  <a href="#main-header" class="btn btn-scroll-top" title="Volver arriba">
+    <span class="material-symbols-outlined">arrow_upward</span>
+  </a>
+
+</body>
+</html>

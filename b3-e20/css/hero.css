@@ -1,0 +1,341 @@
+/* ============================================================
+   hero.css · <section class="hero"> CON IMAGEN DE FONDO
+   ------------------------------------------------------------
+   La sección ocupa la primera pantalla: la foto de fondo está
+   en un <div aria-hidden> (decorativo, sin alt) y el contenido
+   va en una grilla por encima, con velos de gradiente para que
+   el texto siempre se lea contra la imagen.
+   ============================================================ */
+
+/* La URL de la foto es un token: si hay que cambiarla, se
+   cambia en un solo lugar y no hay que tocar el HTML. */
+:root {
+    --hero-imagen: url("https://cdn.mos.cms.futurecdn.net/v2/t:0,l:240,cw:1440,ch:1080,q:80,w:1440/ASHH5bDmsp6wnK6mEfZdcU.jpg");
+}
+
+
+/* ============================================================
+   1 · ESTRUCTURA DE LA SECCIÓN
+   ------------------------------------------------------------
+   CSS Grid con una sola celda: place-items:center la centra
+   en ambos ejes. isolation:isolate crea un contexto de
+   apilamiento propio para que el z-index del fondo y del
+   contenido no compita con el de la navbar (que es 100).
+   ============================================================ */
+
+.hero {
+    position: relative;
+    isolation: isolate;
+    display: grid;
+    place-items: center;
+    /* Respaldo para navegadores que no conocen svh */
+    min-height: 34rem;
+    min-height: min(94svh, 56rem);
+    /* El padding superior despeja la navbar fija. svh evita el
+       salto de altura al abrir/cerrar la barra del móvil. */
+    padding:
+        calc(var(--navbar-h) + var(--esp-6))
+        var(--gutter)
+        var(--esp-7);
+    overflow: hidden;
+}
+
+
+/* ============================================================
+   2 · IMAGEN DE FONDO
+   ============================================================ */
+
+.hero__fondo {
+    position: absolute;
+    inset: 0;
+    z-index: -2;                 /* detrás del contenido (ver isolation) */
+    background-image: var(--hero-imagen);
+    background-size: cover;
+    background-position: center 42%;   /* deja la cabeza del perrito arriba */
+    background-repeat: no-repeat;
+    background-color: var(--color-overlay);
+
+    /* Animación #1 del TP: zoom lentísimo y continuo sobre la foto
+       (efecto "Ken Burns"). alternate + infinite = va y vuelve. */
+    animation: ken-burns var(--dur-hero) ease-in-out infinite alternate;
+    will-change: transform;
+}
+
+/* Velo 1 · legibilidad. De izquierda a derecha: el lado del texto
+   queda casi negro y el lado del perrito se transparenta para que
+   se vea la foto. */
+.hero__fondo::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(100deg,
+            color-mix(in srgb, var(--color-overlay) 95%, transparent) 0%,
+            color-mix(in srgb, var(--color-overlay) 88%, transparent) 42%,
+            color-mix(in srgb, var(--color-overlay) 55%, transparent) 78%,
+            color-mix(in srgb, var(--color-overlay) 35%, transparent) 100%),
+        /* Degradado vertical extra hacia abajo */
+        linear-gradient(180deg,
+            color-mix(in srgb, var(--color-overlay) 70%, transparent) 0%,
+            transparent 30%,
+            var(--color-secundario) 96%);
+}
+
+
+/* ============================================================
+   3 · CONTENIDO
+   ============================================================ */
+
+.hero__contenido {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: var(--ancho-max);
+    /* Grilla de una columna: cada hijo es una fila y el gap las
+       separa. En < 768px el contenido se centra (ver sección 8). */
+    display: grid;
+    gap: var(--esp-4);
+    justify-items: start;         /* todo pegado a la izquierda */
+}
+
+.hero__titulo {
+    font-size: var(--fs-h1);
+    /* Límite de caracteres por línea: obliga a que el título se
+       reparta en tres líneas cortas en vez de una línea gigantic. */
+    max-width: 15ch;
+    text-shadow: 0 2px 24px rgba(0, 0, 0, 0.45);  /* separa del fondo */
+}
+
+.hero__titulo em {
+    /* La palabra clave del título, en crema */
+    color: var(--color-primario);
+    /* Detalle sutil: la línea de abajo "subraya" el acento */
+    background: linear-gradient(transparent 72%, color-mix(in srgb, var(--color-primario) 28%, transparent) 72%);
+}
+
+.hero__texto {
+    font-size: var(--fs-lead);
+    color: var(--color-texto);
+    max-width: 46ch;
+    text-shadow: 0 1px 12px rgba(0, 0, 0, 0.5);
+}
+
+/* Fila de botones: Flexbox */
+.hero__acciones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--esp-3);
+    margin-top: var(--esp-1);
+}
+
+
+/* ============================================================
+   4 · CIFRAS DESTACADAS
+   ------------------------------------------------------------
+   Flexbox con separadores verticales entre items. Cada cifra es
+   un bloque apilado (flex column) para numerito + rótulo.
+   ============================================================ */
+
+.hero__cifras {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--esp-3) var(--esp-5);
+    margin: var(--esp-3) 0 0;
+    padding: 0;
+}
+
+.hero__cifra {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    padding-left: var(--esp-4);
+    border-left: 2px solid color-mix(in srgb, var(--color-primario) 55%, transparent);
+}
+
+.hero__numero {
+    font-size: clamp(1.5rem, 1.4vw + 1.1rem, 2.1rem);
+    font-weight: var(--peso-fuerte);
+    line-height: 1.1;
+    color: var(--color-primario);
+}
+
+.hero__rotulo {
+    font-size: var(--fs-xs);
+    color: var(--color-texto-suave);
+    letter-spacing: 0.02em;
+}
+
+
+/* ============================================================
+   5 · INDICADOR "BAJÁ Y MIRÁ"
+   ============================================================ */
+
+.hero__scroll {
+    position: absolute;
+    inset-block-end: var(--esp-4);
+    inset-inline-start: 50%;
+    translate: -50% 0;            /* centrado horizontal sin margin negativo */
+    z-index: 1;
+
+    display: inline-flex;
+    align-items: center;
+    gap: var(--esp-2);
+    font-size: var(--fs-xs);
+    letter-spacing: var(--tracking-kicker);
+    text-transform: uppercase;
+    color: var(--color-texto-suave);
+    writing-mode: horizontal-tb;
+}
+
+.hero__scroll .material-symbols-outlined {
+    font-size: 1.15rem;
+    color: var(--color-primario);
+    /* Animación #2: rebote vertical infinito */
+    animation: rebotar 1.9s ease-in-out infinite;
+}
+
+.hero__scroll:hover {
+    color: var(--color-primario-fuerte);
+}
+
+
+/* ============================================================
+   6 · ENTRADA ESCALONADA
+   ------------------------------------------------------------
+   Cada bloque del hero entra un poquito después que el anterior
+   (efecto "stagger"): se calcula con calc() a partir del token
+   --stagger y de la posición del hijo. El fill-mode "backwards"
+   deja el elemento invisible durante el retraso, que es justo
+   lo que buscamos, y al terminar suelta opacity/transform para
+   que los :hover sigan funcionando con normalidad.
+   ============================================================ */
+
+.hero__contenido > * {
+    animation: aparecer var(--dur-lenta) var(--ease-out) 1 backwards;
+}
+
+.hero__contenido > :nth-child(1) { animation-delay: 0s; }     /* antetítulo */
+.hero__contenido > :nth-child(2) { animation-delay: 0.09s; }  /* título     */
+.hero__contenido > :nth-child(3) { animation-delay: 0.18s; }  /* texto      */
+.hero__contenido > :nth-child(4) { animation-delay: 0.27s; }  /* botones    */
+.hero__contenido > :nth-child(5) { animation-delay: 0.38s; }  /* cifras     */
+
+
+/* ============================================================
+   7 · BREAKPOINT · max-width: 1023px  (tablet horizontal)
+   ------------------------------------------------------------
+   El hero deja de ocupar la pantalla entera (min-height: auto:
+   manda el contenido) y la foto se recentra, porque en una
+   pantalla angosta el lado izquierdo del degradado ocupa casi
+   todo. El título gana caracteres por línea para no quedar con
+   una columna demasiado angosta.
+   ============================================================ */
+
+@media (max-width: 1023px) {
+    .hero {
+        min-height: auto;
+        padding-block-end: var(--esp-6);
+    }
+
+    .hero__fondo {
+        background-position: center 35%;
+    }
+
+    .hero__titulo {
+        max-width: 16ch;
+    }
+}
+
+
+/* ============================================================
+   8 · BREAKPOINT · max-width: 767px  (móvil / tablet vertical)
+   ------------------------------------------------------------
+   Texto centrado, título más angosto y cifras en 3 columnas
+   parejas. El velo de la foto se hace más fuerte porque el
+   texto queda encima del rostro del perrito.
+   ============================================================ */
+
+@media (max-width: 767px) {
+    .hero {
+        padding-block: calc(var(--navbar-h) + var(--esp-5)) var(--esp-6);
+        text-align: center;
+    }
+
+    .hero__fondo {
+        background-position: center 30%;
+    }
+
+    /* Velo mobile: más parejo, para que el texto siempre contraste */
+    .hero__fondo::after {
+        background:
+            linear-gradient(180deg,
+                color-mix(in srgb, var(--color-overlay) 88%, transparent) 0%,
+                color-mix(in srgb, var(--color-overlay) 80%, transparent) 55%,
+                var(--color-secundario) 98%);
+    }
+
+    .hero__contenido {
+        justify-items: center;   /* ahora sí, todo al centro */
+        gap: var(--esp-3);
+    }
+
+    .hero__titulo,
+    .hero__texto {
+        max-width: 34ch;
+        text-shadow: 0 2px 18px rgba(0, 0, 0, 0.6);
+    }
+
+    .hero__acciones {
+        justify-content: center;
+        width: 100%;
+    }
+
+    /* Las cifras se reparten en 3 columnas iguales: flex + basis
+       del 100% menos los gaps, todo con flex:1. */
+    .hero__cifras {
+        justify-content: center;
+        gap: var(--esp-3);
+        width: 100%;
+    }
+
+    .hero__cifra {
+        flex: 1 1 6rem;
+        align-items: center;
+        text-align: center;
+        padding-left: 0;
+        border-left: 0;
+        border-top: 2px solid color-mix(in srgb, var(--color-primario) 45%, transparent);
+        padding-top: var(--esp-2);
+    }
+
+    .hero__rotulo {
+        font-size: 0.72rem;
+    }
+
+    /* En móvil el indicador de scroll no aporta: estorba */
+    .hero__scroll {
+        display: none;
+    }
+}
+
+
+/* ============================================================
+   9 · BREAKPOINT · max-width: 479px  (móviles chicos)
+   ============================================================ */
+
+@media (max-width: 479px) {
+    .hero__acciones {
+        flex-direction: column;   /* los botones se apilan a lo ancho */
+        align-items: stretch;
+    }
+
+    .hero__cifras {
+        /* Dos filas: 2 + 1 */
+        gap: var(--esp-2);
+    }
+
+    .hero__cifra {
+        flex: 1 1 40%;
+    }
+}

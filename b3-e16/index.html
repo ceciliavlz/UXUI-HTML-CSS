@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyDoggoSpace - Galería</title>
+    <!-- Fuentes e Íconos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">    
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+</head>
+<body class="grid-layout">
+
+  <!-- Área: Header -->
+  <header class="area-header">
+    <nav class="navbar">
+      <div class="logo">
+          <img src="https://cdn-icons-png.flaticon.com/512/194/194228.png" alt="Logo de MyDoggoSpace" class="logo-img">
+          <span>MyDoggoSpace</span>
+      </div>
+      <div class="nav-links">
+        <a href="index.html" class="active">Galería</a>
+        <a href="nueva-publicacion.html" class="btn btn-nav-action">+ Publicar Perrito</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Área: Sidebar -->
+  <aside class="area-sidebar">
+    <h3>Filtros & Menú</h3>
+    <ul>
+      <li><span class="material-symbols-outlined">pets</span><a href="#"> Todos los perritos</a></li>
+      <li><span class="material-symbols-outlined">pet_supplies</span><a href="#"> Cachorros (&lt; 1 año)</a></li>
+      <li><span class="material-symbols-outlined">sound_detection_dog_barking</span><a href="#"> Perros adultos</a></li>
+      <li><span class="material-symbols-outlined">add_circle</span><a href="nueva-publicacion.html"> Publicar nuevo</a></li>
+    </ul>
+  </aside>
+
+  <!-- Área: Main Content -->
+  <main class="area-main">
+    <div id="main-header">
+      <h1>Galería de Perritos</h1>
+      <p>Compartí con el mundo las fotos de tus mejores amigos</p>
+    </div>
+
+    <!-- Filtros rapidos: sustituyen al sidebar en < 768px (oculto por CSS) -->
+    <nav class="mobile-filters" aria-label="Filtros rápidos">
+      <a href="#">Todos los perritos</a>
+      <a href="#">Cachorros (&lt; 1 año)</a>
+      <a href="#">Perros adultos</a>
+    </nav>
+
+    <!-- Contenedor con Flexbox de las tarjetas -->
+    <div class="container">
+
+      <!-- Card 1 -->
+      <div class="card">
+          <img src="https://cdn-v2.meme.com/memes/dog-with-apple-apple-dog/dog-with-apple-apple-dog-beagle-apple-alternate-angle.webp" alt="Perrito Dachshund">
+          <div>
+              <h2>Apple</h2>
+              <p class="raza">Raza: <span>Dachshund</span></p>
+              <p class="edad">Edad: 5 años</p>
+          </div>
+          <p>Apple encontró unas manzanas.</p>
+          
+          <div class="tooltip-container">
+            <button class="btn btn-card">Ver Perfil</button>
+            <span class="tooltip-text">Ver fotos y detalles de Apple</span>
+          </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="card">
+          <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQg6Lt6kW01yz1UZqOqxKc0sMqVfeNTIufMwm4F1geYVbNCiWMU" alt="Perrito Dalmata">
+          <div>
+              <h2>Noé</h2>
+              <p class="raza">Raza: <span>Dalmata</span></p>
+              <p class="edad">Edad: 4 años</p>
+          </div>
+          <p>El rey del camuflaje.</p>
+          
+          <div class="tooltip-container">
+            <button class="btn btn-card">Ver Perfil</button>
+            <span class="tooltip-text">Ver fotos y detalles de Noé</span>
+          </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="card">
+          <img src="https://i.pinimg.com/736x/83/10/6b/83106b4d46f497a9a73eae1ba78e6682.jpg" alt="Perrito negro">
+          <div>
+              <h2>Rocky</h2>
+              <p class="raza">Raza: <span>Perrito chiquito</span></p>
+              <p class="edad">Edad: 1 año</p>
+          </div>
+          <p>Rocky comprobando cuánto creció este mes.</p>
+
+          <div class="tooltip-container">
+            <button class="btn btn-card">Ver Perfil</button>
+            <span class="tooltip-text">Ver fotos y detalles de Rocky</span>
+          </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="card">
+          <img src="https://yt3.ggpht.com/cQ2XV0nysnEb6RBdAPqzJo23FPMcVhM8qwZEX1UTXhaZgcOSHsx_5kmJoASvE2Dsg7qPKeV9QQ0s=s640-c-fcrop64=1,0000198dffffe650-rw-nd-v1" alt="Bull Terrier Inglés">
+          <div>
+              <h2>Zeus</h2>
+              <p class="raza">Raza: <span>Bull Terrier Inglés</span></p>
+              <p class="edad">Edad: 4 años</p>
+          </div>
+          <p>No es malo ni nada por el estilo. Simplemente cree que más gente debería saber de su existencia.</p>
+
+          <div class="tooltip-container">
+            <button class="btn btn-card">Ver Perfil</button>
+            <span class="tooltip-text">Ver fotos y detalles de Zeus</span>
+          </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="card">
+          <img src="https://yt3.ggpht.com/TXCknks0L2CoSGHNvxTT66UTD0Pb3ItkX-xNJS-RewL9zWZcb6ms5QXW3axnhS_w2P7yqDE11v_N=s640-c-fcrop64=1,00000b48ffffcb47-rw-nd-v1" alt="Perrito Boston Terrier">
+          <div>
+              <h2>Genki</h2>
+              <p class="raza">Raza: <span>Boston Terrier</span></p>
+              <p class="edad">Edad: 3 años</p>
+          </div>
+          <p>Tiene su propia fuerza aérea.</p>
+
+          <div class="tooltip-container">
+            <button class="btn btn-card">Ver Perfil</button>
+            <span class="tooltip-text">Ver fotos y detalles de Genki</span>
+          </div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="card">
+        <img src="https://yt3.ggpht.com/GkLrGwOWcEK6pvBLIj7ZN56IHOeVREEWbjXvSEXof8htVPvGUGoz6Ja8c1vBJhJcukm38XQEzlk=s640-rw-nd-v1" alt="Perrito peludo">
+        <div>
+          <h2>Toby</h2>
+          <p class="raza">Raza: <span>Perrito peludo</span></p>
+          <p class="edad">Edad: 5 años</p>
+        </div>
+        <p>Este perrito no se ha olvidado del precio de los huevos. Los huevos son muy importantes para él.</p>
+
+        <div class="tooltip-container">
+          <button class="btn btn-card">Ver Perfil</button>
+          <span class="tooltip-text">Ver fotos y detalles de Toby</span>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Área: Footer -->
+  <footer class="area-footer">
+    <p>&copy; 2026 MyDoggoSpace — La red social canina favorita del mundo.</p>
+  </footer>
+
+  <!-- Botón Fijo "Volver Arriba" -->
+  <a href="#main-header" class="btn btn-scroll-top" title="Volver arriba">
+    <span class="material-symbols-outlined">arrow_upward</span>
+  </a>
+
+</body>
+</html>
