@@ -40,33 +40,15 @@
         </div>
       </header>
 
-      <div class="flex h-11 items-center justify-between bg-white px-6 text-[13px] font-semibold text-ink lg:hidden" aria-hidden="true">
-        <span>9:41</span>
-        <div class="flex items-center gap-1.5">
-          <svg class="h-3 w-4" viewBox="0 0 18 12" fill="currentColor" aria-hidden="true">
-            <rect x="0" y="7" width="3" height="5" rx="1" />
-            <rect x="5" y="5" width="3" height="7" rx="1" />
-            <rect x="10" y="3" width="3" height="9" rx="1" />
-            <rect x="15" y="1" width="3" height="11" rx="1" opacity=".4" />
-          </svg>
-          <span class="text-[11px] tracking-wide">5G</span>
-          <svg class="h-3 w-6" viewBox="0 0 24 12" fill="none" aria-hidden="true">
-            <rect x="0.5" y="0.5" width="20" height="11" rx="3" stroke="currentColor" />
-            <rect x="2" y="2" width="15" height="8" rx="1.8" fill="currentColor" />
-            <path d="M22 4v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-          </svg>
-        </div>
-      </div>
-
       <div id="mobile-topbar" class="lg:hidden"></div>
 
       <main>
-        <div id="checkout-header" class="mx-auto w-full max-w-[1440px] px-5 pt-5 lg:px-20 lg:pt-8" hidden>
-          <div class="mb-4 lg:mb-6">
+        <div id="checkout-header" class="mx-auto mb-0 w-full max-w-[1440px] lg:px-20 lg:pt-8" hidden>
+          <div class="mb-0 border border-line lg:mb-6">
             <p class="hidden text-[13px] font-semibold text-brand lg:block">Seguro de Celular</p>
             <h1 id="checkout-title" class="hidden text-[30px] font-extrabold tracking-tight text-ink lg:block"></h1>
           </div>
-          <div id="stepper" class="mb-5 flex items-center lg:mb-8 bg-white p-3 rounded-lg shadow-sm"></div>
+          <div id="stepper" class="mt-0 mb-5 flex items-center rounded-none lg:mb-8 bg-white p-3 rounded-lg shadow-sm"></div>
         </div>
 
         <section data-paso="0" class="pb-32 lg:pb-0">
@@ -310,7 +292,6 @@
                 <div class="mt-7 hidden items-center justify-between gap-3 border-t border-line pt-6 lg:flex">
                   <button type="button" data-action="volver" data-variant="outline" class="btn btn-secondary">Volver</button>
                   <div class="flex items-center gap-4">
-                    <p class="text-xs text-muted-ink">Tus datos están protegidos.</p>
                     <button type="submit" data-submit="datos" class="btn btn-primary min-w-[170px]">
                       Continuar al pago
                       <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -433,7 +414,7 @@
         </section>
 
         <section data-paso="5" class="pb-36 lg:pb-0" hidden>
-          <div class="mx-auto w-full max-w-[1440px] px-5 py-6 lg:px-20 lg:py-16">
+          <div class="flex justify-center items-center h-screen mx-auto w-full max-w-[1440px] px-5 py-6 lg:px-20 lg:py-16">
             <div class="panel mx-auto max-w-[600px] overflow-hidden p-6 text-center lg:p-10">
               <div class="mx-auto flex size-16 items-center justify-center rounded-full bg-emerald-50 text-success lg:size-20">
                 <svg class="size-8 lg:size-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -457,7 +438,7 @@
               <div id="exito-detalle" class="mt-6 rounded-2xl border border-line bg-canvas p-4 text-left"></div>
 
               <div class="mt-7 hidden gap-3 lg:flex">
-                <button type="button" data-action="descargar-poliza" data-variant="outline" class="btn btn-secondary flex-1">
+                <button type="button" data-variant="outline" class="btn btn-secondary flex-1">
                   <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     <path d="M12 3v12m0 0 4-4m-4 4-4-4M4 19.5h16" />
                   </svg>
@@ -469,13 +450,13 @@
           </div>
 
           <div class="mobile-footer lg:hidden">
-            <button type="button" data-action="descargar-poliza" class="btn btn-primary mb-2 w-full">Descargar póliza</button>
+            <button type="button" class="btn btn-primary mb-2 w-full">Descargar póliza</button>
             <button type="button" data-action="reiniciar" data-variant="outline" class="btn btn-secondary w-full">Volver al inicio</button>
           </div>
         </section>
 
         <section data-paso="6" class="pb-36 lg:pb-0" hidden>
-          <div class="mx-auto w-full max-w-[1440px] px-5 py-6 lg:px-20 lg:py-16">
+          <div class="flex justify-center items-center h-screen mx-auto w-full max-w-[1440px] px-5 py-6 lg:px-20 lg:py-16">
             <div class="panel mx-auto max-w-[600px] overflow-hidden p-6 text-center lg:p-10">
               <div class="mx-auto flex size-16 items-center justify-center rounded-full bg-red-50 text-danger lg:size-20">
                 <svg class="size-8 lg:size-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -487,17 +468,17 @@
                 No pudimos procesar tu pago
               </h2>
               <p id="error-motivo" class="mx-auto mt-3 max-w-[420px] text-sm leading-6 text-muted-ink">
-                El banco rechazó la tarjeta. Probá con otro medio de pago o reintentá.
+                La tarjeta fue rechazada. Revisá los datos o probá con otro medio de pago. Tus datos quedaron guardados.
               </p>
 
-              <div class="alert mt-6 grid-cols-[auto_1fr] items-start border-[#fecaca] bg-red-50/60 text-left text-danger" role="alert">
-                <svg class="mt-0.5 size-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <div class="alert mt-6 grid-cols-[auto_1fr] items-start border-[#fecaca] bg-warning-soft text-left text-danger" role="alert">
+                <svg class="mt-0.5 size-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="#B45309" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <circle cx="12" cy="12" r="9" />
                   <path d="M12 7.5v5M12 16.5h.01" />
                 </svg>
                 <div>
-                  <p class="text-sm font-semibold">Tip para la demo</p>
-                  <p class="mt-1 text-xs leading-5 text-red-700">
+                  <p class="text-sm font-semibold text-warning-dark">Tip para la demo</p>
+                  <p class="mt-1 text-xs leading-5 text-warning-dark">
                     La tarjeta <strong>4000 0000 0000 0002</strong> siempre es rechazada. Cualquier otra tarjeta de 16 dígitos se aprueba.
                   </p>
                 </div>

@@ -171,51 +171,6 @@ function volver() {
 }
 
 /**
- * Descarga un comprobante de la póliza en texto plano.
- */
-function descargarPoliza() {
-  const plan = planActual()
-  const cuota = cuotaDePlan(plan)
-  const lineas = [
-    'CUBRÍ · SEGURO DE CELULAR',
-    '================================',
-    '',
-    `Póliza: ${solicitud.poliza?.numero ?? '—'}`,
-    `Vigencia desde: ${solicitud.poliza?.vigencia ?? '—'}`,
-    '',
-    'TITULAR',
-    `Nombre: ${titularTexto()}`,
-    `DNI: ${solicitud.titular.dni || '—'}`,
-    `Email: ${solicitud.titular.email || '—'}`,
-    `Celular: ${solicitud.titular.celular || '—'}`,
-    '',
-    'EQUIPO',
-    `Equipo: ${equipoTexto()}`,
-    `Valor declarado: ${formatearMoneda(solicitud.equipo.valor)}`,
-    `Antigüedad: ${etiquetaAntiguedad(solicitud.equipo.antiguedad)}`,
-    '',
-    'COBERTURA',
-    `Plan: ${plan?.nombre ?? '—'}`,
-    `Cuota mensual: ${formatearMoneda(cuota)}`,
-    '',
-    'Incluye:',
-    ...(plan?.coberturas ?? plan?.incluye ?? []).map((item) => `  - ${item}`),
-    '',
-    'Documento generado desde la demo académica de Cubrí.',
-  ]
-
-  const blob = new Blob([lineas.join('\n')], { type: 'text/plain;charset=utf-8' })
-  const url = URL.createObjectURL(blob)
-  const enlace = document.createElement('a')
-  enlace.href = url
-  enlace.download = `poliza-${solicitud.poliza?.numero ?? 'cubri'}.txt`
-  document.body.appendChild(enlace)
-  enlace.click()
-  enlace.remove()
-  URL.revokeObjectURL(url)
-}
-
-/**
  * Aplica el formato de cada input y guarda el valor en el estado.
  * @param {HTMLInputElement|HTMLSelectElement} control
  */
@@ -384,10 +339,6 @@ function manejarClick(event) {
       window.setTimeout(() => {
         document.querySelector('input[name="metodo"]')?.focus()
       }, 80)
-      break
-    case 'descargar-poliza':
-      event.preventDefault()
-      descargarPoliza()
       break
     case 'reiniciar':
       event.preventDefault()

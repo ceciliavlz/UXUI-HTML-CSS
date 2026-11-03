@@ -545,12 +545,11 @@ export function renderTopbar() {
       <div class="flex h-14 items-center justify-between bg-white px-5">
         <a href="#" data-action="inicio" class="flex items-center gap-2" aria-label="Cubrí, inicio">
           <span class="inline-flex size-7 items-center justify-center rounded-lg bg-brand text-white shadow-sm shadow-brand/30">
-            <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" />
-              <path d="m9 12 2 2 4-4" />
+              <svg class="size-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path fill="currentColor" d="M12 22q-3.475-.875-5.738-3.988T4 11.1V5l8-3l8 3v6.1q0 3.8-2.262 6.913T12 22"></path>
             </svg>
           </span>
-          <span class="text-lg font-extrabold tracking-tight text-ink">cubrí</span>
+          <span class="text-lg font-extrabold tracking-tight text-ink">Cubrí</span>
         </a>
         <a href="#" data-variant="ghost" class="btn btn-ghost" aria-label="Mi cuenta">${icon('user', 'size-5')}</a>
       </div>
