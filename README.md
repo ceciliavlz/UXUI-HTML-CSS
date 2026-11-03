@@ -8,7 +8,7 @@ Prototipo frontend de un flujo de contratación digital de seguro para celulares
 
 ## Demo publicada
 
-**URL:** 
+**URL:** https://tp5-cubri-seguros.netlify.app/
 
 ## Cómo correr el proyecto
 
