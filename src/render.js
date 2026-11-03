@@ -1,5 +1,6 @@
 import { metadata, solicitud } from './estado.js'
-import { icon } from './icons.js'
+import { icon, themeToggle } from './icons.js'
+import { actualizarControlesTema } from './tema.js'
 import { calcularCuota, formatearMoneda, formatearValorInput } from './cotizador.js'
 import {
   camposDePaso,
@@ -176,7 +177,7 @@ export function renderProductos() {
             <span class="badge border-0 ${
               producto.habilitado
                 ? 'bg-brand-soft text-brand-dark'
-                : 'bg-slate-100 text-slate-500'
+                : 'bg-muted text-muted-ink'
             } px-1.5 py-0 text-[9px] font-bold uppercase tracking-wide">${producto.badge}</span>
           </span>
           <span class="mt-1 block text-[11px] leading-4 text-muted-ink lg:text-xs">${producto.detalle}</span>
@@ -202,11 +203,11 @@ export function renderPlanes() {
     contenedor.innerHTML = Array.from({ length: 3 })
       .map(
         () => `
-        <div class="animate-pulse rounded-2xl border border-line bg-white p-5">
-          <div class="h-4 w-20 rounded bg-slate-100"></div>
-          <div class="mt-3 h-3 w-full rounded bg-slate-100"></div>
-          <div class="mt-6 h-8 w-24 rounded bg-slate-100"></div>
-          <div class="mt-5 h-16 rounded bg-slate-100"></div>
+        <div class="animate-pulse rounded-2xl border border-line bg-card p-5">
+          <div class="h-4 w-20 rounded bg-muted"></div>
+          <div class="mt-3 h-3 w-full rounded bg-muted"></div>
+          <div class="mt-6 h-8 w-24 rounded bg-muted"></div>
+          <div class="mt-5 h-16 rounded bg-muted"></div>
         </div>
       `,
       )
@@ -217,11 +218,11 @@ export function renderPlanes() {
   if (metadata.error) {
     contenedor.innerHTML = `
       <div class="col-span-full">
-        <div class="alert border-[#fecaca] bg-red-50/60 text-danger" role="alert">
+        <div class="alert border-danger/30 bg-danger/10 text-danger" role="alert">
           ${icon('alert', 'size-5')}
           <div>
             <p class="text-sm font-semibold">No pudimos cargar los planes</p>
-            <p class="mt-1 text-xs text-red-700">${esc(metadata.error)}</p>
+            <p class="mt-1 text-xs text-danger">${esc(metadata.error)}</p>
           </div>
         </div>
       </div>
@@ -236,7 +237,7 @@ export function renderPlanes() {
       const incluye = (plan.coberturas ?? plan.incluye ?? [])
         .map(
           (item) => `
-          <span class="flex items-start gap-2 text-xs leading-5 text-slate-600">
+          <span class="flex items-start gap-2 text-xs leading-5 text-muted-ink">
             <span class="mt-0.5 text-success">${icon('check', 'size-3.5')}</span>
             ${esc(item)}
           </span>
@@ -246,7 +247,7 @@ export function renderPlanes() {
       const noIncluye = plan.noIncluye
         .map(
           (item) => `
-          <span class="flex items-start gap-2 text-xs leading-5 text-slate-400">
+          <span class="flex items-start gap-2 text-xs leading-5 text-muted-ink/70">
             <span class="mt-0.5">${icon('x', 'size-3.5')}</span>
             ${esc(item)}
           </span>
@@ -270,7 +271,7 @@ export function renderPlanes() {
                 <span class="text-base font-bold text-ink">${esc(plan.nombre)}</span>
                 ${
                   plan.recomendado
-                    ? '<span class="badge border-0 bg-brand px-2 py-0.5 text-[9px] font-bold uppercase tracking-wide text-white">Recomendado</span>'
+                    ? '<span class="badge border-0 bg-brand-solid px-2 py-0.5 text-[9px] font-bold uppercase tracking-wide text-white">Recomendado</span>'
                     : ''
                 }
               </span>
@@ -333,7 +334,7 @@ function htmlResumen(contexto) {
           Completá el valor y la antigüedad de tu equipo para ver la cuota mensual.
         </p>
         <div class="mt-5 rounded-xl border border-dashed border-line bg-canvas p-5 text-center">
-          <span class="mx-auto flex size-10 items-center justify-center rounded-full bg-white text-slate-400">${icon('clock', 'size-5')}</span>
+          <span class="mx-auto flex size-10 items-center justify-center rounded-full bg-card text-muted-ink">${icon('clock', 'size-5')}</span>
           <p class="mt-2 text-xs font-medium text-muted-ink">La cuota se calcula al instante.</p>
         </div>
       </div>
@@ -542,25 +543,29 @@ export function renderTopbar() {
 
   if (solicitud.paso === 0) {
     topbar.innerHTML = `
-      <div class="flex h-14 items-center justify-between bg-white px-5">
+      <div class="flex h-14 items-center justify-between bg-card px-5">
         <a href="#" data-action="inicio" class="flex items-center gap-2" aria-label="Cubrí, inicio">
-          <span class="inline-flex size-7 items-center justify-center rounded-lg bg-brand text-white shadow-sm shadow-brand/30">
+          <span class="inline-flex size-7 items-center justify-center rounded-lg bg-brand-solid text-white shadow-sm shadow-brand/30">
               <svg class="size-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path fill="currentColor" d="M12 22q-3.475-.875-5.738-3.988T4 11.1V5l8-3l8 3v6.1q0 3.8-2.262 6.913T12 22"></path>
             </svg>
           </span>
           <span class="text-lg font-extrabold tracking-tight text-ink">Cubrí</span>
         </a>
-        <a href="#" data-variant="ghost" class="btn btn-ghost" aria-label="Mi cuenta">${icon('user', 'size-5')}</a>
+        <div class="flex items-center gap-1">
+          ${themeToggle()}
+          <a href="#" data-variant="ghost" class="btn btn-ghost" aria-label="Mi cuenta">${icon('user', 'size-5')}</a>
+        </div>
       </div>
     `
     return
   }
 
   topbar.innerHTML = `
-    <div class="flex h-14 items-center gap-2 bg-white px-5">
+    <div class="flex h-14 items-center gap-2 bg-card px-5">
       <button type="button" data-action="volver" data-variant="ghost" class="btn btn-ghost -ml-2" aria-label="Volver">${icon('arrowLeft', 'size-5')}</button>
       <h2 class="text-[15px] font-bold text-ink">${TITULOS_MOBILE[solicitud.paso] ?? ''}</h2>
+      ${themeToggle('ml-auto -mr-2')}
     </div>
   `
 }
@@ -593,10 +598,10 @@ export function renderStepper() {
 
     const dotClass =
       estado === 'completado'
-        ? 'bg-success text-white'
+        ? 'bg-success-solid text-white'
         : estado === 'activo'
-          ? 'bg-brand text-white'
-          : 'border border-line bg-white text-slate-400'
+          ? 'bg-brand-solid text-white'
+          : 'border border-line bg-card text-muted-ink'
 
     const labelClass =
       estado === 'completado'
@@ -607,7 +612,7 @@ export function renderStepper() {
 
     const barra =
       indice < PASOS.length - 1
-        ? `<span class="mx-2 h-0.5 flex-1 rounded-full ${solicitud.paso > paso.numero ? 'bg-success' : 'bg-line'}"></span>`
+        ? `<span class="mx-2 h-0.5 flex-1 rounded-full ${solicitud.paso > paso.numero ? 'bg-success-solid' : 'bg-line'}"></span>`
         : ''
 
     return `
@@ -767,6 +772,7 @@ export function render() {
 
   const errores = validarPaso(solicitud.paso, solicitud)
   renderErrores(errores, new Set(), false)
+  actualizarControlesTema()
 
   window.scrollTo({ top: 0, behavior: 'auto' })
 }

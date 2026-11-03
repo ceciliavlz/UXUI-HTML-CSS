@@ -45,6 +45,7 @@ Los formularios validan sus campos antes de avanzar y muestran mensajes junto a 
 - La lógica de cálculo, validación y simulación de pago está separada en `src/cotizador.js`, `src/validaciones.js` y `src/pago.js`.
 - Los mismos pasos se adaptan a ambos tamaños: en mobile se priorizan formularios de una columna y acciones fijas al pie; en desktop se usan resúmenes laterales.
 - Se definieron tokens de color y estilos propios en `src/tokens.css` y `src/style.css`, usando Inter como tipografía.
+- El modo oscuro se implementa con la clase `dark` en `<html>` y una paleta de tokens equivalente en `src/tokens.css`; `src/tema.js` centraliza la aplicación, persistencia y accesibilidad del cambio de tema.
 - El botón «Descargar póliza» se conserva en las pantallas de confirmación, pero no tiene acción ni descarga archivos.
 
 ### Persistencia y datos de prueba
@@ -56,9 +57,10 @@ La solicitud se guarda en `localStorage` para conservar el avance al recargar la
 - **Persistencia:** se guarda y restaura la solicitud con `localStorage`; se limpia al finalizar correctamente.
 - **Edición desde el resumen:** en desktop, los enlaces «Editar» permiten volver a modificar equipo, plan o titular.
 - **Máscaras de entrada:** se agrupan los dígitos de la tarjeta y se formatea el vencimiento como `MM/AA`.
+- **Modo oscuro/claro:** selector en la cabecera de desktop y mobile, con preferencia persistida en `localStorage` y detección inicial de `prefers-color-scheme`.
 - **Setup con Vite:** se usa Vite con Tailwind CSS v4 y el plugin oficial de Tailwind para Vite.
 
-No se implementaron los bonus de toast, modo oscuro, otros productos ni despliegue automático con GitHub Actions.
+No se implementaron los bonus de toast, otros productos ni despliegue automático con GitHub Actions.
 
 ## Capturas
 
@@ -106,6 +108,7 @@ Las imágenes están en `capturas/` y se muestran aquí como referencia de las v
 │   ├── validaciones.js
 │   ├── cotizador.js
 │   ├── pago.js
+│   ├── tema.js
 │   ├── style.css
 │   └── tokens.css
 └── capturas/

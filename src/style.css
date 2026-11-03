@@ -10,6 +10,11 @@
 @layer base {
   html {
     -webkit-text-size-adjust: 100%;
+    color-scheme: light;
+  }
+
+  html.dark {
+    color-scheme: dark;
   }
 
   body {
@@ -20,6 +25,7 @@
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    transition: background-color 200ms ease, color 200ms ease;
   }
 
   button,
@@ -36,16 +42,16 @@
 
 @layer components {
   .panel {
-    @apply rounded-2xl bg-white shadow-sm;
+    @apply rounded-2xl bg-card shadow-sm;
   }
 
   .mobile-footer {
-    @apply fixed inset-x-0 bottom-0 z-30 border-t border-line bg-white px-5 pt-3;
+    @apply fixed inset-x-0 bottom-0 z-30 border-t border-line bg-card px-5 pt-3;
     padding-bottom: calc(0.875rem + env(safe-area-inset-bottom));
   }
 
   .product-card {
-    @apply relative flex min-h-[150px] flex-col items-start justify-between rounded-2xl border-none bg-white p-4 text-left transition lg:min-h-[172px] lg:p-5;
+    @apply relative flex min-h-[150px] flex-col items-start justify-between rounded-2xl border-none bg-card p-4 text-left transition lg:min-h-[172px] lg:p-5;
   }
 
   .product-card[data-enabled='true'] {
@@ -61,7 +67,7 @@
   }
 
   .chip {
-    @apply flex h-12 cursor-pointer items-center justify-center gap-2 rounded-xl border border-line bg-white px-3 text-center text-[13px] font-semibold text-slate-600 transition hover:border-slate-300;
+    @apply flex h-12 cursor-pointer items-center justify-center gap-2 rounded-xl border border-line bg-card px-3 text-center text-[13px] font-semibold text-muted-ink transition hover:border-brand/40;
   }
 
   .chip:has(input:checked) {
@@ -82,7 +88,7 @@
   }
 
   .plan-card {
-    @apply relative flex cursor-pointer flex-col rounded-2xl border border-line bg-white p-5 transition hover:border-slate-300;
+    @apply relative flex cursor-pointer flex-col rounded-2xl border border-line bg-card p-5 transition hover:border-brand/40;
   }
 
   .plan-card[data-selected='true'] {
@@ -94,7 +100,7 @@
   }
 
   .radio-dot {
-    @apply flex size-5 shrink-0 items-center justify-center rounded-full border-2 border-slate-300 bg-white transition;
+    @apply flex size-5 shrink-0 items-center justify-center rounded-full border-2 border-line bg-card transition;
   }
 
   .plan-card[data-selected='true'] .radio-dot,
@@ -109,7 +115,7 @@
   }
 
   .pay-method {
-    @apply flex cursor-pointer items-center gap-3 rounded-xl border border-line bg-white p-4 transition hover:border-slate-300;
+    @apply flex cursor-pointer items-center gap-3 rounded-xl border border-line bg-card p-4 transition hover:border-brand/40;
   }
 
   .pay-method[data-selected='true'] {
@@ -139,7 +145,7 @@
     padding: 0 0.75rem !important;
     border: 1px solid var(--color-line) !important;
     border-radius: 12px !important;
-    background-color: #fff !important;
+    background-color: var(--card) !important;
     color: var(--color-ink) !important;
     font-size: 1rem !important;
     line-height: 1.25rem !important;
@@ -155,6 +161,11 @@
 
   .field select {
     padding-right: 2.5rem !important;
+  }
+
+  .field input::placeholder {
+    color: var(--color-muted-ink);
+    opacity: 0.8;
   }
 
   .field input[type='date'] {
@@ -209,15 +220,15 @@
   }
 
   .btn.btn-primary {
-    @apply inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-brand px-5 text-sm font-semibold text-white shadow-sm shadow-brand/20 transition hover:bg-brand-dark focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand/20 active:translate-y-px disabled:cursor-not-allowed disabled:opacity-50;
+    @apply inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-brand-solid px-5 text-sm font-semibold text-white shadow-sm shadow-brand/20 transition hover:bg-brand-hover focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand/20 active:translate-y-px disabled:cursor-not-allowed disabled:opacity-50;
   }
 
   .btn.btn-secondary {
-    @apply inline-flex h-12 items-center justify-center gap-2 rounded-xl border border-line bg-white px-5 text-sm font-semibold text-slate-700 transition hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-slate-200 active:translate-y-px;
+    @apply inline-flex h-12 items-center justify-center gap-2 rounded-xl border border-line bg-card px-5 text-sm font-semibold text-ink transition hover:bg-muted focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand/20 active:translate-y-px;
   }
 
   .btn.btn-ghost {
-    @apply inline-flex size-10 items-center justify-center rounded-xl text-slate-600 transition hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-slate-200;
+    @apply inline-flex size-10 items-center justify-center rounded-xl text-muted-ink transition hover:bg-muted focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand/20;
   }
 }
 

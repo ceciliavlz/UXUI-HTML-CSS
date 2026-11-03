@@ -26,13 +26,29 @@ export function icon(name, className = 'size-5') {
     clock: `<circle cx="12" cy="12" r="9" ${stroke}/><path d="M12 7v5l3 2" ${stroke}/>`,
     spark: `<path d="M12 2.5 14 9l6.5 2-6.5 2-2 6.5-2-6.5L3.5 11 10 9l2-6.5Z" ${stroke}/>`,
     edit: `<path d="M4 20h4l10-10-4-4L4 16v4Z" ${stroke}/><path d="m13.5 6.5 4 4" ${stroke}/>`,
+    moon: `<path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11Z" ${stroke}/>`,
+    sun: `<circle cx="12" cy="12" r="4" ${stroke}/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4m11.4-11.4 1.4-1.4" ${stroke}/>`,
   }
 
   return `<svg class="${className}" viewBox="0 0 24 24" aria-hidden="true">${icons[name] ?? icons.phone}</svg>`
 }
 
+/**
+ * Botón para alternar entre modo claro y oscuro.
+ * @param {string} [className]
+ * @returns {string}
+ */
+export function themeToggle(className = '') {
+  return `
+    <button type="button" data-action="toggle-tema" class="btn btn-ghost ${className}" aria-label="Cambiar a modo oscuro" aria-pressed="false" title="Cambiar a modo oscuro">
+      ${icon('moon', 'size-5 dark:hidden')}
+      ${icon('sun', 'hidden size-5 dark:block')}
+    </button>
+  `
+}
+
 export const logoMark = `
-  <span class="inline-flex size-7 items-center justify-center rounded-lg bg-brand text-white shadow-sm shadow-brand/30">
+  <span class="inline-flex size-7 items-center justify-center rounded-lg bg-brand-solid text-white shadow-sm shadow-brand/30">
     <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
       <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" />
       <path d="m9 12 2 2 4-4" />

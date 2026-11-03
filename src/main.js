@@ -29,6 +29,7 @@ import {
 } from './validaciones.js'
 import { etiquetaAntiguedad, formatearMoneda, formatearValorInput } from './cotizador.js'
 import { fechaVigencia, generarNumeroPoliza, simularPago } from './pago.js'
+import { alternarTema, inicializarTema } from './tema.js'
 
 /** @type {Set<string>} */
 let tocados = new Set()
@@ -349,6 +350,10 @@ function manejarClick(event) {
       limpiarEstadoGuardado()
       render()
       break
+    case 'toggle-tema':
+      event.preventDefault()
+      alternarTema()
+      break
     default:
       break
   }
@@ -398,6 +403,7 @@ function configurarEventos() {
 }
 
 function iniciar() {
+  inicializarTema()
   cargarEstado()
   configurarEventos()
   render()
