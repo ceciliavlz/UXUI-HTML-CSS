@@ -21,7 +21,7 @@ const PRODUCTOS = [
 
 const TITULOS_PASO = {
   1: 'Contanos sobre tu celular',
-  2: 'Elegí el plan ideal para vos',
+  2: 'Elegí tu plan',
   3: 'Tus datos personales',
   4: 'Completá el pago',
 }
@@ -274,7 +274,6 @@ export function renderPlanes() {
                     : ''
                 }
               </span>
-              <span class="mt-1 block text-xs leading-5 text-muted-ink">${esc(plan.descripcion)}</span>
             </span>
             <span class="radio-dot mt-0.5"></span>
           </span>
@@ -367,7 +366,7 @@ function htmlResumen(contexto) {
   return `
     <div class="card panel p-5 lg:p-6">
       <div class="flex items-start justify-between gap-3">
-        <h2 class="text-base font-bold text-ink">${esCotizar ? 'Tu cotización' : 'Resumen de tu solicitud'}</h2>
+        <h2 class="text-base font-bold text-ink">${esCotizar ? 'Tu cotización' : 'Resumen'}</h2>
         <span class="badge border-0 bg-brand-soft px-2 py-0.5 text-[10px] font-bold text-brand-dark">Celular</span>
       </div>
 
@@ -382,8 +381,8 @@ function htmlResumen(contexto) {
       </div>
 
       <p class="mt-3 flex items-start gap-1.5 text-[11px] leading-4 text-muted-ink">
-        <span class="mt-0.5 text-success">${icon('lock', 'size-3.5')}</span>
-        ${esCotizar ? 'El precio final depende del plan que elijas.' : 'IVA incluido. Podés cancelar cuando quieras.'}
+        <span class="mt-0.5 text-success">${icon('shield', 'size-3.5')}</span>
+        ${esCotizar ? 'Contratación 100% online · cancelás cuando quieras' : 'IVA incluido. Podés cancelar cuando quieras.'}
       </p>
     </div>
   `

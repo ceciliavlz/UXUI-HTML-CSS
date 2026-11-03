@@ -36,7 +36,7 @@
 
 @layer components {
   .panel {
-    @apply rounded-2xl border border-line bg-white shadow-[0_1px_2px_rgba(15,23,42,0.04),0_8px_24px_rgba(15,23,42,0.04)];
+    @apply rounded-2xl bg-white shadow-sm;
   }
 
   .mobile-footer {
@@ -45,7 +45,7 @@
   }
 
   .product-card {
-    @apply relative flex min-h-[150px] flex-col items-start justify-between rounded-2xl border border-line bg-white p-4 text-left transition lg:min-h-[172px] lg:p-5;
+    @apply relative flex min-h-[150px] flex-col items-start justify-between rounded-2xl border-none bg-white p-4 text-left transition lg:min-h-[172px] lg:p-5;
   }
 
   .product-card[data-enabled='true'] {
@@ -78,6 +78,7 @@
     overflow: visible;
     font-size: inherit;
     line-height: inherit;
+    @apply border-none;
   }
 
   .plan-card {
@@ -116,7 +117,7 @@
   }
 
   .summary-row {
-    @apply flex items-start justify-between gap-4 border-t border-line py-3 first:border-t-0 first:pt-0 last:pb-0;
+    @apply flex items-start justify-between gap-4 ;
   }
 
   .summary-label {
