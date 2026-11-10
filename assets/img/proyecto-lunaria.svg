@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">Lunaria — App de bienestar y ciclo</title>
+  <desc id="desc">Dos pantallas móviles de la app Lunaria sobre un fondo lila: seguimiento del ciclo con anillo y tarjetas de energía, descanso y registro diario.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="800" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F1E9F6"/>
+      <stop offset="1" stop-color="#E7DDF2"/>
+    </linearGradient>
+    <linearGradient id="ring" x1="520" y1="250" x2="660" y2="430" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#B99BD8"/>
+      <stop offset="1" stop-color="#6F4E92"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-20%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="26" stdDeviation="30" flood-color="#2E2430" flood-opacity=".18"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="800" fill="url(#bg)"/>
+  <circle cx="180" cy="160" r="110" fill="#FDF8F5" opacity=".5"/>
+  <circle cx="1040" cy="650" r="150" fill="#FDF8F5" opacity=".38"/>
+  <path d="M1040 120c22 28 36 50 36 72a36 36 0 1 1-72 0c0-22 14-44 36-72Z" fill="#FDF8F5" opacity=".7"/>
+  <circle cx="1040" cy="206" r="10" fill="#C9A227" opacity=".8"/>
+
+  <text x="70" y="48" fill="#6F4E92" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" letter-spacing="3">LUNARIA / APP DE BIENESTAR</text>
+  <text x="1130" y="48" text-anchor="end" fill="#6E5A67" font-family="Arial, Helvetica, sans-serif" font-size="12" letter-spacing="2">UX/UI + DESIGN SYSTEM · 2025</text>
+
+  <g filter="url(#shadow)">
+    <rect x="300" y="120" width="280" height="560" rx="42" fill="#2E2430"/>
+    <rect x="314" y="134" width="252" height="532" rx="32" fill="#FFF9F0"/>
+  </g>
+  <rect x="424" y="148" width="32" height="5" rx="2.5" fill="#2E2430" opacity=".28"/>
+  <text x="338" y="190" fill="#6F4E92" font-family="Georgia, 'Times New Roman', serif" font-size="22" font-weight="700">Lunaria</text>
+  <text x="542" y="188" text-anchor="end" fill="#6E5A67" font-family="Arial, Helvetica, sans-serif" font-size="10">Hoy · 12 oct</text>
+
+  <circle cx="440" cy="344" r="104" fill="none" stroke="#EDE3F5" stroke-width="20"/>
+  <circle cx="440" cy="344" r="104" fill="none" stroke="url(#ring)" stroke-width="20" stroke-linecap="round" stroke-dasharray="430 224" transform="rotate(-90 440 344)"/>
+  <circle cx="440" cy="344" r="74" fill="#F8EDE9"/>
+  <text x="440" y="334" text-anchor="middle" fill="#6E5A67" font-family="Arial, Helvetica, sans-serif" font-size="10" letter-spacing="1.4">FASE FOLICULAR</text>
+  <text x="440" y="368" text-anchor="middle" fill="#2E2430" font-family="Georgia, 'Times New Roman', serif" font-size="34" font-weight="700">Día 12</text>
+  <text x="440" y="390" text-anchor="middle" fill="#6F4E92" font-family="Arial, Helvetica, sans-serif" font-size="10">Energía en ascenso</text>
+
+  <rect x="338" y="474" width="118" height="70" rx="16" fill="#F1E9F6"/>
+  <text x="352" y="498" fill="#6E5A67" font-family="Arial, Helvetica, sans-serif" font-size="9" letter-spacing=".8">ENERGÍA</text>
+  <text x="352" y="522" fill="#2E2430" font-family="Georgia, 'Times New Roman', serif" font-size="20" font-weight="700">Alta</text>
+  <rect x="366" y="530" width="74" height="6" rx="3" fill="#B99BD8"/>
+  <rect x="338" y="554" width="118" height="46" rx="14" fill="#FDF8F5" stroke="#E8D9D5"/>
+  <text x="352" y="573" fill="#6E5A67" font-family="Arial, Helvetica, sans-serif" font-size="8">ANIMO</text>
+  <text x="352" y="588" fill="#2E2430" font-family="Arial, Helvetica, sans-serif" font-size="11">Creativa · sociable</text>
+
+  <rect x="468" y="474" width="84" height="126" rx="16" fill="#F8EDE9"/>
+  <text x="482" y="498" fill="#6E5A67" font-family="Arial, Helvetica, sans-serif" font-size="9" letter-spacing=".8">SUEÑO</text>
+  <text x="482" y="526" fill="#2E2430" font-family="Georgia, 'Times New Roman', serif" font-size="24" font-weight="700">7.4h</text>
+  <path d="M482 560c12-18 24-18 36 0s12 18 24 0" stroke="#B99BD8" stroke-width="2" stroke-linecap="round"/>
+  <text x="482" y="586" fill="#6F4E92" font-family="Arial, Helvetica, sans-serif" font-size="9">Buen descanso</text>
+
+  <rect x="338" y="606" width="214" height="40" rx="20" fill="#6F4E92"/>
+  <text x="445" y="631" text-anchor="middle" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700" letter-spacing="1">REGISTRAR MI DÍA</text>
+
+  <g filter="url(#shadow)">
+    <rect x="650" y="196" width="280" height="560" rx="42" fill="#2E2430"/>
+    <rect x="664" y="210" width="252" height="532" rx="32" fill="#FFF9F0"/>
+  </g>
+  <rect x="774" y="224" width="32" height="5" rx="2.5" fill="#2E2430" opacity=".28"/>
+  <text x="688" y="266" fill="#2E2430" font-family="Georgia, 'Times New Roman', serif" font-size="22" font-weight="700">Tu semana</text>
+  <text x="892" y="264" text-anchor="end" fill="#6F4E92" font-family="Arial, Helvetica, sans-serif" font-size="10">Ver todo</text>
+
+  <rect x="688" y="288" width="204" height="116" rx="18" fill="#F1E9F6"/>
+  <text x="704" y="312" fill="#6F4E92" font-family="Arial, Helvetica, sans-serif" font-size="9" font-weight="700" letter-spacing="1">INSIGHT</text>
+  <text x="704" y="338" fill="#2E2430" font-family="Georgia, 'Times New Roman', serif" font-size="17" font-weight="700">Tu energía sube</text>
+  <text x="704" y="358" fill="#6E5A67" font-family="Arial, Helvetica, sans-serif" font-size="9">Buen momento para</text>
+  <text x="704" y="372" fill="#6E5A67" font-family="Arial, Helvetica, sans-serif" font-size="9">ideas y conversaciones.</text>
+  <path d="M846 318c14 0 22 10 22 22s-8 22-22 22c6-8 6-36 0-44Z" fill="#B99BD8"/>
+
+  <rect x="688" y="420" width="204" height="78" rx="16" fill="#FDF8F5" stroke="#E8D9D5"/>
+  <circle cx="714" cy="459" r="14" fill="#FBE3EC"/>
+  <path d="M714 451v16M706 459h16" stroke="#B23A6B" stroke-width="2" stroke-linecap="round"/>
+  <text x="738" y="454" fill="#2E2430" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700">Registrar síntoma</text>
+  <text x="738" y="470" fill="#6E5A67" font-family="Arial, Helvetica, sans-serif" font-size="9">Solo te lleva 20 segundos</text>
+  <rect x="856" y="448" width="24" height="24" rx="12" fill="#6F4E92" opacity=".12"/>
+
+  <rect x="688" y="514" width="204" height="78" rx="16" fill="#FDF8F5" stroke="#E8D9D5"/>
+  <circle cx="714" cy="553" r="14" fill="#EEF4EA"/>
+  <path d="M708 553l5 5 9-11" stroke="#7D9A72" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="738" y="548" fill="#2E2430" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700">Tomé mi vitamina</text>
+  <text x="738" y="564" fill="#6E5A67" font-family="Arial, Helvetica, sans-serif" font-size="9">Racha de 8 días</text>
+
+  <rect x="688" y="608" width="204" height="42" rx="16" fill="#F8EDE9"/>
+  <text x="704" y="634" fill="#6E5A67" font-family="Arial, Helvetica, sans-serif" font-size="9">Próximo registro</text>
+  <text x="876" y="634" text-anchor="end" fill="#2E2430" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700">Hoy 20:00</text>
+
+  <text x="70" y="760" fill="#6E5A67" font-family="Arial, Helvetica, sans-serif" font-size="11" letter-spacing="1.5">RESEARCH · FLUJOS · PROTOTIPO · ACCESIBILIDAD · DESIGN SYSTEM</text>
+</svg>

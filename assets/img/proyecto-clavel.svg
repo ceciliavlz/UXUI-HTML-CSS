@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">Clavel — SaaS de gestión para estudios de danza</title>
+  <desc id="desc">Vista estilizada del dashboard Clavel: menú lateral, saludo, métricas de alumnas, clases e ingresos, agenda semanal y reservas del día.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="800" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FBE3EC"/>
+      <stop offset="1" stop-color="#F5D6E2"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="160%">
+      <feDropShadow dx="0" dy="28" stdDeviation="34" flood-color="#5A2638" flood-opacity=".16"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="800" fill="url(#bg)"/>
+  <circle cx="1080" cy="120" r="120" fill="#FDF8F5" opacity=".45"/>
+  <circle cx="120" cy="700" r="100" fill="#F1E9F6" opacity=".7"/>
+  <text x="70" y="48" fill="#8C3B5A" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" letter-spacing="3">CLAVEL / SAAS DE GESTIÓN</text>
+  <text x="1130" y="48" text-anchor="end" fill="#6E5A67" font-family="Arial, Helvetica, sans-serif" font-size="12" letter-spacing="2">PRODUCT DESIGN · 2024</text>
+
+  <rect x="78" y="92" width="1044" height="628" rx="30" fill="#5A2638" opacity=".08"/>
+  <g filter="url(#shadow)">
+    <rect x="70" y="80" width="1060" height="628" rx="30" fill="#FFF9F6" stroke="#E8CBD6"/>
+  </g>
+
+  <rect x="70" y="80" width="230" height="628" rx="30" fill="#3A2633"/>
+  <rect x="300" y="80" width="2" height="628" fill="#E8CBD6"/>
+  <text x="100" y="130" fill="#FBE3EC" font-family="Georgia, 'Times New Roman', serif" font-size="24" font-weight="700">Clavel</text>
+  <text x="100" y="150" fill="#C9A9B8" font-family="Arial, Helvetica, sans-serif" font-size="8" letter-spacing="1.5">ESTUDIO DE DANZA</text>
+
+  <rect x="96" y="188" width="178" height="36" rx="12" fill="#C96A8A"/>
+  <text x="114" y="211" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700">Resumen</text>
+  <text x="114" y="252" fill="#C9A9B8" font-family="Arial, Helvetica, sans-serif" font-size="10">Alumnas</text>
+  <text x="114" y="288" fill="#C9A9B8" font-family="Arial, Helvetica, sans-serif" font-size="10">Clases</text>
+  <text x="114" y="324" fill="#C9A9B8" font-family="Arial, Helvetica, sans-serif" font-size="10">Reservas</text>
+  <text x="114" y="360" fill="#C9A9B8" font-family="Arial, Helvetica, sans-serif" font-size="10">Pagos</text>
+  <text x="114" y="396" fill="#C9A9B8" font-family="Arial, Helvetica, sans-serif" font-size="10">Reportes</text>
+
+  <rect x="96" y="600" width="178" height="76" rx="16" fill="#4A3241"/>
+  <circle cx="118" cy="624" r="14" fill="#C96A8A"/>
+  <text x="116" y="629" text-anchor="middle" fill="#FFFFFF" font-family="Georgia, 'Times New Roman', serif" font-size="11" font-weight="700">A</text>
+  <text x="142" y="622" fill="#FBE3EC" font-family="Arial, Helvetica, sans-serif" font-size="9" font-weight="700">Ana Suárez</text>
+  <text x="142" y="636" fill="#C9A9B8" font-family="Arial, Helvetica, sans-serif" font-size="8">Directora</text>
+  <text x="142" y="662" fill="#C9A9B8" font-family="Arial, Helvetica, sans-serif" font-size="8">Configuración</text>
+
+  <text x="338" y="136" fill="#2E2430" font-family="Georgia, 'Times New Roman', serif" font-size="30" font-weight="700">Hola, Ana</text>
+  <text x="338" y="160" fill="#6E5A67" font-family="Arial, Helvetica, sans-serif" font-size="11">Esto es lo que pasa en tu estudio hoy.</text>
+  <rect x="960" y="112" width="140" height="36" rx="18" fill="#C96A8A"/>
+  <text x="1030" y="135" text-anchor="middle" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="9" font-weight="700" letter-spacing=".8">+ NUEVA CLASE</text>
+
+  <rect x="338" y="188" width="230" height="106" rx="18" fill="#FBE3EC"/>
+  <text x="356" y="212" fill="#8C3B5A" font-family="Arial, Helvetica, sans-serif" font-size="9" letter-spacing="1">ALUMNAS ACTIVAS</text>
+  <text x="356" y="252" fill="#2E2430" font-family="Georgia, 'Times New Roman', serif" font-size="34" font-weight="700">128</text>
+  <text x="356" y="274" fill="#8C3B5A" font-family="Arial, Helvetica, sans-serif" font-size="9">+12 este mes</text>
+
+  <rect x="586" y="188" width="230" height="106" rx="18" fill="#F1E9F6"/>
+  <text x="604" y="212" fill="#6F4E92" font-family="Arial, Helvetica, sans-serif" font-size="9" letter-spacing="1">CLASES SEMANALES</text>
+  <text x="604" y="252" fill="#2E2430" font-family="Georgia, 'Times New Roman', serif" font-size="34" font-weight="700">24</text>
+  <text x="604" y="274" fill="#6F4E92" font-family="Arial, Helvetica, sans-serif" font-size="9">6 estilos distintos</text>
+
+  <rect x="834" y="188" width="266" height="106" rx="18" fill="#FDF8F0"/>
+  <text x="852" y="212" fill="#A8841B" font-family="Arial, Helvetica, sans-serif" font-size="9" letter-spacing="1">INGRESOS DEL MES</text>
+  <text x="852" y="252" fill="#2E2430" font-family="Georgia, 'Times New Roman', serif" font-size="34" font-weight="700">$ 1.240.000</text>
+  <text x="852" y="274" fill="#A8841B" font-family="Arial, Helvetica, sans-serif" font-size="9">+8% vs. septiembre</text>
+
+  <text x="338" y="336" fill="#2E2430" font-family="Georgia, 'Times New Roman', serif" font-size="18" font-weight="700">Agenda de hoy</text>
+  <text x="1070" y="334" text-anchor="end" fill="#8C3B5A" font-family="Arial, Helvetica, sans-serif" font-size="9">Ver semana</text>
+
+  <g>
+    <rect x="338" y="356" width="762" height="44" rx="12" fill="#FDF4F0" stroke="#F0DDE4"/>
+    <text x="356" y="382" fill="#6E5A67" font-family="Arial, Helvetica, sans-serif" font-size="9">09:00</text>
+    <text x="404" y="382" fill="#2E2430" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700">Contemporáneo · Nivel 2</text>
+    <text x="800" y="382" fill="#6E5A67" font-family="Arial, Helvetica, sans-serif" font-size="9">Sala A · 12/16</text>
+    <rect x="980" y="366" width="102" height="24" rx="12" fill="#EEF4EA"/>
+    <text x="1031" y="382" text-anchor="middle" fill="#5F7A55" font-family="Arial, Helvetica, sans-serif" font-size="8" font-weight="700">CONFIRMADA</text>
+  </g>
+  <g>
+    <rect x="338" y="408" width="762" height="44" rx="12" fill="#FDF4F0" stroke="#F0DDE4"/>
+    <text x="356" y="434" fill="#6E5A67" font-family="Arial, Helvetica, sans-serif" font-size="9">11:00</text>
+    <text x="404" y="434" fill="#2E2430" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700">Iniciación a la danza</text>
+    <text x="800" y="434" fill="#6E5A67" font-family="Arial, Helvetica, sans-serif" font-size="9">Sala B · 8/10</text>
+    <rect x="980" y="418" width="102" height="24" rx="12" fill="#FBE3EC"/>
+    <text x="1031" y="434" text-anchor="middle" fill="#8C3B5A" font-family="Arial, Helvetica, sans-serif" font-size="8" font-weight="700">2 LUGARES</text>
+  </g>
+  <g>
+    <rect x="338" y="460" width="762" height="44" rx="12" fill="#FDF4F0" stroke="#F0DDE4"/>
+    <text x="356" y="486" fill="#6E5A67" font-family="Arial, Helvetica, sans-serif" font-size="9">18:30</text>
+    <text x="404" y="486" fill="#2E2430" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700">Urbano · Todos los niveles</text>
+    <text x="800" y="486" fill="#6E5A67" font-family="Arial, Helvetica, sans-serif" font-size="9">Sala A · 18/20</text>
+    <rect x="980" y="470" width="102" height="24" rx="12" fill="#F1E9F6"/>
+    <text x="1031" y="486" text-anchor="middle" fill="#6F4E92" font-family="Arial, Helvetica, sans-serif" font-size="8" font-weight="700">LISTA DE ESPERA</text>
+  </g>
+
+  <rect x="338" y="524" width="372" height="152" rx="18" fill="#FFF9F6" stroke="#F0DDE4"/>
+  <text x="356" y="550" fill="#2E2430" font-family="Georgia, 'Times New Roman', serif" font-size="16" font-weight="700">Ocupación mensual</text>
+  <path d="M360 640c30-8 52-44 82-40s30 22 60 12 34-36 64-34 30 24 60 18 34-20 52-24" stroke="#C96A8A" stroke-width="3" stroke-linecap="round"/>
+  <path d="M360 648h330" stroke="#F0DDE4"/>
+  <text x="360" y="664" fill="#6E5A67" font-family="Arial, Helvetica, sans-serif" font-size="8">SEM 1</text>
+  <text x="690" y="664" text-anchor="end" fill="#6E5A67" font-family="Arial, Helvetica, sans-serif" font-size="8">SEM 4</text>
+
+  <rect x="728" y="524" width="372" height="152" rx="18" fill="#3A2633"/>
+  <text x="746" y="550" fill="#FBE3EC" font-family="Georgia, 'Times New Roman', serif" font-size="16" font-weight="700">Próximo pago</text>
+  <text x="746" y="590" fill="#FFFFFF" font-family="Georgia, 'Times New Roman', serif" font-size="30" font-weight="700">$ 86.400</text>
+  <text x="746" y="612" fill="#C9A9B8" font-family="Arial, Helvetica, sans-serif" font-size="9">14 alumnas · vence el 15/10</text>
+  <rect x="746" y="630" width="120" height="30" rx="15" fill="#C96A8A"/>
+  <text x="806" y="649" text-anchor="middle" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="8" font-weight="700">ENVIAR RECORDATORIO</text>
+
+  <text x="70" y="760" fill="#6E5A67" font-family="Arial, Helvetica, sans-serif" font-size="11" letter-spacing="1.5">RESEARCH · DASHBOARD · RESERVAS · PAGOS · DESIGN SYSTEM</text>
+</svg>

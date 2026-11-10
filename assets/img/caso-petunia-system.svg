@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">Casa Petunia — Sistema visual</title>
+  <desc id="desc">Tablero del sistema visual de Casa Petunia con paleta de color, especímenes tipográficos, botones, chips, campos, tarjeta de producto y tokens de forma.</desc>
+  <defs>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#84264D" flood-opacity=".08"/>
+    </filter>
+  </defs>
+
+  <rect width="1400" height="900" fill="#FDF8F5"/>
+  <text x="70" y="76" fill="#B23A6B" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" letter-spacing="3">CASA PETUNIA / SISTEMA VISUAL</text>
+  <text x="70" y="132" fill="#2E2430" font-family="Georgia, 'Times New Roman', serif" font-size="44" font-weight="700" letter-spacing="-1.5">Un sistema cálido, claro y repetible</text>
+  <text x="70" y="162" fill="#6E5A67" font-family="Arial, Helvetica, sans-serif" font-size="14">La identidad se apoya en una paleta de repostería, una serif con carácter y componentes simples.</text>
+
+  <text x="70" y="214" fill="#84264D" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700" letter-spacing="2">PALETA</text>
+  <g filter="url(#shadow)">
+    <rect x="70" y="236" width="250" height="180" rx="20" fill="#FFFFFF" stroke="#E8D9D5"/>
+  </g>
+  <rect x="86" y="252" width="56" height="56" rx="14" fill="#B23A6B"/>
+  <text x="154" y="276" fill="#2E2430" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700">Fresa</text>
+  <text x="154" y="292" fill="#6E5A67" font-family="Arial, Helvetica, sans-serif" font-size="9">#B23A6B</text>
+  <rect x="86" y="320" width="56" height="56" rx="14" fill="#F2D08A"/>
+  <text x="154" y="344" fill="#2E2430" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700">Vainilla</text>
+  <text x="154" y="360" fill="#6E5A67" font-family="Arial, Helvetica, sans-serif" font-size="9">#F2D08A</text>
+  <rect x="86" y="388" width="56" height="56" rx="14" fill="#FFF8F0" stroke="#E8D9D5"/>
+  <text x="154" y="412" fill="#2E2430" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700">Crema</text>
+  <text x="154" y="428" fill="#6E5A67" font-family="Arial, Helvetica, sans-serif" font-size="9">#FFF8F0</text>
+
+  <g filter="url(#shadow)">
+    <rect x="340" y="236" width="250" height="180" rx="20" fill="#FFFFFF" stroke="#E8D9D5"/>
+  </g>
+  <rect x="356" y="252" width="56" height="56" rx="14" fill="#4A2B2B"/>
+  <text x="424" y="276" fill="#2E2430" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700">Cacao</text>
+  <text x="424" y="292" fill="#6E5A67" font-family="Arial, Helvetica, sans-serif" font-size="9">#4A2B2B</text>
+  <rect x="356" y="320" width="56" height="56" rx="14" fill="#A8C3A0"/>
+  <text x="424" y="344" fill="#2E2430" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700">Pistacho</text>
+  <text x="424" y="360" fill="#6E5A67" font-family="Arial, Helvetica, sans-serif" font-size="9">#A8C3A0</text>
+  <rect x="356" y="388" width="56" height="56" rx="14" fill="#FBE3EC"/>
+  <text x="424" y="412" fill="#2E2430" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700">Pétalo</text>
+  <text x="424" y="428" fill="#6E5A67" font-family="Arial, Helvetica, sans-serif" font-size="9">#FBE3EC</text>
+
+  <text x="630" y="214" fill="#84264D" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700" letter-spacing="2">TIPOGRAFÍA</text>
+  <g filter="url(#shadow)">
+    <rect x="630" y="236" width="700" height="180" rx="20" fill="#FFF8F0" stroke="#E8D9D5"/>
+  </g>
+  <text x="654" y="286" fill="#B23A6B" font-family="Arial, Helvetica, sans-serif" font-size="9" font-weight="700" letter-spacing="2">DISPLAY / GEORGIA</text>
+  <text x="654" y="342" fill="#2E2430" font-family="Georgia, 'Times New Roman', serif" font-size="46" font-weight="700" letter-spacing="-1.5">Hecho a mano</text>
+  <text x="654" y="382" fill="#B23A6B" font-family="Georgia, 'Times New Roman', serif" font-size="26" font-style="italic">para endulzar tu día</text>
+  <text x="1010" y="286" fill="#B23A6B" font-family="Arial, Helvetica, sans-serif" font-size="9" font-weight="700" letter-spacing="2">TEXTO / ARIAL</text>
+  <text x="1010" y="316" fill="#2E2430" font-family="Arial, Helvetica, sans-serif" font-size="13">Tartas, alfajores y tortas de autor.</text>
+  <text x="1010" y="336" fill="#6E5A67" font-family="Arial, Helvetica, sans-serif" font-size="11">Ingredientes de estación y packaging</text>
+  <text x="1010" y="352" fill="#6E5A67" font-family="Arial, Helvetica, sans-serif" font-size="11">para regalar.</text>
+  <rect x="1010" y="374" width="70" height="20" rx="10" fill="#FBE3EC"/>
+  <text x="1045" y="388" text-anchor="middle" fill="#84264D" font-family="Arial, Helvetica, sans-serif" font-size="7" font-weight="700">14 / 22</text>
+
+  <text x="70" y="460" fill="#84264D" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700" letter-spacing="2">COMPONENTES</text>
+  <g filter="url(#shadow)">
+    <rect x="70" y="482" width="600" height="320" rx="20" fill="#FFFFFF" stroke="#E8D9D5"/>
+  </g>
+  <text x="94" y="516" fill="#6E5A67" font-family="Arial, Helvetica, sans-serif" font-size="8" letter-spacing="1.5">BOTONES</text>
+  <rect x="94" y="530" width="128" height="40" rx="20" fill="#B23A6B"/>
+  <text x="158" y="555" text-anchor="middle" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="9" font-weight="700" letter-spacing=".8">COMPRAR</text>
+  <rect x="234" y="530" width="128" height="40" rx="20" fill="#FFF8F0" stroke="#E8D9D5"/>
+  <text x="298" y="555" text-anchor="middle" fill="#2E2430" font-family="Arial, Helvetica, sans-serif" font-size="9" letter-spacing=".8">VER MÁS</text>
+  <rect x="374" y="530" width="128" height="40" rx="20" fill="#FBE3EC"/>
+  <text x="438" y="555" text-anchor="middle" fill="#84264D" font-family="Arial, Helvetica, sans-serif" font-size="9" font-weight="700" letter-spacing=".8">AGOTADO</text>
+
+  <text x="94" y="604" fill="#6E5A67" font-family="Arial, Helvetica, sans-serif" font-size="8" letter-spacing="1.5">CHIPS</text>
+  <rect x="94" y="618" width="86" height="26" rx="13" fill="#FBE3EC"/>
+  <text x="137" y="635" text-anchor="middle" fill="#84264D" font-family="Arial, Helvetica, sans-serif" font-size="8" font-weight="700">SIN TACC</text>
+  <rect x="190" y="618" width="78" height="26" rx="13" fill="#F1E9F6"/>
+  <text x="229" y="635" text-anchor="middle" fill="#6F4E92" font-family="Arial, Helvetica, sans-serif" font-size="8" font-weight="700">VEGANO</text>
+  <rect x="278" y="618" width="92" height="26" rx="13" fill="#EEF4EA"/>
+  <text x="324" y="635" text-anchor="middle" fill="#2E4A2A" font-family="Arial, Helvetica, sans-serif" font-size="8" font-weight="700">PARA REGALAR</text>
+
+  <text x="94" y="684" fill="#6E5A67" font-family="Arial, Helvetica, sans-serif" font-size="8" letter-spacing="1.5">CAMPO</text>
+  <rect x="94" y="698" width="250" height="40" rx="12" fill="#FFF8F0" stroke="#E8D9D5"/>
+  <text x="110" y="722" fill="#8C6A70" font-family="Arial, Helvetica, sans-serif" font-size="9">nombre@email.com</text>
+  <rect x="94" y="748" width="250" height="30" rx="15" fill="#B23A6B"/>
+  <text x="219" y="768" text-anchor="middle" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="8" font-weight="700" letter-spacing=".8">SUSCRIBIRME</text>
+
+  <g filter="url(#shadow)">
+    <rect x="386" y="618" width="260" height="160" rx="16" fill="#FFF8F0" stroke="#E8D9D5"/>
+  </g>
+  <rect x="400" y="632" width="96" height="82" rx="12" fill="#FBE3EC"/>
+  <circle cx="448" cy="673" r="26" fill="#F2D08A"/>
+  <text x="510" y="654" fill="#2E2430" font-family="Georgia, 'Times New Roman', serif" font-size="14" font-weight="700">Tarta de frutillas</text>
+  <text x="510" y="672" fill="#6E5A67" font-family="Arial, Helvetica, sans-serif" font-size="8">Porción individual</text>
+  <text x="510" y="694" fill="#B23A6B" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700">$ 4.800</text>
+  <rect x="510" y="712" width="118" height="26" rx="13" fill="#B23A6B"/>
+  <text x="569" y="729" text-anchor="middle" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="7" font-weight="700">AGREGAR</text>
+  <rect x="400" y="742" width="36" height="24" rx="12" fill="#FFFFFF" stroke="#E8D9D5"/>
+  <text x="418" y="758" text-anchor="middle" fill="#2E2430" font-family="Arial, Helvetica, sans-serif" font-size="9">−</text>
+  <text x="452" y="758" text-anchor="middle" fill="#2E2430" font-family="Arial, Helvetica, sans-serif" font-size="8">1</text>
+  <rect x="466" y="742" width="36" height="24" rx="12" fill="#FFFFFF" stroke="#E8D9D5"/>
+  <text x="484" y="758" text-anchor="middle" fill="#2E2430" font-family="Arial, Helvetica, sans-serif" font-size="9">+</text>
+
+  <text x="700" y="460" fill="#84264D" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700" letter-spacing="2">TOKENS</text>
+  <g filter="url(#shadow)">
+    <rect x="700" y="482" width="630" height="320" rx="20" fill="#3A2633"/>
+  </g>
+  <text x="724" y="518" fill="#FBE3EC" font-family="Arial, Helvetica, sans-serif" font-size="9" font-weight="700" letter-spacing="1.5">COLOR</text>
+  <rect x="724" y="534" width="72" height="44" rx="10" fill="#B23A6B"/>
+  <text x="760" y="592" text-anchor="middle" fill="#C9A9B8" font-family="Arial, Helvetica, sans-serif" font-size="7">accent</text>
+  <rect x="808" y="534" width="72" height="44" rx="10" fill="#F2D08A"/>
+  <text x="844" y="592" text-anchor="middle" fill="#C9A9B8" font-family="Arial, Helvetica, sans-serif" font-size="7">butter</text>
+  <rect x="892" y="534" width="72" height="44" rx="10" fill="#FFF8F0"/>
+  <text x="928" y="592" text-anchor="middle" fill="#C9A9B8" font-family="Arial, Helvetica, sans-serif" font-size="7">cream</text>
+  <rect x="976" y="534" width="72" height="44" rx="10" fill="#A8C3A0"/>
+  <text x="1012" y="592" text-anchor="middle" fill="#C9A9B8" font-family="Arial, Helvetica, sans-serif" font-size="7">pistachio</text>
+  <rect x="1060" y="534" width="72" height="44" rx="10" fill="#FBE3EC"/>
+  <text x="1096" y="592" text-anchor="middle" fill="#C9A9B8" font-family="Arial, Helvetica, sans-serif" font-size="7">petal</text>
+  <rect x="1144" y="534" width="72" height="44" rx="10" fill="#2E2430" stroke="#4A3241"/>
+  <text x="1180" y="592" text-anchor="middle" fill="#C9A9B8" font-family="Arial, Helvetica, sans-serif" font-size="7">ink</text>
+
+  <text x="724" y="634" fill="#FBE3EC" font-family="Arial, Helvetica, sans-serif" font-size="9" font-weight="700" letter-spacing="1.5">RADIOS</text>
+  <rect x="724" y="650" width="72" height="44" rx="8" fill="#4A3241" stroke="#C96A8A" stroke-opacity=".4"/>
+  <text x="760" y="710" text-anchor="middle" fill="#C9A9B8" font-family="Arial, Helvetica, sans-serif" font-size="7">8 px</text>
+  <rect x="808" y="650" width="72" height="44" rx="16" fill="#4A3241" stroke="#C96A8A" stroke-opacity=".4"/>
+  <text x="844" y="710" text-anchor="middle" fill="#C9A9B8" font-family="Arial, Helvetica, sans-serif" font-size="7">16 px</text>
+  <rect x="892" y="650" width="72" height="44" rx="22" fill="#4A3241" stroke="#C96A8A" stroke-opacity=".4"/>
+  <text x="928" y="710" text-anchor="middle" fill="#C9A9B8" font-family="Arial, Helvetica, sans-serif" font-size="7">22 px</text>
+  <path d="M976 694v-22c0-12 9-22 20-22h10c11 0 20 10 20 22v22Z" fill="#4A3241" stroke="#C96A8A" stroke-opacity=".4"/>
+  <text x="1006" y="710" text-anchor="middle" fill="#C9A9B8" font-family="Arial, Helvetica, sans-serif" font-size="7">arco</text>
+
+  <text x="724" y="742" fill="#FBE3EC" font-family="Arial, Helvetica, sans-serif" font-size="9" font-weight="700" letter-spacing="1.5">SOMBRA</text>
+  <rect x="724" y="758" width="118" height="30" rx="15" fill="#4A3241"/>
+  <text x="783" y="777" text-anchor="middle" fill="#C9A9B8" font-family="Arial, Helvetica, sans-serif" font-size="7">suave / 0 18 40</text>
+  <rect x="858" y="758" width="118" height="30" rx="15" fill="#4A3241"/>
+  <text x="917" y="777" text-anchor="middle" fill="#C9A9B8" font-family="Arial, Helvetica, sans-serif" font-size="7">lift / 0 24 60</text>
+
+  <text x="70" y="850" fill="#6E5A67" font-family="Arial, Helvetica, sans-serif" font-size="11" letter-spacing="1.5">PRINCIPIOS: CONTRASTE SUAVE · JERARQUÍA CLARA · COMPONENTES REUTILIZABLES · ACCESIBILIDAD AA</text>
+</svg>
