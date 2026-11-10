@@ -6,8 +6,7 @@
   "scripts": {
     "dev": "tailwindcss -i ./src/input.css -o ./dist/styles.css --watch",
     "build": "tailwindcss -i ./src/input.css -o ./dist/styles.css --minify",
-    "generate:og": "node scripts/generate-og.js",
-    "figma:build": "node figma-plugin/build.js"
+    "generate:og": "node scripts/generate-og.js"
   },
   "devDependencies": {
     "sharp": "^0.33.5",

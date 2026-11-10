@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
 Disallow: /404.html
+Sitemap: https://ux-tp-final.netlify.app/sitemap.xml

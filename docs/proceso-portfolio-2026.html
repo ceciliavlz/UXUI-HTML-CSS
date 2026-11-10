@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Proceso de diseño — Portfolio Cecilia Velzi</title>
+  <style>
+    @page { size: 13.333in 7.5in; margin: 0; }
+    :root {
+      color-scheme: light;
+      --paper: #fdf8f5;
+      --surface: #fff;
+      --ink: #2e2430;
+      --muted: #716575;
+      --accent: #b23a6b;
+      --lilac: #6f4e92;
+      --gold: #9a7510;
+      --line: #e7dce4;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.45 "Segoe UI", Arial, sans-serif; }
+    .slide {
+      position: relative; display: flex; flex-direction: column; justify-content: space-between;
+      width: 13.333in; height: 7.5in; padding: .62in .78in .5in;
+      overflow: hidden; page-break-after: always; break-after: page;
+      background: radial-gradient(ellipse at 95% 0%, #f6e8ef 0, transparent 38%), var(--paper);
+    }
+    .slide:last-child { page-break-after: auto; break-after: auto; }
+    .topline, .foot { display: flex; justify-content: space-between; align-items: center; color: var(--muted); font-size: 10px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+    .foot { padding-top: 12px; border-top: 1px solid var(--line); letter-spacing: .08em; }
+    .content { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+    h1, h2, h3, p { margin: 0; }
+    h1, h2, h3 { font-family: Georgia, "Times New Roman", serif; letter-spacing: -.035em; }
+    h1 { max-width: 9.5in; font-size: 56px; line-height: 1.03; }
+    h2 { margin-bottom: 20px; font-size: 38px; line-height: 1.08; }
+    h3 { margin-bottom: 8px; font-size: 21px; }
+    p { color: var(--muted); }
+    .kicker { margin-bottom: 17px; color: var(--accent); font-size: 11px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; }
+    .lead { max-width: 8.6in; margin-top: 22px; font-size: 21px; line-height: 1.5; }
+    .accent { color: var(--accent); }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .grid.two { grid-template-columns: repeat(2, 1fr); }
+    .card { padding: 21px 23px; border: 1px solid var(--line); border-radius: 18px; background: rgba(255,255,255,.82); }
+    .card p, li { font-size: 14px; line-height: 1.55; }
+    .card a, .source { color: var(--lilac); font-size: 12px; overflow-wrap: anywhere; }
+    .pill { display: inline-block; margin: 0 7px 8px 0; padding: 7px 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); color: var(--ink); font-size: 12px; font-weight: 700; }
+    .big-number { margin-bottom: 4px; color: var(--accent); font-family: Georgia, serif; font-size: 40px; }
+    .quote { max-width: 9in; padding-left: 22px; border-left: 3px solid var(--accent); color: var(--ink); font: italic 26px/1.35 Georgia, serif; }
+    ul { margin: 8px 0 0; padding-left: 20px; }
+    li { margin: 5px 0; color: var(--muted); }
+    .note { margin-top: 15px; padding: 13px 16px; border-radius: 12px; background: #f7edf2; color: var(--ink); font-size: 13px; }
+    .cover-mark { display: flex; width: 62px; height: 62px; align-items: center; justify-content: center; margin-bottom: 28px; border-radius: 50% 50% 8px 8px; background: var(--accent); color: #fff; font: 700 22px Georgia, serif; }
+    .sources { margin-top: 12px; font-size: 10px; }
+    .sources a { color: var(--lilac); text-decoration: none; }
+    @media screen {
+      body { padding: 20px; }
+      .slide { margin: 0 auto 20px; box-shadow: 0 8px 35px #2e243022; }
+    }
+  </style>
+</head>
+<body>
+  <section class="slide">
+    <div class="topline"><span>Práctica final · Diseño UX/UI · 2026</span><span>Proceso / 01</span></div>
+    <div class="content">
+      <div class="cover-mark">CV</div>
+      <p class="kicker">Portfolio personal</p>
+      <h1>Diseñar experiencias que se sienten <span class="accent">como en casa.</span></h1>
+      <p class="lead">Cecilia Velzi · UX/UI + Front-end<br>De una identidad cálida a un sitio accesible, responsive y publicado.</p>
+    </div>
+    <div class="foot"><span>ux-tp-final.netlify.app</span><span>10/10</span></div>
+  </section>
+
+  <section class="slide">
+    <div class="topline"><span>01 / Usuario y escenario</span><span>Proceso / 02</span></div>
+    <div class="content">
+      <p class="kicker">Proto-persona · hipótesis de diseño</p>
+      <h2>Una visita con poco tiempo y una decisión que tomar.</h2>
+      <div class="grid two">
+        <article class="card">
+          <p class="big-number">30 s</p><h3>Reclutadora o cliente</h3>
+          <p>Necesita identificar perfil, especialidad, ubicación, trabajos relevantes y una forma directa de contacto antes de decidir si profundiza.</p>
+        </article>
+        <article class="card">
+          <h3>Escenario</h3>
+          <p>Entra desde un enlace compartido, escanea la home, abre el caso más reciente para entender el criterio y busca cómo iniciar una conversación.</p>
+          <div style="margin-top:15px"><span class="pill">Entender</span><span class="pill">Evaluar</span><span class="pill">Contactar</span></div>
+        </article>
+      </div>
+      <p class="note">Es un proto-persona para orientar la arquitectura, no el resultado de una investigación cuantitativa de visitantes del sitio.</p>
+    </div>
+    <div class="foot"><span>Decisión: jerarquía clara y salida visible hacia proyectos/contacto</span><span>02/10</span></div>
+  </section>
+
+  <section class="slide">
+    <div class="topline"><span>02 / Benchmark de portfolios</span><span>Proceso / 03</span></div>
+    <div class="content">
+      <p class="kicker">Lectura comparativa · observaciones e interpretación</p>
+      <h2>Tres formas de hacer visible el trabajo.</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>Brittany Chiang</h3>
+          <p>La separación entre About, experiencia y proyectos permite escanear trayectoria y evidencia profesional.</p>
+          <p style="margin-top:10px"><strong>Tomar:</strong> navegación directa y proyectos identificables.</p>
+          <a href="https://brittanychiang.com">brittanychiang.com</a>
+        </article>
+        <article class="card">
+          <h3>Josh Comeau</h3>
+          <p>Artículos y tutoriales extensos muestran criterio técnico mediante explicaciones y ejemplos interactivos.</p>
+          <p style="margin-top:10px"><strong>Tomar:</strong> voz propia y profundidad cuando el visitante elige explorar.</p>
+          <a href="https://www.joshwcomeau.com">joshwcomeau.com</a>
+        </article>
+        <article class="card">
+          <h3>Maggie Appleton</h3>
+          <p>Ensayos y piezas visuales hacen que ideas y personalidad formen parte de la experiencia.</p>
+          <p style="margin-top:10px"><strong>Tomar:</strong> calidez visual y contenido con identidad.</p>
+          <a href="https://maggieappleton.com">maggieappleton.com</a>
+        </article>
+      </div>
+      <p class="note">Síntesis para este proyecto: priorizar escaneabilidad, sumar voz visual propia y reservar la profundidad para un caso de estudio separado.</p>
+    </div>
+    <div class="foot"><span>Referencias consultadas el 10/11/2026</span><span>03/10</span></div>
+  </section>
+
+  <section class="slide">
+    <div class="topline"><span>03 / Concepto visual</span><span>Proceso / 04</span></div>
+    <div class="content">
+      <p class="kicker">Cálido · editorial · cercano</p>
+      <h2>Una interfaz funcional con sensibilidad de hogar.</h2>
+      <div class="grid two">
+        <article class="card">
+          <h3>Traducción visual</h3>
+          <p>Fraunces aporta carácter editorial; Outfit sostiene lectura e interfaz. Arcos, líneas botánicas y textura sugieren cuidado sin competir con el contenido.</p>
+          <div style="margin-top:15px"><span class="pill">Fraunces</span><span class="pill">Outfit</span><span class="pill">Ritmo editorial</span></div>
+        </article>
+        <article class="card">
+          <h3>Tokens principales</h3>
+          <p>Marfil y blanco para fondos; ciruela para tinta; berry como acento, con lila y dorado en roles secundarios. Tema oscuro con valores propios.</p>
+          <div style="display:flex;gap:8px;margin-top:18px">
+            <span style="width:44px;height:34px;background:#FDF8F5;border:1px solid #ddd;border-radius:8px"></span>
+            <span style="width:44px;height:34px;background:#2E2430;border-radius:8px"></span>
+            <span style="width:44px;height:34px;background:#B23A6B;border-radius:8px"></span>
+            <span style="width:44px;height:34px;background:#6F4E92;border-radius:8px"></span>
+            <span style="width:44px;height:34px;background:#C9A227;border-radius:8px"></span>
+          </div>
+        </article>
+      </div>
+    </div>
+    <div class="foot"><span>La dirección visual propia se documenta en el archivo Figma del proyecto</span><span>04/10</span></div>
+  </section>
+
+  <section class="slide">
+    <div class="topline"><span>04 / Arquitectura de información</span><span>Proceso / 05</span></div>
+    <div class="content">
+      <p class="kicker">Home one-page + caso interno</p>
+      <h2>Primero responder. Después profundizar.</h2>
+      <div class="grid">
+        <article class="card"><p class="big-number">01</p><h3>Presentar</h3><p>Inicio, rol, propuesta de valor, ubicación y acciones principales.</p></article>
+        <article class="card"><p class="big-number">02</p><h3>Demostrar</h3><p>Sobre mí, métricas, habilidades, proyectos y trayectoria en bloques escaneables.</p></article>
+        <article class="card"><p class="big-number">03</p><h3>Profundizar y cerrar</h3><p>Casa Petunia explica proceso; contacto y redes reducen fricción al final.</p></article>
+      </div>
+      <p class="note">La navegación usa anclas para la home; el caso de estudio tiene índice propio con contexto, research, arquitectura, sistema, solución, validación, resultados y aprendizajes.</p>
+    </div>
+    <div class="foot"><span>Objetivo: encontrar quién, qué y cómo contactar sin navegar una arquitectura innecesaria</span><span>05/10</span></div>
+  </section>
+
+  <section class="slide">
+    <div class="topline"><span>05 / Wireframes y decisiones</span><span>Proceso / 06</span></div>
+    <div class="content">
+      <p class="kicker">De estructura a interfaz</p>
+      <h2>La jerarquía se mantiene; el detalle cambia con el ancho.</h2>
+      <div class="grid two">
+        <article class="card"><h3>Home</h3><ul><li>Hero con propuesta, retrato y CTA.</li><li>Métricas y capacidades para dar contexto.</li><li>Proyectos con enlace a un caso desarrollado.</li><li>Trayectoria, perfil y contacto al alcance.</li></ul></article>
+        <article class="card"><h3>Caso Casa Petunia</h3><ul><li>Índice sticky en escritorio y orden lineal en móvil.</li><li>Figuras para research, wireframes, sistema y pantallas.</li><li>Hallazgos vinculados con cambios de diseño.</li><li>Resultados cualitativos, sin métricas de producción inventadas.</li></ul></article>
+      </div>
+      <p class="note">Ver el archivo Figma enlazado en el README para revisar wireframes y pantallas fuente; este PDF resume las decisiones, no sustituye el archivo editable.</p>
+    </div>
+    <div class="foot"><span>Responsive · mobile-first · anchors con scroll margin</span><span>06/10</span></div>
+  </section>
+
+  <section class="slide">
+    <div class="topline"><span>06 / Sistema y accesibilidad</span><span>Proceso / 07</span></div>
+    <div class="content">
+      <p class="kicker">Reglas reutilizables, no pantallas aisladas</p>
+      <h2>Consistencia que también se puede usar.</h2>
+      <div class="grid">
+        <article class="card"><h3>Tokens</h3><p>Color, tipografía, escala de espaciado, radios, líneas y sombras se comparten entre páginas.</p></article>
+        <article class="card"><h3>Estados</h3><p>Foco visible, hover, tema claro/oscuro y movimiento reducido acompañan los componentes interactivos.</p></article>
+        <article class="card"><h3>Teclado</h3><p>Skip link, landmarks y menú móvil con control ARIA, Escape y restauración del foco.</p></article>
+      </div>
+      <p class="note">La página se implementa en HTML semántico y Tailwind compilado por CLI; no carga Tailwind desde CDN ni utiliza frameworks de UI.</p>
+    </div>
+    <div class="foot"><span>Recursos: Fraunces + Outfit · licencia OFL incluida</span><span>07/10</span></div>
+  </section>
+
+  <section class="slide">
+    <div class="topline"><span>07 / Caso de estudio</span><span>Proceso / 08</span></div>
+    <div class="content">
+      <p class="kicker">Casa Petunia · e-commerce conceptual</p>
+      <h2>Convertir dudas de compra en información oportuna.</h2>
+      <div class="grid two">
+        <article class="card"><h3>Research documentado</h3><p>Cinco entrevistas semiestructuradas y análisis de tres comercios de repostería artesanal. Temas: ocasión, confianza en el producto y retiro.</p><p class="sources">El caso completo y sus límites están en <a href="https://ux-tp-final.netlify.app/caso-estudio.html">caso-estudio.html</a>.</p></article>
+        <article class="card"><h3>Decisión y respuesta</h3><p>Mostrar porciones, ingredientes, packaging y retiro antes del checkout; reducir la compra a tres pasos y no exigir cuenta.</p><p class="sources">Proyecto ficticio: los resultados comerciales son objetivos futuros, no métricas de producción.</p></article>
+      </div>
+    </div>
+    <div class="foot"><span>El caso completo incluye ocho secciones de proceso</span><span>08/10</span></div>
+  </section>
+
+  <section class="slide">
+    <div class="topline"><span>08 / Validación y aprendizaje</span><span>Proceso / 09</span></div>
+    <div class="content">
+      <p class="kicker">Pruebas del prototipo Casa Petunia</p>
+      <h2>Observar la duda permitió cambiar la interfaz.</h2>
+      <div class="grid">
+        <article class="card"><p class="big-number">01</p><h3>Porciones</h3><p>Cuánto rendía no era evidente; se añadió cantidad de personas y una referencia visual.</p></article>
+        <article class="card"><p class="big-number">02</p><h3>Retiro</h3><p>La elección aparecía tarde; se adelantó a producto y se repitió en checkout.</p></article>
+        <article class="card"><p class="big-number">03</p><h3>Regalo</h3><p>Faltaba mostrar el packaging; se incorporó la caja y una nota para regalar.</p></article>
+      </div>
+      <p class="note">El caso informa dos rondas con cinco personas. La prueba de usabilidad del portfolio personal con tres participantes distintos sigue pendiente; no se atribuyen estos hallazgos a la home del portfolio.</p>
+    </div>
+    <div class="foot"><span>Hallazgos y cambios descritos en el caso Casa Petunia</span><span>09/10</span></div>
+  </section>
+
+  <section class="slide">
+    <div class="topline"><span>09 / Implementación y próximos pasos</span><span>Proceso / 10</span></div>
+    <div class="content">
+      <p class="kicker">Publicado en Netlify</p>
+      <h2>Del sistema visual a una experiencia navegable.</h2>
+      <div class="grid two">
+        <article class="card"><h3>Entregado</h3><ul><li>Home, caso de estudio y 404 responsive.</li><li>CSS compilado con Tailwind y JavaScript vanilla.</li><li>HTTPS, metadata, sitemap y robots apuntando al dominio final.</li><li>Rama GitHub `tp-final` con commits incrementales.</li></ul></article>
+        <article class="card"><h3>Para cerrar</h3><ul><li>Confirmar permisos y contenido de Figma.</li><li>Probar el portfolio con al menos tres personas.</li><li>Adjuntar Lighthouse mobile y capturas de 375/768/1280 px.</li><li>Confirmar deploy automático en Netlify desde GitHub.</li></ul></article>
+      </div>
+      <p class="note">Sitio: https://ux-tp-final.netlify.app · Repositorio y enlaces completos en README.md.</p>
+    </div>
+    <div class="foot"><span>Cecilia Velzi · Práctica Final UX/UI · 2026</span><span>10/10</span></div>
+  </section>
+</body>
+</html>

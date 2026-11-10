@@ -4,6 +4,8 @@ node_modules/
 /dist/
 /figma-plugin
 .netlify/
+.vercel/
+/.edge-*/
 coverage/
 playwright-report/
 test-results/
@@ -13,6 +15,4 @@ test-results/
 Thumbs.db
 *.log
 *.tmp
-package-lock.json
 consigna.pdf
-README.md
