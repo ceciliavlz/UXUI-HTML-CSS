@@ -75,12 +75,12 @@ npm run build
 
 ## Despliegue
 
-El sitio está publicado en Netlify: **[ux-tp-final.netlify.app](https://ux-tp-final.netlify.app/)**. La configuración de [netlify.toml](./netlify.toml) establece:
+El sitio está publicado en Netlify: **[ux-tp-final.netlify.app](https://ux-tp-final.netlify.app/)**. La última versión enviada a `tp-final` ya está visible en la URL publicada. La configuración de [netlify.toml](./netlify.toml) establece:
 
 - Comando de build: `npm run build`
 - Directorio publicado: raíz del proyecto (`.`)
 
-Para reproducir el despliegue automático, conectar el repositorio de GitHub en Netlify, seleccionar la rama `tp-final` y mantener esos valores de build. Cada push a esa rama debe producir un deploy; el último cambio debe verificarse en el panel de Deploys.
+Para reproducir el despliegue automático, conectar el repositorio de GitHub en Netlify, seleccionar la rama `tp-final` y mantener esos valores de build. Aunque la última versión está visible en producción, falta confirmar en el panel de Netlify que `tp-final` siga configurada como rama de producción y que el deploy automático esté activo.
 
 La URL pública está aplicada en los canonical, Open Graph, datos estructurados, `sitemap.xml` y `robots.txt`.
 
@@ -97,7 +97,7 @@ Las capturas actuales se tomaron con Edge headless desde el build local, en los 
 - [Home · 1280 px](./docs/capturas/home-1280.png)
 - [Casa Petunia · 375 px](./docs/capturas/case-375.png)
 
-Lighthouse 12.8.2 sobre el build local alcanzó el objetivo móvil de 90 puntos en las cuatro categorías para la home y el caso. Los reportes y su alcance están documentados en `docs/lighthouse/README.md`; conviene repetirlos tras cada cambio relevante de producción.
+Lighthouse 12.8.2 sobre el sitio publicado alcanzó el objetivo móvil de 90 puntos en las cuatro categorías: home 98/100/100/100 y caso 99/100/100/100 (performance/accesibilidad/buenas prácticas/SEO). Los reportes y su alcance están documentados en `docs/lighthouse/README.md`; conviene repetirlos tras cada cambio relevante de producción.
 
 ## Accesibilidad implementada
 
@@ -115,8 +115,9 @@ Lighthouse 12.8.2 sobre el build local alcanzó el objetivo móvil de 90 puntos 
 - [x] Rama de entrega con al menos 10 commits incrementales.
 - [x] Metadatos de producción, sitemap y robots apuntando a Netlify.
 - [x] Resumen del proceso en PDF (máximo 10 diapositivas).
-- [x] Capturas responsive y Lighthouse mobile sobre el build verificado.
+- [x] Capturas responsive del build local y Lighthouse mobile del sitio publicado.
+- [x] Última versión del repo visible en producción después del push a `tp-final`.
 - [ ] Actualizar la descripción del repositorio GitHub con la URL pública.
 - [ ] Confirmar que el archivo Figma permita acceso de lectura al docente e incluya research, wireframes, design system y prototipo navegable.
 - [ ] Completar una prueba de usabilidad del portfolio con al menos tres participantes y registrar hallazgos/cambios.
-- [ ] Verificar en Netlify que `tp-final` sea la rama de producción y que el deploy automático esté activo después del próximo push.
+- [ ] Confirmar en el panel de Netlify que `tp-final` sea la rama de producción y que el deploy automático esté activo.
