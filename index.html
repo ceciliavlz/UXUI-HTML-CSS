@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cecilia Velzi — Diseñadora UX/UI &amp; Front-end</title>
+    <meta name="description" content="Portfolio de Cecilia Velzi, diseñadora UX/UI y front-end en Entre Ríos. Investigo, diseño y construyo experiencias digitales cálidas, claras y accesibles.">
+    <meta name="author" content="Cecilia Velzi">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#FDF8F5">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_AR">
+    <meta property="og:site_name" content="Cecilia Velzi">
+    <meta property="og:title" content="Cecilia Velzi — Diseñadora UX/UI &amp; Front-end">
+    <meta property="og:description" content="Diseño experiencias que se sienten como en casa. Portfolio UX/UI + front-end y caso de estudio Casa Petunia.">
+    <meta property="og:image" content="/assets/img/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Cecilia Velzi, diseñadora UX/UI y front-end — Portfolio 2026">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Cecilia Velzi — Diseñadora UX/UI &amp; Front-end">
+    <meta name="twitter:description" content="Diseño experiencias que se sienten como en casa. Portfolio UX/UI + front-end y caso de estudio Casa Petunia.">
+    <meta name="twitter:image" content="/assets/img/og-image.png">
+
+    <script>
+      (function () {
+        document.documentElement.classList.add("js");
+        try {
+          var stored = localStorage.getItem("theme");
+          var dark = stored ? stored === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+          if (dark) document.documentElement.classList.add("dark");
+        } catch (error) {}
+      })();
+    </script>
+
+    <link rel="preload" href="assets/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="assets/fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
+    <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="stylesheet" href="dist/styles.css">
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Cecilia Velzi",
+        "jobTitle": "Diseñadora UX/UI y Front-end",
+        "email": "hola@ceciliavelzi.com",
+        "image": "/assets/img/cecilia-velzi-896.webp",
+        "sameAs": [
+          "https://github.com/ceciliavelzi",
+          "https://www.behance.net/ceciliavelzi",
+          "https://www.linkedin.com/in/ceciliavelzi/"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "addressRegion": "Entre Ríos",
+          "addressCountry": "AR"
+        },
+        "knowsAbout": [
+          "UX Research",
+          "Diseño de interfaz",
+          "Design systems",
+          "HTML5",
+          "CSS3",
+          "JavaScript",
+          "Tailwind CSS",
+          "Accesibilidad web"
+        ]
+      }
+    </script>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Saltar al contenido</a>
+
+    <header class="sticky top-0 z-50 border-b border-line/80 bg-bg/90 backdrop-blur-xl">
+      <div class="container-page flex h-[76px] items-center justify-between gap-5">
+        <a class="flex items-center gap-3" href="#inicio" aria-label="Cecilia Velzi — Inicio">
+          <span class="arch-frame flex h-11 w-10 items-center justify-center bg-accent font-display text-lg font-semibold text-on-accent">CV</span>
+          <span class="hidden leading-tight sm:block">
+            <span class="block font-display text-[17px] font-semibold tracking-tight">Cecilia Velzi</span>
+            <span class="mt-0.5 block text-[9px] font-semibold uppercase tracking-[0.18em] text-muted">UX/UI · Front-end</span>
+          </span>
+        </a>
+
+        <nav class="hidden items-center gap-5 lg:flex xl:gap-6" aria-label="Navegación principal">
+          <a class="nav-link" href="#sobre-mi" data-nav="sobre-mi">Sobre mí</a>
+          <a class="nav-link" href="#metricas" data-nav="metricas">Métricas</a>
+          <a class="nav-link" href="#skills" data-nav="skills">Skills</a>
+          <a class="nav-link" href="#proyectos" data-nav="proyectos">Proyectos</a>
+          <a class="nav-link" href="#trayectoria" data-nav="trayectoria">Trayectoria</a>
+          <a class="nav-link" href="#caso-petunia" data-nav="caso-petunia">Caso</a>
+          <a class="nav-link" href="#contacto" data-nav="contacto">Contacto</a>
+        </nav>
+
+        <div class="flex items-center gap-2">
+          <a class="hidden h-10 w-10 items-center justify-center rounded-full border border-line text-ink transition-colors hover:border-accent hover:text-accent sm:flex" href="https://github.com/ceciliavelzi" target="_blank" rel="noopener noreferrer" aria-label="Perfil de GitHub">
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 .5C5.73.5.98 5.24.98 11.5c0 4.86 3.15 8.98 7.52 10.43.55.1.75-.24.75-.53 0-.26-.01-1.13-.02-2.05-3.06.66-3.71-1.3-3.71-1.3-.5-1.27-1.22-1.61-1.22-1.61-.99-.68.08-.66.08-.66 1.1.08 1.68 1.13 1.68 1.13.98 1.67 2.57 1.19 3.2.91.1-.71.38-1.19.69-1.46-2.44-.28-5.01-1.22-5.01-5.43 0-1.2.43-2.18 1.13-2.95-.11-.28-.49-1.4.11-2.91 0 0 .92-.29 3.02 1.13.88-.24 1.82-.36 2.75-.36.93 0 1.87.12 2.75.36 2.1-1.42 3.02-1.13 3.02-1.13.6 1.51.22 2.63.11 2.91.7.77 1.13 1.75 1.13 2.95 0 4.22-2.58 5.15-5.03 5.42.39.34.74 1.01.74 2.04 0 1.47-.01 2.66-.01 3.02 0 .29.2.64.76.53 4.36-1.45 7.51-5.57 7.51-10.43C23.02 5.24 18.27.5 12 .5Z"/>
+            </svg>
+          </a>
+          <a class="hidden h-10 w-10 items-center justify-center rounded-full border border-line font-display text-xs font-semibold text-ink transition-colors hover:border-accent hover:text-accent sm:flex" href="https://www.behance.net/ceciliavelzi" target="_blank" rel="noopener noreferrer" aria-label="Perfil de Behance">Bē</a>
+          <button class="flex h-10 w-10 items-center justify-center rounded-full border border-line text-ink transition-colors hover:border-accent hover:text-accent" type="button" data-theme-toggle aria-label="Activar tema oscuro" title="Cambiar tema">
+            <svg class="h-4 w-4 dark:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/>
+            </svg>
+            <svg class="hidden h-4 w-4 dark:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="4"/>
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"/>
+            </svg>
+          </button>
+
+          <a class="btn btn-primary btn-small hidden sm:inline-flex" href="#contacto">Hablemos</a>
+
+          <button class="flex h-10 w-10 items-center justify-center rounded-full border border-line text-ink transition-colors hover:border-accent hover:text-accent lg:hidden" type="button" data-menu-toggle aria-controls="mobile-menu" aria-expanded="false">
+            <svg class="h-5 w-5" data-menu-icon="open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+              <path d="M4 7h16M4 12h16M4 17h16"/>
+            </svg>
+            <svg class="hidden h-5 w-5" data-menu-icon="close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+              <path d="M6 6l12 12M18 6L6 18"/>
+            </svg>
+            <span class="sr-only">Abrir menú</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="hidden border-t border-line bg-bg lg:hidden" id="mobile-menu">
+        <nav class="container-page flex flex-col gap-1 py-4" aria-label="Navegación móvil">
+          <a class="flex min-h-[44px] items-center justify-between rounded-xl px-3 text-sm font-medium text-ink transition-colors hover:bg-surface" href="#sobre-mi" data-nav="sobre-mi">
+            Sobre mí <span class="text-[10px] font-semibold text-muted">01</span>
+          </a>
+          <a class="flex min-h-[44px] items-center justify-between rounded-xl px-3 text-sm font-medium text-ink transition-colors hover:bg-surface" href="#metricas" data-nav="metricas">
+            Métricas <span class="text-[10px] font-semibold text-muted">02</span>
+          </a>
+          <a class="flex min-h-[44px] items-center justify-between rounded-xl px-3 text-sm font-medium text-ink transition-colors hover:bg-surface" href="#skills" data-nav="skills">
+            Skills <span class="text-[10px] font-semibold text-muted">03</span>
+          </a>
+          <a class="flex min-h-[44px] items-center justify-between rounded-xl px-3 text-sm font-medium text-ink transition-colors hover:bg-surface" href="#proyectos" data-nav="proyectos">
+            Proyectos <span class="text-[10px] font-semibold text-muted">04</span>
+          </a>
+          <a class="flex min-h-[44px] items-center justify-between rounded-xl px-3 text-sm font-medium text-ink transition-colors hover:bg-surface" href="#trayectoria" data-nav="trayectoria">
+            Trayectoria <span class="text-[10px] font-semibold text-muted">05</span>
+          </a>
+          <a class="flex min-h-[44px] items-center justify-between rounded-xl px-3 text-sm font-medium text-ink transition-colors hover:bg-surface" href="#caso-petunia" data-nav="caso-petunia">
+            Caso Casa Petunia <span class="text-[10px] font-semibold text-muted">06</span>
+          </a>
+          <a class="flex min-h-[44px] items-center justify-between rounded-xl px-3 text-sm font-medium text-ink transition-colors hover:bg-surface" href="#contacto" data-nav="contacto">
+            Contacto <span class="text-[10px] font-semibold text-muted">07</span>
+          </a>
+          <div class="mt-3 grid grid-cols-2 gap-2">
+            <a class="btn btn-primary" href="#contacto">Hablemos</a>
+            <a class="btn btn-ghost" href="https://www.behance.net/ceciliavelzi" target="_blank" rel="noopener noreferrer">Behance ↗</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="relative overflow-hidden border-b border-line" id="inicio" aria-labelledby="hero-title">
+        <div class="paper-grid grid-mask absolute inset-0" aria-hidden="true"></div>
+        <div class="hero-halo absolute inset-0" aria-hidden="true"></div>
+
+        <div class="container-page relative grid gap-12 pb-16 pt-14 sm:pt-20 lg:grid-cols-[1.03fr_0.97fr] lg:items-center lg:gap-14 lg:pb-24 lg:pt-24">
+          <div class="reveal">
+            <div class="mb-6 flex flex-wrap items-center gap-2">
+              <span class="tag tag-accent"><span class="h-1.5 w-1.5 rounded-full bg-accent"></span>Disponible para proyectos</span>
+              <span class="tag">Entre Ríos, AR · UTC-3</span>
+            </div>
+
+            <p class="eyebrow mb-5">Portfolio 2026 / UX/UI + Front-end</p>
+            <h1 class="display-title max-w-[12ch]" id="hero-title">Diseño experiencias que se sienten <em class="font-normal italic text-accent">como en casa.</em></h1>
+            <p class="lead mt-7 max-w-xl">Soy Cecilia Velzi, diseñadora UX/UI y front-end. Investigo, diseño y construyo interfaces cálidas, claras y accesibles para marcas que quieren conectar de verdad con las personas.</p>
+
+            <div class="mt-8 flex flex-wrap items-center gap-3">
+              <a class="btn btn-primary" href="#proyectos">
+                Ver proyectos
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M5 12h14M13 6l6 6-6 6"/>
+                </svg>
+              </a>
+              <a class="btn btn-ghost" href="#contacto">Hablemos</a>
+              <a class="group inline-flex min-h-[44px] items-center gap-2 px-2 text-sm font-semibold text-muted transition-colors hover:text-accent" href="#caso-petunia">
+                Ver caso Casa Petunia
+                <svg class="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M7 17L17 7M7 7h10v10"/>
+                </svg>
+              </a>
+            </div>
+
+            <dl class="mt-11 grid max-w-lg grid-cols-3 gap-4 border-t border-line pt-6">
+              <div>
+                <dt class="text-[9px] font-semibold uppercase tracking-[0.18em] text-muted">Base</dt>
+                <dd class="mt-1 text-sm font-medium">Entre Ríos, AR</dd>
+              </div>
+              <div>
+                <dt class="text-[9px] font-semibold uppercase tracking-[0.18em] text-muted">Foco</dt>
+                <dd class="mt-1 text-sm font-medium">Research + interfaz</dd>
+              </div>
+              <div>
+                <dt class="text-[9px] font-semibold uppercase tracking-[0.18em] text-muted">Código</dt>
+                <dd class="mt-1 text-sm font-medium">HTML · CSS · JS</dd>
+              </div>
+            </dl>
+          </div>
+
+          <div class="reveal reveal-delay-1 pb-12">
+            <div class="relative mx-auto w-full max-w-[27rem]">
+              <span class="sticker absolute -left-2 top-10 z-20 sm:-left-6" aria-hidden="true">
+                <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M18.4 5.6 5.6 18.4"/>
+                </svg>
+                hola, soy Ceci
+              </span>
+              <span class="sticker sticker-lilac absolute -right-1 bottom-24 z-20 sm:-right-5" aria-hidden="true">diseño + código</span>
+
+              <div class="absolute -inset-4 rounded-[999px_999px_2rem_2rem] border border-accent/20" aria-hidden="true"></div>
+              <div class="absolute -inset-8 rounded-[999px_999px_2.5rem_2.5rem] border border-dashed border-lilac/25" aria-hidden="true"></div>
+
+              <div class="arch-frame relative border border-line bg-surface-2 shadow-soft">
+                <img class="aspect-[4/5] w-full object-cover" src="assets/img/cecilia-velzi-640.webp" srcset="assets/img/cecilia-velzi-480.webp 480w, assets/img/cecilia-velzi-640.webp 640w, assets/img/cecilia-velzi-720.webp 720w, assets/img/cecilia-velzi-896.webp 896w" sizes="(min-width: 1024px) 430px, 90vw" alt="Retrato de Cecilia Velzi, diseñadora UX/UI y front-end" width="640" height="800" loading="eager" fetchpriority="high" decoding="async">
+                <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#2E2430]/55 via-transparent to-transparent" aria-hidden="true"></div>
+                <div class="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 p-5">
+                  <div>
+                    <p class="font-display text-xl font-semibold text-white">Cecilia Velzi</p>
+                    <p class="mt-0.5 text-[9px] font-semibold uppercase tracking-[0.18em] text-white/75">UX/UI + Front-end · 2026</p>
+                  </div>
+                  <span class="rounded-full border border-white/30 bg-white/10 px-2.5 py-1 text-[8px] font-semibold uppercase tracking-[0.16em] text-white backdrop-blur">Entre Ríos</span>
+                </div>
+              </div>
+
+              <svg class="absolute -bottom-9 -left-7 h-24 w-24 text-accent/60" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+                <path d="M50 92V44" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M50 66c-14 0-24-8-24-20 14 0 24 8 24 20Z" fill="currentColor" opacity=".18"/>
+                <path d="M50 56c14 0 24-8 24-20-14 0-24 8-24 20Z" fill="currentColor" opacity=".28"/>
+                <circle cx="50" cy="28" r="12" fill="currentColor" opacity=".28"/>
+                <circle cx="50" cy="28" r="5" fill="currentColor" opacity=".55"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="relative border-t border-line/70 bg-surface/50">
+          <div class="container-page flex flex-wrap items-center justify-between gap-4 py-4">
+            <span class="text-[9px] font-semibold uppercase tracking-[0.2em] text-muted">Herramientas del día a día</span>
+            <div class="flex flex-wrap gap-x-5 gap-y-2 text-[10px] font-semibold uppercase tracking-[0.12em] text-muted">
+              <span>Figma</span>
+              <span>FigJam</span>
+              <span>HTML5</span>
+              <span>CSS3</span>
+              <span>JavaScript</span>
+              <span>Tailwind</span>
+              <span>Git</span>
+              <span>Netlify</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="border-b border-line py-20 sm:py-24" id="sobre-mi" aria-labelledby="sobre-mi-title">
+        <div class="container-page grid gap-12 lg:grid-cols-[1.02fr_0.98fr] lg:gap-16">
+          <div class="reveal">
+            <p class="eyebrow">Sobre mí / 01</p>
+            <h2 class="section-title mt-4 max-w-2xl" id="sobre-mi-title">Diseño con cabeza, código y cuidado.</h2>
+
+            <div class="mt-7 space-y-5 body-copy">
+              <p>Soy Cecilia, diseñadora UX/UI y front-end en Entre Ríos. Me mueve esa instancia en la que una idea todavía es una conversación y, un rato después, ya se puede tocar: un flujo que se entiende, una pantalla que respira, una marca que se siente propia.</p>
+              <p>Trabajo el proyecto completo: escucho, investigo, ordeno la información, prototipo, pruebo y construyo. Me importa que el diseño no se quede en una imagen linda, sino que funcione, sea accesible y pueda sostenerse en el tiempo.</p>
+              <p>Disfruto especialmente los proyectos con sensibilidad por lo artesanal, lo editorial y lo humano. Casa Petunia, mi caso de estudio, nació justamente de esa búsqueda: que comprar un postre para regalar se sienta tan cálido como recibirlo.</p>
+            </div>
+
+            <div class="mt-8 border-l-2 border-accent pl-5">
+              <p class="quote-mark" aria-hidden="true">“</p>
+              <p class="mt-1 font-display text-xl font-medium italic leading-snug text-ink sm:text-2xl">La buena experiencia no se nota: se siente.</p>
+              <p class="mt-3 text-[9px] font-semibold uppercase tracking-[0.18em] text-muted">Mi principio de trabajo</p>
+            </div>
+
+            <div class="mt-8 flex flex-wrap gap-3">
+              <a class="btn btn-primary btn-small" href="#contacto">Hablemos</a>
+              <a class="btn btn-ghost btn-small" href="https://www.behance.net/ceciliavelzi" target="_blank" rel="noopener noreferrer">
+                Ver Behance
+                <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M7 17L17 7M7 7h10v10"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="reveal reveal-delay-1">
+            <div class="relative overflow-hidden rounded-[2rem] border border-line bg-surface-2 p-6 sm:p-8">
+              <div class="petal-grid absolute inset-0 opacity-60" aria-hidden="true"></div>
+              <div class="relative">
+                <div class="flex items-start justify-between gap-4">
+                  <div>
+                    <p class="text-[9px] font-semibold uppercase tracking-[0.2em] text-accent">Mi forma de trabajar</p>
+                    <h3 class="mt-2 font-display text-2xl font-semibold tracking-tight">Menos ruido, más intención.</h3>
+                  </div>
+                  <span class="sticker sticker-lilac hidden sm:inline-flex" aria-hidden="true">con calma</span>
+                </div>
+
+                <div class="mt-7 space-y-3">
+                  <article class="flex gap-4 rounded-2xl border border-line bg-bg/80 p-4 backdrop-blur">
+                    <span class="mt-0.5 font-display text-2xl font-semibold italic text-accent">01</span>
+                    <div>
+                      <h4 class="text-sm font-semibold">Escuchar antes de diseñar</h4>
+                      <p class="mt-1 text-xs leading-5 text-muted">Entender el problema, las personas y el contexto. Las suposiciones salen caras.</p>
+                    </div>
+                  </article>
+                  <article class="flex gap-4 rounded-2xl border border-line bg-bg/80 p-4 backdrop-blur">
+                    <span class="mt-0.5 font-display text-2xl font-semibold italic text-lilac">02</span>
+                    <div>
+                      <h4 class="text-sm font-semibold">Ordenar para que todo fluya</h4>
+                      <p class="mt-1 text-xs leading-5 text-muted">Arquitectura de información, jerarquía visual y un sistema que escala sin perder carácter.</p>
+                    </div>
+                  </article>
+                  <article class="flex gap-4 rounded-2xl border border-line bg-bg/80 p-4 backdrop-blur">
+                    <span class="mt-0.5 font-display text-2xl font-semibold italic text-gold">03</span>
+                    <div>
+                      <h4 class="text-sm font-semibold">Construir y medir</h4>
+                      <p class="mt-1 text-xs leading-5 text-muted">Código accesible, performance y pruebas. El diseño sigue vivo después del handoff.</p>
+                    </div>
+                  </article>
+                </div>
+
+                <div class="mt-6 flex items-center justify-between border-t border-line pt-5">
+                  <p class="font-display text-lg italic text-muted">Ceci</p>
+                  <p class="text-[9px] font-semibold uppercase tracking-[0.18em] text-muted">Entre Ríos · 2026</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="border-b border-line bg-surface py-16 sm:py-20" id="metricas" aria-labelledby="metricas-title">
+        <div class="container-page">
+          <div class="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+            <div class="reveal">
+              <p class="eyebrow">En números / 02</p>
+              <h2 class="mt-3 max-w-2xl font-display text-3xl font-semibold tracking-tight sm:text-4xl" id="metricas-title">Pocas piezas, mucho proceso.</h2>
+            </div>
+            <p class="reveal reveal-delay-1 max-w-sm text-sm leading-7 text-muted">Una selección de proyectos, disciplinas y herramientas que muestran cómo trabajo.</p>
+          </div>
+
+          <dl class="mt-9 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-line bg-line lg:grid-cols-4">
+            <div class="group bg-bg p-5 transition-colors hover:bg-surface-2 sm:p-6">
+              <dt class="text-[9px] font-semibold uppercase tracking-[0.18em] text-muted">Proyectos publicados</dt>
+              <dd class="mt-3 font-display text-5xl font-semibold tracking-tight text-accent sm:text-6xl">04</dd>
+              <dd class="mt-2 text-xs text-muted">Diseño + documentación</dd>
+            </div>
+            <div class="group bg-bg p-5 transition-colors hover:bg-surface-2 sm:p-6">
+              <dt class="text-[9px] font-semibold uppercase tracking-[0.18em] text-muted">Años de práctica</dt>
+              <dd class="mt-3 font-display text-5xl font-semibold tracking-tight sm:text-6xl">02</dd>
+              <dd class="mt-2 text-xs text-muted">Aprendizaje aplicado</dd>
+            </div>
+            <div class="group bg-bg p-5 transition-colors hover:bg-surface-2 sm:p-6">
+              <dt class="text-[9px] font-semibold uppercase tracking-[0.18em] text-muted">Herramientas</dt>
+              <dd class="mt-3 font-display text-5xl font-semibold tracking-tight sm:text-6xl">12</dd>
+              <dd class="mt-2 text-xs text-muted">Diseño, código y research</dd>
+            </div>
+            <div class="group bg-bg p-5 transition-colors hover:bg-surface-2 sm:p-6">
+              <dt class="text-[9px] font-semibold uppercase tracking-[0.18em] text-muted">Casos con research</dt>
+              <dd class="mt-3 font-display text-5xl font-semibold tracking-tight sm:text-6xl">03</dd>
+              <dd class="mt-2 text-xs text-muted">Entrevistas y validación</dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <section class="border-b border-line py-20 sm:py-24" id="skills" aria-labelledby="skills-title">
+        <div class="container-page">
+          <div class="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-start lg:gap-16">
+            <div class="reveal">
+              <p class="eyebrow">Capacidades / 03</p>
+              <h2 class="section-title mt-4 max-w-2xl" id="skills-title">De la pregunta a la pantalla final.</h2>
+            </div>
+            <div class="reveal reveal-delay-1">
+              <p class="lead max-w-lg">Trabajo en el recorrido completo del producto: entender, diseñar y construir. Me gusta moverse entre la investigación y el código sin perder el hilo.</p>
+              <div class="mt-6 flex flex-wrap gap-2">
+                <span class="tag tag-accent">Research</span>
+                <span class="tag tag-lilac">Interfaz</span>
+                <span class="tag">Front-end</span>
+                <span class="tag">Accesibilidad</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            <article class="reveal flex h-full flex-col rounded-3xl border border-line bg-surface p-6 sm:p-7">
+              <div class="flex items-center justify-between">
+                <span class="text-[10px] font-semibold tracking-[0.2em] text-accent">01</span>
+                <svg class="h-6 w-6 text-accent/70" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="11" cy="11" r="7"/>
+                  <path d="m20 20-4-4M8 11h6M11 8v6"/>
+                </svg>
+              </div>
+              <h3 class="mt-6 text-xl font-semibold">Research &amp; estrategia</h3>
+              <p class="mt-2 text-sm leading-6 text-muted">Entrevistas, benchmark, personas, mapas de experiencia y definición del problema.</p>
+              <ul class="mt-auto flex flex-wrap gap-2 pt-7">
+                <li class="tag">Entrevistas</li>
+                <li class="tag">Benchmark</li>
+                <li class="tag">Personas</li>
+                <li class="tag">Journey map</li>
+                <li class="tag">Test de usabilidad</li>
+              </ul>
+            </article>
+
+            <article class="reveal reveal-delay-1 flex h-full flex-col rounded-3xl border border-accent/25 bg-accent-soft p-6 sm:p-7">
+              <div class="flex items-center justify-between">
+                <span class="text-[10px] font-semibold tracking-[0.2em] text-accent">02</span>
+                <svg class="h-6 w-6 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 3l9 5-9 5-9-5 9-5Z"/>
+                  <path d="M3 12l9 5 9-5M3 16l9 5 9-5"/>
+                </svg>
+              </div>
+              <h3 class="mt-6 text-xl font-semibold">Diseño de interfaz</h3>
+              <p class="mt-2 text-sm leading-6 text-muted">Arquitectura, wireframes, prototipos, sistemas visuales y detalle de interacción.</p>
+              <ul class="mt-auto flex flex-wrap gap-2 pt-7">
+                <li class="tag">Figma</li>
+                <li class="tag">Wireframes</li>
+                <li class="tag">Design system</li>
+                <li class="tag">Prototipos</li>
+                <li class="tag">UI kits</li>
+              </ul>
+            </article>
+
+            <article class="reveal reveal-delay-2 flex h-full flex-col rounded-3xl border border-line bg-surface p-6 sm:p-7">
+              <div class="flex items-center justify-between">
+                <span class="text-[10px] font-semibold tracking-[0.2em] text-lilac">03</span>
+                <svg class="h-6 w-6 text-lilac" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M8 9l-3 3 3 3M16 9l3 3-3 3M14 5l-4 14"/>
+                </svg>
+              </div>
+              <h3 class="mt-6 text-xl font-semibold">Front-end</h3>
+              <p class="mt-2 text-sm leading-6 text-muted">Interfaces responsive y accesibles con HTML, CSS, JavaScript y Tailwind.</p>
+              <ul class="mt-auto flex flex-wrap gap-2 pt-7">
+                <li class="tag">HTML5</li>
+                <li class="tag">CSS3</li>
+                <li class="tag">JavaScript</li>
+                <li class="tag">Tailwind</li>
+                <li class="tag">A11y</li>
+              </ul>
+            </article>
+          </div>
+
+          <div class="reveal mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 rounded-2xl border border-line bg-surface-2 px-5 py-4">
+            <span class="text-[9px] font-semibold uppercase tracking-[0.18em] text-muted">También uso</span>
+            <div class="flex flex-wrap gap-x-4 gap-y-2 text-xs font-medium text-ink/80">
+              <span>FigJam</span>
+              <span>Illustrator</span>
+              <span>Notion</span>
+              <span>VS Code</span>
+              <span>GitHub</span>
+              <span>Netlify</span>
+              <span>Maze</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="border-b border-line py-20 sm:py-24" id="proyectos" aria-labelledby="proyectos-title">
+        <div class="container-page">
+          <div class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+            <div class="reveal">
+              <p class="eyebrow">Trabajo seleccionado / 04</p>
+              <h2 class="section-title mt-4 max-w-3xl" id="proyectos-title">Proyectos con intención, no solo con estética.</h2>
+            </div>
+            <p class="reveal reveal-delay-1 max-w-sm text-sm leading-7 text-muted">Cuatro conceptos que exploran lo artesanal, el bienestar, el regalo y la identidad. Uno de ellos, documentado de punta a punta.</p>
+          </div>
+
+          <article class="reveal mt-12 overflow-hidden rounded-[2rem] border border-line bg-surface shadow-card">
+            <div class="grid lg:grid-cols-[1.15fr_0.85fr]">
+              <a class="group relative block overflow-hidden border-b border-line bg-surface-2 lg:border-b-0 lg:border-r" href="caso-estudio.html" aria-label="Ver caso de estudio de Casa Petunia">
+                <img class="h-full w-full object-cover transition duration-700 group-hover:scale-[1.02]" src="assets/img/proyecto-casa-petunia.svg" alt="Vista de la tienda online de Casa Petunia con hero de repostería artesanal y productos destacados" width="1200" height="800" loading="lazy" decoding="async">
+                <span class="absolute left-5 top-5 rounded-full border border-white/40 bg-white/85 px-3 py-1.5 text-[9px] font-semibold uppercase tracking-[0.16em] text-[#84264D] backdrop-blur">Caso destacado</span>
+              </a>
+
+              <div class="flex flex-col justify-between p-6 sm:p-8 lg:p-10">
+                <div>
+                  <div class="flex flex-wrap items-center gap-2">
+                    <span class="tag tag-accent">E-commerce · 2026</span>
+                    <span class="tag">UX/UI + Front-end</span>
+                  </div>
+                  <h3 class="mt-6 font-display text-3xl font-semibold tracking-tight sm:text-4xl">Casa Petunia</h3>
+                  <p class="mt-4 text-sm leading-7 text-muted">Tienda online para una repostería artesanal de Entre Ríos. El desafío: que elegir un postre para regalar sea tan simple y confiable como elegir un café, sin perder el calor de lo hecho a mano.</p>
+
+                  <ul class="mt-6 flex flex-wrap gap-2">
+                    <li class="tag">Research</li>
+                    <li class="tag">E-commerce</li>
+                    <li class="tag">Design system</li>
+                    <li class="tag">Responsive</li>
+                    <li class="tag">Accesibilidad</li>
+                  </ul>
+
+                  <p class="mt-5 text-xs leading-5 text-muted"><span class="text-[9px] font-semibold uppercase tracking-[0.14em] text-accent">Resultado</span> · Checkout más corto, retiro visible y un sistema visual que sostiene la marca.</p>
+
+                  <dl class="mt-8 grid grid-cols-2 gap-4 border-t border-line pt-6 text-sm">
+                    <div>
+                      <dt class="text-[9px] font-semibold uppercase tracking-[0.18em] text-muted">Rol</dt>
+                      <dd class="mt-1 font-medium">Research + diseño + código</dd>
+                    </div>
+                    <div>
+                      <dt class="text-[9px] font-semibold uppercase tracking-[0.18em] text-muted">Foco</dt>
+                      <dd class="mt-1 font-medium">Marca + conversión</dd>
+                    </div>
+                  </dl>
+                </div>
+
+                <div class="mt-8 flex flex-wrap gap-3">
+                  <a class="btn btn-primary btn-small" href="caso-estudio.html">
+                    Leer caso completo
+                    <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M5 12h14M13 6l6 6-6 6"/>
+                    </svg>
+                  </a>
+                  <a class="btn btn-ghost btn-small" href="#contacto">Pedir proceso</a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <div class="mt-6 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+            <article class="project-card reveal overflow-hidden rounded-3xl border border-line bg-surface">
+              <div class="overflow-hidden border-b border-line bg-surface-2">
+                <img class="aspect-[3/2] w-full object-cover" src="assets/img/proyecto-lunaria.svg" alt="Concepto de aplicación Lunaria con seguimiento de rituales de bienestar y calendario lunar" width="1200" height="800" loading="lazy" decoding="async">
+              </div>
+              <div class="p-6">
+                <div class="flex items-center justify-between">
+                  <span class="text-[9px] font-semibold uppercase tracking-[0.18em] text-accent">01 / App</span>
+                  <span class="text-[9px] font-semibold text-muted">2025</span>
+                </div>
+                <h3 class="mt-5 text-xl font-semibold tracking-tight">Lunaria</h3>
+                <p class="mt-3 text-sm leading-6 text-muted">App de rituales y bienestar para ordenar rutinas de sueño, journaling y pausas. Una interfaz suave para un hábito difícil de sostener.</p>
+                <p class="mt-3 text-xs leading-5 text-muted"><span class="text-[9px] font-semibold uppercase tracking-[0.14em] text-accent">Resultado</span> · Flujo de 3 pasos y recordatorios amables.</p>
+                <ul class="mt-5 flex flex-wrap gap-2">
+                  <li class="tag">Mobile</li>
+                  <li class="tag">Research</li>
+                  <li class="tag">Prototipo</li>
+                </ul>
+                <div class="mt-6 flex items-center justify-between border-t border-line pt-4">
+                  <span class="text-[9px] font-semibold uppercase tracking-[0.16em] text-muted">Caso conceptual</span>
+                  <span class="inline-flex items-center gap-1 text-xs font-semibold text-lilac">UX/UI</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-card reveal reveal-delay-1 overflow-hidden rounded-3xl border border-line bg-surface">
+              <div class="overflow-hidden border-b border-line bg-surface-2">
+                <img class="aspect-[3/2] w-full object-cover" src="assets/img/proyecto-hilo-rojo.svg" alt="Concepto de tienda Hilo Rojo con joyería artesanal, producto destacado y guía de regalo" width="1200" height="800" loading="lazy" decoding="async">
+              </div>
+              <div class="p-6">
+                <div class="flex items-center justify-between">
+                  <span class="text-[9px] font-semibold uppercase tracking-[0.18em] text-accent">02 / E-commerce</span>
+                  <span class="text-[9px] font-semibold text-muted">2025</span>
+                </div>
+                <h3 class="mt-5 text-xl font-semibold tracking-tight">Hilo Rojo</h3>
+                <p class="mt-3 text-sm leading-6 text-muted">Tienda de joyería artesanal con foco en regalos. La marca necesitaba contar el valor del trabajo manual sin subir el precio como barrera.</p>
+                <p class="mt-3 text-xs leading-5 text-muted"><span class="text-[9px] font-semibold uppercase tracking-[0.14em] text-accent">Resultado</span> · Guía de regalo y fichas de producto más claras.</p>
+                <ul class="mt-5 flex flex-wrap gap-2">
+                  <li class="tag">E-commerce</li>
+                  <li class="tag">Branding</li>
+                  <li class="tag">UI</li>
+                </ul>
+                <div class="mt-6 flex items-center justify-between border-t border-line pt-4">
+                  <span class="text-[9px] font-semibold uppercase tracking-[0.16em] text-muted">Caso conceptual</span>
+                  <span class="inline-flex items-center gap-1 text-xs font-semibold text-lilac">UX/UI</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-card reveal reveal-delay-2 overflow-hidden rounded-3xl border border-line bg-surface">
+              <div class="overflow-hidden border-b border-line bg-surface-2">
+                <img class="aspect-[3/2] w-full object-cover" src="assets/img/proyecto-clavel.svg" alt="Concepto de identidad y landing para Clavel, floristería de autor con ramos y suscripción" width="1200" height="800" loading="lazy" decoding="async">
+              </div>
+              <div class="p-6">
+                <div class="flex items-center justify-between">
+                  <span class="text-[9px] font-semibold uppercase tracking-[0.18em] text-accent">03 / Landing</span>
+                  <span class="text-[9px] font-semibold text-muted">2024</span>
+                </div>
+                <h3 class="mt-5 text-xl font-semibold tracking-tight">Clavel</h3>
+                <p class="mt-3 text-sm leading-6 text-muted">Identidad y landing para una floristería de autor. La suscripción semanal como excusa para convertir una compra ocasional en un hábito.</p>
+                <p class="mt-3 text-xs leading-5 text-muted"><span class="text-[9px] font-semibold uppercase tracking-[0.14em] text-accent">Resultado</span> · Sistema editorial y suscripción visible.</p>
+                <ul class="mt-5 flex flex-wrap gap-2">
+                  <li class="tag">Landing</li>
+                  <li class="tag">Identidad</li>
+                  <li class="tag">Front-end</li>
+                </ul>
+                <div class="mt-6 flex items-center justify-between border-t border-line pt-4">
+                  <span class="text-[9px] font-semibold uppercase tracking-[0.16em] text-muted">Caso conceptual</span>
+                  <span class="inline-flex items-center gap-1 text-xs font-semibold text-lilac">UX/UI</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="border-b border-line bg-surface py-20 sm:py-24" id="trayectoria" aria-labelledby="trayectoria-title">
+        <div class="container-page">
+          <div class="grid gap-12 lg:grid-cols-[0.82fr_1.18fr] lg:gap-16">
+            <div class="reveal lg:sticky lg:top-28 lg:self-start">
+              <p class="eyebrow">Trayectoria / 05</p>
+              <h2 class="section-title mt-4" id="trayectoria-title">Aprender haciendo, iterar con criterio.</h2>
+              <p class="lead mt-5">Mi recorrido mezcla formación autodidacta, diseño gráfico y proyectos reales. Cada etapa me dejó una herramienta nueva y una forma más honesta de mirar el trabajo.</p>
+
+              <div class="mt-8 rounded-2xl border border-line bg-bg p-5">
+                <p class="text-[9px] font-semibold uppercase tracking-[0.18em] text-muted">Actualmente</p>
+                <p class="mt-2 text-sm leading-6 text-ink">Disponible para proyectos freelance, prácticas y oportunidades full-time en UX/UI o front-end.</p>
+                <a class="link-arrow mt-4" href="#contacto">
+                  Hablemos
+                  <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M5 12h14M13 6l6 6-6 6"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            <div class="reveal reveal-delay-1">
+              <h3 class="text-[10px] font-semibold uppercase tracking-[0.2em] text-muted">Experiencia</h3>
+              <ol class="timeline mt-6 space-y-8">
+                <li class="timeline-item">
+                  <div class="flex flex-wrap items-center gap-3">
+                    <span class="text-[9px] font-semibold uppercase tracking-[0.16em] text-accent">2025 — presente</span>
+                    <span class="tag">Freelance</span>
+                  </div>
+                  <h4 class="mt-3 text-lg font-semibold">Diseñadora UX/UI + Front-end</h4>
+                  <p class="mt-1 text-[9px] font-semibold uppercase tracking-[0.16em] text-muted">Proyectos independientes · Entre Ríos</p>
+                  <p class="mt-2 text-sm leading-7 text-muted">Diseño y desarrollo de sitios y tiendas para marcas pequeñas, desde la investigación y la identidad hasta la implementación y el deploy.</p>
+                  <ul class="mt-3 space-y-1.5 text-sm leading-6 text-muted">
+                    <li>· Research, arquitectura de información y prototipos en Figma.</li>
+                    <li>· Landings y e-commerce responsive con HTML, CSS, JS y Tailwind.</li>
+                    <li>· Sistemas visuales y documentación para que el proyecto siga creciendo.</li>
+                  </ul>
+                </li>
+
+                <li class="timeline-item">
+                  <div class="flex flex-wrap items-center gap-3">
+                    <span class="text-[9px] font-semibold uppercase tracking-[0.16em] text-accent">2026</span>
+                    <span class="tag">Proyecto final</span>
+                  </div>
+                  <h4 class="mt-3 text-lg font-semibold">Portfolio + Casa Petunia</h4>
+                  <p class="mt-1 text-[9px] font-semibold uppercase tracking-[0.16em] text-muted">Práctica final UX/UI · 2026</p>
+                  <p class="mt-2 text-sm leading-7 text-muted">Diseño de este portfolio y del caso de estudio Casa Petunia: research, benchmark, wireframes, sistema visual, prototipo y desarrollo.</p>
+                  <ul class="mt-3 space-y-1.5 text-sm leading-6 text-muted">
+                    <li>· One-page con design system, modo oscuro y foco visible.</li>
+                    <li>· Caso documentado con decisiones, validación y resultados cualitativos.</li>
+                  </ul>
+                </li>
+              </ol>
+
+              <h3 class="mt-12 text-[10px] font-semibold uppercase tracking-[0.2em] text-muted">Formación</h3>
+              <ol class="timeline mt-6 space-y-7">
+                <li class="timeline-item">
+                  <div class="flex flex-wrap items-center gap-3">
+                    <span class="text-[9px] font-semibold uppercase tracking-[0.16em] text-accent">2025 — 2026</span>
+                    <span class="tag">UX/UI</span>
+                  </div>
+                  <h4 class="mt-3 text-base font-semibold">Diseño de experiencia e interfaz</h4>
+                  <p class="mt-1 text-[9px] font-semibold uppercase tracking-[0.16em] text-muted">Formación aplicada · Proyectos reales</p>
+                  <p class="mt-2 text-sm leading-6 text-muted">Research, arquitectura, wireframes, design systems, accesibilidad y test de usabilidad.</p>
+                </li>
+
+                <li class="timeline-item">
+                  <div class="flex flex-wrap items-center gap-3">
+                    <span class="text-[9px] font-semibold uppercase tracking-[0.16em] text-accent">2024 — 2025</span>
+                    <span class="tag">Front-end</span>
+                  </div>
+                  <h4 class="mt-3 text-base font-semibold">HTML, CSS, JavaScript y Tailwind</h4>
+                  <p class="mt-1 text-[9px] font-semibold uppercase tracking-[0.16em] text-muted">Formación autodidacta · Base técnica</p>
+                  <p class="mt-2 text-sm leading-6 text-muted">Maquetado semántico, responsive, componentes, performance y accesibilidad web.</p>
+                </li>
+
+                <li class="timeline-item">
+                  <div class="flex flex-wrap items-center gap-3">
+                    <span class="text-[9px] font-semibold uppercase tracking-[0.16em] text-accent">2023 — 2024</span>
+                    <span class="tag">Diseño gráfico</span>
+                  </div>
+                  <h4 class="mt-3 text-base font-semibold">Identidad y comunicación visual</h4>
+                  <p class="mt-1 text-[9px] font-semibold uppercase tracking-[0.16em] text-muted">Formación + práctica freelance</p>
+                  <p class="mt-2 text-sm leading-6 text-muted">Marcas, piezas editoriales, packaging y primeras landing pages para emprendimientos.</p>
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="relative overflow-hidden border-b border-line bg-accent-active py-20 text-on-accent sm:py-24" id="caso-petunia" aria-labelledby="caso-title">
+        <div class="petal-grid absolute inset-0 opacity-20" aria-hidden="true"></div>
+        <div class="absolute -right-24 -top-24 h-80 w-80 rounded-full border border-white/15" aria-hidden="true"></div>
+        <div class="absolute -bottom-24 -left-24 h-80 w-80 rounded-full border border-white/10" aria-hidden="true"></div>
+
+        <div class="container-page relative">
+          <div class="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-16">
+            <div class="reveal">
+              <p class="text-[11px] font-semibold uppercase tracking-[0.24em] text-on-accent/70">Caso de estudio / 06</p>
+              <h2 class="section-title mt-4 max-w-xl" id="caso-title">Casa Petunia: comprar rico, sin dudas.</h2>
+              <p class="mt-5 max-w-xl text-sm leading-7 text-on-accent/80 sm:text-base">Un e-commerce conceptual para una repostería artesanal. El reto no era solo vender: era traducir el cuidado de lo hecho a mano en una experiencia digital confiable, simple y con carácter.</p>
+
+              <dl class="mt-8 grid grid-cols-2 gap-5 border-t border-on-accent/20 pt-6 sm:grid-cols-4">
+                <div>
+                  <dt class="text-[8px] font-semibold uppercase tracking-[0.16em] text-on-accent/60">Entrevistas</dt>
+                  <dd class="mt-1 font-display text-2xl font-semibold">05</dd>
+                </div>
+                <div>
+                  <dt class="text-[8px] font-semibold uppercase tracking-[0.16em] text-on-accent/60">Referencias</dt>
+                  <dd class="mt-1 font-display text-2xl font-semibold">03</dd>
+                </div>
+                <div>
+                  <dt class="text-[8px] font-semibold uppercase tracking-[0.16em] text-on-accent/60">Pantallas</dt>
+                  <dd class="mt-1 font-display text-2xl font-semibold">12</dd>
+                </div>
+                <div>
+                  <dt class="text-[8px] font-semibold uppercase tracking-[0.16em] text-on-accent/60">Sistema</dt>
+                  <dd class="mt-1 font-display text-2xl font-semibold">01</dd>
+                </div>
+              </dl>
+
+              <div class="mt-8 flex flex-wrap gap-3">
+                <a class="btn bg-bg text-ink hover:bg-surface" href="caso-estudio.html">
+                  Leer el caso completo
+                  <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M5 12h14M13 6l6 6-6 6"/>
+                  </svg>
+                </a>
+                <a class="btn border border-on-accent/30 text-on-accent hover:border-on-accent hover:bg-white/10" href="#proyectos">Ver otros proyectos</a>
+              </div>
+            </div>
+
+            <div class="reveal reveal-delay-1">
+              <a class="group block overflow-hidden rounded-[2rem] border border-white/20 bg-white/10 p-2 shadow-2xl backdrop-blur-sm" href="caso-estudio.html" aria-label="Abrir caso de estudio Casa Petunia">
+                <img class="image-soft w-full rounded-[1.55rem]" src="assets/img/caso-petunia-hero.svg" alt="Portada del caso Casa Petunia con la tienda online, la marca y el sistema visual" width="1600" height="1000" loading="lazy" decoding="async">
+                <span class="mt-2 flex items-center justify-between px-3 py-2 text-[9px] font-semibold uppercase tracking-[0.16em] text-on-accent/75">
+                  <span>Research · UI · Front-end</span>
+                  <span>2026 ↗</span>
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="relative overflow-hidden py-20 sm:py-24" id="contacto" aria-labelledby="contacto-title">
+        <div class="paper-grid grid-mask absolute inset-0 opacity-70" aria-hidden="true"></div>
+        <div class="hero-halo absolute inset-0 opacity-70" aria-hidden="true"></div>
+
+        <div class="container-page relative">
+          <div class="reveal mx-auto max-w-4xl overflow-hidden rounded-[2.5rem] border border-line bg-surface p-6 shadow-card sm:p-10 lg:p-14">
+            <div class="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
+              <div>
+                <p class="eyebrow">Contacto / 07</p>
+                <h2 class="section-title mt-4" id="contacto-title">¿Le damos forma a tu próxima idea?</h2>
+                <p class="lead mt-5 max-w-xl">Si tenés un proyecto, una marca que quiere crecer o un equipo donde pueda aportar, escribime. Me interesa trabajar en cosas que se hagan con cuidado.</p>
+
+                <div class="mt-8 flex flex-wrap gap-3">
+                  <a class="btn btn-primary" href="mailto:hola@ceciliavelzi.com?subject=Hola%20Ceci%2C%20tenemos%20un%20proyecto">
+                    Escribime
+                    <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M5 12h14M13 6l6 6-6 6"/>
+                    </svg>
+                  </a>
+                  <button class="btn btn-ghost" type="button" data-copy-email="hola@ceciliavelzi.com">
+                    <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <rect x="9" y="9" width="11" height="11" rx="2"/>
+                      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                    </svg>
+                    Copiar email
+                  </button>
+                </div>
+                <p class="mt-3 min-h-5 text-[10px] font-semibold uppercase tracking-[0.16em] text-accent" data-copy-status aria-live="polite"></p>
+              </div>
+
+              <div class="border-t border-line pt-6 lg:border-l lg:border-t-0 lg:pl-10 lg:pt-0">
+                <dl class="space-y-5">
+                  <div>
+                    <dt class="text-[9px] font-semibold uppercase tracking-[0.2em] text-muted">Email</dt>
+                    <dd class="mt-1 break-all text-sm">
+                      <a class="transition-colors hover:text-accent" href="mailto:hola@ceciliavelzi.com">hola@ceciliavelzi.com</a>
+                    </dd>
+                  </div>
+                  <div>
+                    <dt class="text-[9px] font-semibold uppercase tracking-[0.2em] text-muted">Behance</dt>
+                    <dd class="mt-1 text-sm">
+                      <a class="inline-flex items-center gap-1.5 transition-colors hover:text-accent" href="https://www.behance.net/ceciliavelzi" target="_blank" rel="noopener noreferrer">
+                        behance.net/ceciliavelzi
+                        <svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                          <path d="M7 17L17 7M7 7h10v10"/>
+                        </svg>
+                      </a>
+                    </dd>
+                  </div>
+                  <div>
+                    <dt class="text-[9px] font-semibold uppercase tracking-[0.2em] text-muted">GitHub</dt>
+                    <dd class="mt-1 text-sm">
+                      <a class="inline-flex items-center gap-1.5 transition-colors hover:text-accent" href="https://github.com/ceciliavelzi" target="_blank" rel="noopener noreferrer">
+                        github.com/ceciliavelzi
+                        <svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                          <path d="M7 17L17 7M7 7h10v10"/>
+                        </svg>
+                      </a>
+                    </dd>
+                  </div>
+                  <div>
+                    <dt class="text-[9px] font-semibold uppercase tracking-[0.2em] text-muted">Ubicación</dt>
+                    <dd class="mt-1 text-sm">Entre Ríos · Argentina · UTC-3</dd>
+                  </div>
+                  <div>
+                    <dt class="text-[9px] font-semibold uppercase tracking-[0.2em] text-muted">Disponibilidad</dt>
+                    <dd class="mt-1 flex items-center gap-2 text-sm">
+                      <span class="h-1.5 w-1.5 rounded-full bg-accent"></span>
+                      Abierta a proyectos · 2026
+                    </dd>
+                  </div>
+                </dl>
+
+                <p class="mt-7 border-t border-line pt-5 text-xs leading-5 text-muted">Respondo dentro de las 48 h. Si preferís, también podés encontrarme en LinkedIn.</p>
+                <a class="link-arrow mt-3" href="https://www.linkedin.com/in/ceciliavelzi/" target="_blank" rel="noopener noreferrer">
+                  linkedin.com/in/ceciliavelzi
+                  <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M7 17L17 7M7 7h10v10"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="border-t border-line bg-bg py-10">
+      <div class="container-page">
+        <div class="flex flex-col gap-8 border-b border-line pb-8 sm:flex-row sm:items-start sm:justify-between">
+          <div>
+            <a class="inline-flex items-center gap-3" href="#inicio" aria-label="Volver al inicio">
+              <span class="arch-frame flex h-10 w-9 items-center justify-center bg-accent font-display text-base font-semibold text-on-accent">CV</span>
+              <span class="leading-tight">
+                <span class="block font-display text-sm font-semibold tracking-tight">Cecilia Velzi</span>
+                <span class="mt-0.5 block text-[9px] font-semibold uppercase tracking-[0.18em] text-muted">UX/UI · Front-end</span>
+              </span>
+            </a>
+            <p class="mt-4 max-w-sm text-sm leading-6 text-muted">Diseño experiencias digitales que se sienten cercanas, claras y hechas con cuidado.</p>
+          </div>
+
+          <nav aria-label="Navegación del pie de página">
+            <ul class="grid grid-cols-2 gap-x-10 gap-y-1 text-sm">
+              <li><a class="inline-flex min-h-[36px] items-center text-muted transition-colors hover:text-accent" href="#sobre-mi">Sobre mí</a></li>
+              <li><a class="inline-flex min-h-[36px] items-center text-muted transition-colors hover:text-accent" href="#metricas">Métricas</a></li>
+              <li><a class="inline-flex min-h-[36px] items-center text-muted transition-colors hover:text-accent" href="#skills">Skills</a></li>
+              <li><a class="inline-flex min-h-[36px] items-center text-muted transition-colors hover:text-accent" href="#proyectos">Proyectos</a></li>
+              <li><a class="inline-flex min-h-[36px] items-center text-muted transition-colors hover:text-accent" href="#trayectoria">Trayectoria</a></li>
+              <li><a class="inline-flex min-h-[36px] items-center text-muted transition-colors hover:text-accent" href="caso-estudio.html">Caso Casa Petunia</a></li>
+              <li><a class="inline-flex min-h-[36px] items-center text-muted transition-colors hover:text-accent" href="#contacto">Contacto</a></li>
+              <li><a class="inline-flex min-h-[36px] items-center text-muted transition-colors hover:text-accent" href="https://www.behance.net/ceciliavelzi" target="_blank" rel="noopener noreferrer">Behance ↗</a></li>
+              <li><a class="inline-flex min-h-[36px] items-center text-muted transition-colors hover:text-accent" href="https://github.com/ceciliavelzi" target="_blank" rel="noopener noreferrer">GitHub ↗</a></li>
+              <li><a class="inline-flex min-h-[36px] items-center text-muted transition-colors hover:text-accent" href="https://www.linkedin.com/in/ceciliavelzi/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <div class="flex flex-col gap-4 pt-6 text-xs text-muted sm:flex-row sm:items-center sm:justify-between">
+          <p>© <span data-year>2026</span> Cecilia Velzi. Hecho con HTML, Tailwind y JavaScript.</p>
+          <div class="flex flex-wrap items-center gap-4">
+            <a class="inline-flex min-h-[36px] items-center transition-colors hover:text-accent" href="mailto:hola@ceciliavelzi.com">Email</a>
+            <a class="inline-flex min-h-[36px] items-center transition-colors hover:text-accent" href="https://www.behance.net/ceciliavelzi" target="_blank" rel="noopener noreferrer">Behance</a>
+            <a class="inline-flex min-h-[36px] items-center transition-colors hover:text-accent" href="#inicio">Volver arriba ↑</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/main.js" defer></script>
+  </body>
+</html>
