@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Casa Petunia — Caso de estudio | Cecilia Velzi</title>
+    <meta name="description" content="Caso de estudio de Casa Petunia, un e-commerce de repostería artesanal: research, arquitectura, sistema visual, prototipo y resultados de un proyecto UX/UI + front-end.">
+    <meta name="author" content="Cecilia Velzi">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#FDF8F5">
+    <meta property="og:type" content="article">
+    <meta property="og:locale" content="es_AR">
+    <meta property="og:site_name" content="Cecilia Velzi">
+    <meta property="og:title" content="Casa Petunia — Caso de estudio | Cecilia Velzi">
+    <meta property="og:description" content="Cómo diseñé una tienda artesanal que se siente confiable, cálida y fácil de comprar.">
+    <meta property="og:image" content="/assets/img/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Caso de estudio Casa Petunia — Cecilia Velzi">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Casa Petunia — Caso de estudio">
+    <meta name="twitter:description" content="Research, diseño y front-end para un e-commerce de repostería artesanal.">
+    <meta name="twitter:image" content="/assets/img/og-image.png">
+
+    <script>
+      (function () {
+        document.documentElement.classList.add("js");
+        try {
+          var stored = localStorage.getItem("theme");
+          var dark = stored ? stored === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+          if (dark) document.documentElement.classList.add("dark");
+        } catch (error) {}
+      })();
+    </script>
+
+    <link rel="preload" href="assets/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="assets/fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
+    <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="stylesheet" href="dist/styles.css">
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "CreativeWork",
+        "name": "Casa Petunia",
+        "description": "Caso de estudio de un e-commerce de repostería artesanal: research, diseño de interfaz, sistema visual y front-end.",
+        "datePublished": "2026-11-10",
+        "inLanguage": "es-AR",
+        "image": "/assets/img/caso-petunia-hero.svg",
+        "author": {
+          "@type": "Person",
+          "name": "Cecilia Velzi"
+        }
+      }
+    </script>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Saltar al contenido</a>
+
+    <header class="sticky top-0 z-50 border-b border-line/80 bg-bg/90 backdrop-blur-xl">
+      <div class="container-page flex h-[76px] items-center justify-between gap-5">
+        <a class="flex items-center gap-3" href="index.html" aria-label="Cecilia Velzi — Inicio">
+          <span class="arch-frame flex h-11 w-10 items-center justify-center bg-accent font-display text-lg font-semibold text-on-accent">CV</span>
+          <span class="hidden leading-tight sm:block">
+            <span class="block font-display text-[17px] font-semibold tracking-tight">Cecilia Velzi</span>
+            <span class="mt-0.5 block text-[9px] font-semibold uppercase tracking-[0.18em] text-muted">UX/UI · Front-end</span>
+          </span>
+        </a>
+
+        <nav class="hidden items-center gap-5 lg:flex xl:gap-6" aria-label="Navegación principal">
+          <a class="nav-link" href="index.html#sobre-mi">Sobre mí</a>
+          <a class="nav-link" href="index.html#metricas">Métricas</a>
+          <a class="nav-link" href="index.html#skills">Skills</a>
+          <a class="nav-link" href="index.html#proyectos">Proyectos</a>
+          <a class="nav-link" href="index.html#trayectoria">Trayectoria</a>
+          <a class="nav-link" href="caso-estudio.html" aria-current="page">Caso</a>
+          <a class="nav-link" href="index.html#contacto">Contacto</a>
+        </nav>
+
+        <div class="flex items-center gap-2">
+          <a class="hidden h-10 w-10 items-center justify-center rounded-full border border-line text-ink transition-colors hover:border-accent hover:text-accent sm:flex" href="https://github.com/ceciliavelzi" target="_blank" rel="noopener noreferrer" aria-label="Perfil de GitHub">
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 .5C5.73.5.98 5.24.98 11.5c0 4.86 3.15 8.98 7.52 10.43.55.1.75-.24.75-.53 0-.26-.01-1.13-.02-2.05-3.06.66-3.71-1.3-3.71-1.3-.5-1.27-1.22-1.61-1.22-1.61-.99-.68.08-.66.08-.66 1.1.08 1.68 1.13 1.68 1.13.98 1.67 2.57 1.19 3.2.91.1-.71.38-1.19.69-1.46-2.44-.28-5.01-1.22-5.01-5.43 0-1.2.43-2.18 1.13-2.95-.11-.28-.49-1.4.11-2.91 0 0 .92-.29 3.02 1.13.88-.24 1.82-.36 2.75-.36.93 0 1.87.12 2.75.36 2.1-1.42 3.02-1.13 3.02-1.13.6 1.51.22 2.63.11 2.91.7.77 1.13 1.75 1.13 2.95 0 4.22-2.58 5.15-5.03 5.42.39.34.74 1.01.74 2.04 0 1.47-.01 2.66-.01 3.02 0 .29.2.64.76.53 4.36-1.45 7.51-5.57 7.51-10.43C23.02 5.24 18.27.5 12 .5Z"/>
+            </svg>
+          </a>
+          <a class="hidden h-10 w-10 items-center justify-center rounded-full border border-line font-display text-xs font-semibold text-ink transition-colors hover:border-accent hover:text-accent sm:flex" href="https://www.behance.net/ceciliavelzi" target="_blank" rel="noopener noreferrer" aria-label="Perfil de Behance">Bē</a>
+          <button class="flex h-10 w-10 items-center justify-center rounded-full border border-line text-ink transition-colors hover:border-accent hover:text-accent" type="button" data-theme-toggle aria-label="Activar tema oscuro" title="Cambiar tema">
+            <svg class="h-4 w-4 dark:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/>
+            </svg>
+            <svg class="hidden h-4 w-4 dark:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="4"/>
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"/>
+            </svg>
+          </button>
+
+          <a class="btn btn-primary btn-small hidden sm:inline-flex" href="index.html#contacto">Hablemos</a>
+
+          <button class="flex h-10 w-10 items-center justify-center rounded-full border border-line text-ink transition-colors hover:border-accent hover:text-accent lg:hidden" type="button" data-menu-toggle aria-controls="mobile-menu" aria-expanded="false">
+            <svg class="h-5 w-5" data-menu-icon="open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+              <path d="M4 7h16M4 12h16M4 17h16"/>
+            </svg>
+            <svg class="hidden h-5 w-5" data-menu-icon="close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+              <path d="M6 6l12 12M18 6L6 18"/>
+            </svg>
+            <span class="sr-only">Abrir menú</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="hidden border-t border-line bg-bg lg:hidden" id="mobile-menu">
+        <nav class="container-page flex flex-col gap-1 py-4" aria-label="Navegación móvil">
+          <a class="flex min-h-[44px] items-center justify-between rounded-xl px-3 text-sm font-medium text-ink transition-colors hover:bg-surface" href="index.html#sobre-mi">Sobre mí <span class="text-[10px] font-semibold text-muted">01</span></a>
+          <a class="flex min-h-[44px] items-center justify-between rounded-xl px-3 text-sm font-medium text-ink transition-colors hover:bg-surface" href="index.html#metricas">Métricas <span class="text-[10px] font-semibold text-muted">02</span></a>
+          <a class="flex min-h-[44px] items-center justify-between rounded-xl px-3 text-sm font-medium text-ink transition-colors hover:bg-surface" href="index.html#skills">Skills <span class="text-[10px] font-semibold text-muted">03</span></a>
+          <a class="flex min-h-[44px] items-center justify-between rounded-xl px-3 text-sm font-medium text-ink transition-colors hover:bg-surface" href="index.html#proyectos">Proyectos <span class="text-[10px] font-semibold text-muted">04</span></a>
+          <a class="flex min-h-[44px] items-center justify-between rounded-xl px-3 text-sm font-medium text-ink transition-colors hover:bg-surface" href="index.html#trayectoria">Trayectoria <span class="text-[10px] font-semibold text-muted">05</span></a>
+          <a class="flex min-h-[44px] items-center justify-between rounded-xl bg-surface-2 px-3 text-sm font-semibold text-ink" href="caso-estudio.html" aria-current="page">Caso Casa Petunia <span class="text-[10px] font-semibold text-accent">06</span></a>
+          <a class="flex min-h-[44px] items-center justify-between rounded-xl px-3 text-sm font-medium text-ink transition-colors hover:bg-surface" href="index.html#contacto">Contacto <span class="text-[10px] font-semibold text-muted">07</span></a>
+          <div class="mt-3 grid grid-cols-2 gap-2">
+            <a class="btn btn-primary" href="index.html#contacto">Hablemos</a>
+            <a class="btn btn-ghost" href="https://www.behance.net/ceciliavelzi" target="_blank" rel="noopener noreferrer">Behance ↗</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="relative overflow-hidden border-b border-line" aria-labelledby="case-title">
+        <div class="paper-grid grid-mask absolute inset-0" aria-hidden="true"></div>
+        <div class="hero-halo absolute inset-0" aria-hidden="true"></div>
+
+        <div class="container-page relative py-12 sm:py-16 lg:py-20">
+          <nav aria-label="Migas de pan" class="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted">
+            <ol class="flex flex-wrap items-center gap-2">
+              <li><a class="transition-colors hover:text-accent" href="index.html">Portfolio</a></li>
+              <li aria-hidden="true">/</li>
+              <li><a class="transition-colors hover:text-accent" href="index.html#proyectos">Proyectos</a></li>
+              <li aria-hidden="true">/</li>
+              <li aria-current="page" class="text-ink">Casa Petunia</li>
+            </ol>
+          </nav>
+
+          <div class="mt-10 grid gap-10 lg:grid-cols-[1.08fr_0.92fr] lg:items-end">
+            <div class="reveal">
+              <div class="flex flex-wrap gap-2">
+                <span class="tag tag-accent">Caso de estudio</span>
+                <span class="tag">2026</span>
+                <span class="tag">E-commerce</span>
+                <span class="tag">Proyecto conceptual</span>
+              </div>
+              <h1 class="display-title mt-6 max-w-[12ch]" id="case-title">Casa <em class="font-normal italic text-accent">Petunia</em></h1>
+              <p class="lead mt-6 max-w-2xl">Una tienda online para una repostería artesanal de Entre Ríos. El desafío: convertir el cuidado de lo hecho a mano en una experiencia digital confiable, simple y con carácter.</p>
+
+              <div class="mt-8 flex flex-wrap gap-3">
+                <a class="btn btn-primary" href="#solucion">
+                  Ver la solución
+                  <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M5 12h14M13 6l6 6-6 6"/>
+                  </svg>
+                </a>
+                <a class="btn btn-ghost" href="index.html#contacto">Hablemos del proyecto</a>
+              </div>
+            </div>
+
+            <dl class="reveal reveal-delay-1 grid grid-cols-2 gap-5 border-t border-line pt-6 text-sm lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
+              <div>
+                <dt class="text-[9px] font-semibold uppercase tracking-[0.18em] text-muted">Marca</dt>
+                <dd class="mt-1 font-medium">Casa Petunia<span class="mt-0.5 block text-xs font-normal text-muted">Repostería artesanal · Entre Ríos</span></dd>
+              </div>
+              <div>
+                <dt class="text-[9px] font-semibold uppercase tracking-[0.18em] text-muted">Rol</dt>
+                <dd class="mt-1 font-medium">UX/UI + Front-end<span class="mt-0.5 block text-xs font-normal text-muted">Research, diseño y código</span></dd>
+              </div>
+              <div>
+                <dt class="text-[9px] font-semibold uppercase tracking-[0.18em] text-muted">Duración</dt>
+                <dd class="mt-1 font-medium">6 semanas<span class="mt-0.5 block text-xs font-normal text-muted">Práctica final · 2026</span></dd>
+              </div>
+              <div>
+                <dt class="text-[9px] font-semibold uppercase tracking-[0.18em] text-muted">Herramientas</dt>
+                <dd class="mt-1 font-medium">Figma · HTML/CSS<span class="mt-0.5 block text-xs font-normal text-muted">Tailwind · JavaScript</span></dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </section>
+
+      <section class="border-b border-line bg-surface py-6 sm:py-8">
+        <div class="container-page">
+          <figure class="reveal overflow-hidden rounded-[2rem] border border-line bg-surface-2 shadow-card">
+            <img class="w-full" src="assets/img/caso-petunia-hero.svg" alt="Portada de Casa Petunia con la tienda online y el sistema visual de la marca" width="1600" height="1000" loading="eager" decoding="async">
+            <figcaption class="flex flex-col gap-2 border-t border-line bg-bg px-5 py-4 text-[9px] font-semibold uppercase tracking-[0.16em] text-muted sm:flex-row sm:items-center sm:justify-between">
+              <span>Casa Petunia / Portada del caso</span>
+              <span>Branding · UI · Front-end · 2026</span>
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="py-16 sm:py-20">
+        <div class="container-page grid gap-12 lg:grid-cols-[0.32fr_0.68fr] lg:gap-16">
+          <aside class="reveal lg:sticky lg:top-28 lg:self-start" aria-label="Índice del caso">
+            <p class="eyebrow">Índice</p>
+            <ol class="mt-5 space-y-1 text-sm">
+              <li><a class="flex min-h-[38px] items-center justify-between gap-4 border-b border-line py-2 text-muted transition-colors hover:text-accent" href="#contexto"><span>Contexto y desafío</span><span class="text-[9px] font-semibold text-muted">01</span></a></li>
+              <li><a class="flex min-h-[38px] items-center justify-between gap-4 border-b border-line py-2 text-muted transition-colors hover:text-accent" href="#research"><span>Research</span><span class="text-[9px] font-semibold text-muted">02</span></a></li>
+              <li><a class="flex min-h-[38px] items-center justify-between gap-4 border-b border-line py-2 text-muted transition-colors hover:text-accent" href="#arquitectura"><span>Arquitectura</span><span class="text-[9px] font-semibold text-muted">03</span></a></li>
+              <li><a class="flex min-h-[38px] items-center justify-between gap-4 border-b border-line py-2 text-muted transition-colors hover:text-accent" href="#sistema"><span>Sistema visual</span><span class="text-[9px] font-semibold text-muted">04</span></a></li>
+              <li><a class="flex min-h-[38px] items-center justify-between gap-4 border-b border-line py-2 text-muted transition-colors hover:text-accent" href="#solucion"><span>Solución</span><span class="text-[9px] font-semibold text-muted">05</span></a></li>
+              <li><a class="flex min-h-[38px] items-center justify-between gap-4 border-b border-line py-2 text-muted transition-colors hover:text-accent" href="#validacion"><span>Validación</span><span class="text-[9px] font-semibold text-muted">06</span></a></li>
+              <li><a class="flex min-h-[38px] items-center justify-between gap-4 border-b border-line py-2 text-muted transition-colors hover:text-accent" href="#resultados"><span>Resultados</span><span class="text-[9px] font-semibold text-muted">07</span></a></li>
+              <li><a class="flex min-h-[38px] items-center justify-between gap-4 border-b border-line py-2 text-muted transition-colors hover:text-accent" href="#aprendizajes"><span>Aprendizajes</span><span class="text-[9px] font-semibold text-muted">08</span></a></li>
+            </ol>
+            <p class="mt-6 rounded-2xl border border-line bg-surface-2 p-4 text-xs leading-5 text-muted">Proyecto conceptual desarrollado para la práctica final. Los resultados son cualitativos y las métricas propuestas están marcadas como próximos pasos.</p>
+          </aside>
+
+          <div>
+            <section class="reveal scroll-mt-28" id="contexto" aria-labelledby="contexto-title">
+              <p class="eyebrow">01 / Contexto</p>
+              <h2 class="section-title mt-4 max-w-2xl" id="contexto-title">El problema no era el postre. Era la duda.</h2>
+              <div class="case-prose mt-6">
+                <p><strong>Casa Petunia</strong> es una repostería artesanal ficticia de Entre Ríos que vende tartas, alfajores y tortas de autor. Su diferencial está en el trabajo manual, los ingredientes de estación y el packaging pensado para regalar. La marca ya tenía identidad y clientes; lo que faltaba era una experiencia digital a la altura.</p>
+                <p>El punto de partida era una cuenta de Instagram con pedidos por mensaje directo. El proceso funcionaba, pero dependía de conversaciones largas para responder siempre lo mismo: porciones, alérgenos, disponibilidad, formas de pago y horarios de retiro. Cada consulta era una oportunidad de perder una venta.</p>
+                <h3>El desafío</h3>
+                <p>Diseñar un e-commerce que permitiera elegir, personalizar y reservar un pedido <strong>sin abandonar la calidez de lo artesanal</strong>. La interfaz debía responder las dudas antes de que aparecieran y hacer que el retiro programado se sintiera parte del regalo.</p>
+                <h3>Hipótesis de diseño</h3>
+                <p>Si mostramos el producto con fotografía real, porciones claras y retiro visible desde el inicio, las personas pueden decidir con confianza y completar la compra sin necesitar una conversación previa.</p>
+              </div>
+
+              <div class="mt-8 grid gap-3 sm:grid-cols-3">
+                <div class="rounded-2xl border border-line bg-surface p-5">
+                  <span class="font-display text-3xl font-semibold italic text-accent">01</span>
+                  <h3 class="mt-3 text-sm font-semibold">Confianza</h3>
+                  <p class="mt-1 text-xs leading-5 text-muted">Que lo artesanal se vea y se entienda antes de comprar.</p>
+                </div>
+                <div class="rounded-2xl border border-line bg-surface p-5">
+                  <span class="font-display text-3xl font-semibold italic text-lilac">02</span>
+                  <h3 class="mt-3 text-sm font-semibold">Simplicidad</h3>
+                  <p class="mt-1 text-xs leading-5 text-muted">Menos pasos, menos dudas y un checkout sin cuenta obligatoria.</p>
+                </div>
+                <div class="rounded-2xl border border-line bg-surface p-5">
+                  <span class="font-display text-3xl font-semibold italic text-gold">03</span>
+                  <h3 class="mt-3 text-sm font-semibold">Cercanía</h3>
+                  <p class="mt-1 text-xs leading-5 text-muted">Una marca cálida, editorial y humana, sin perder claridad.</p>
+                </div>
+              </div>
+            </section>
+
+            <section class="reveal mt-20 scroll-mt-28" id="research" aria-labelledby="research-title">
+              <p class="eyebrow">02 / Research</p>
+              <h2 class="section-title mt-4 max-w-2xl" id="research-title">Escuchar primero, diseñar después.</h2>
+              <div class="case-prose mt-6">
+                <p>Realicé <strong>cinco entrevistas semiestructuradas</strong> a personas que compran postres para regalar o para ocasiones especiales, y analicé tres comercios de referencia del rubro artesanal. El objetivo no era validar una idea, sino entender qué hace que una compra se sienta confiable.</p>
+              </div>
+
+              <div class="mt-8 grid gap-4 sm:grid-cols-3">
+                <article class="rounded-2xl border border-accent/20 bg-accent-soft p-5">
+                  <span class="font-display text-3xl font-semibold text-accent">01</span>
+                  <h3 class="mt-3 text-base font-semibold">La ocasión manda</h3>
+                  <p class="mt-2 text-xs leading-6 text-muted">La decisión empieza por el para qué: cumpleaños, agradecimiento, visita. El sabor aparece después.</p>
+                </article>
+                <article class="rounded-2xl border border-lilac/20 bg-lilac-soft p-5">
+                  <span class="font-display text-3xl font-semibold text-lilac">02</span>
+                  <h3 class="mt-3 text-base font-semibold">Ver para confiar</h3>
+                  <p class="mt-2 text-xs leading-6 text-muted">Fotos reales, ingredientes visibles y la historia de quién lo hace reducen la sensación de riesgo.</p>
+                </article>
+                <article class="rounded-2xl border border-gold/30 bg-gold/10 p-5">
+                  <span class="font-display text-3xl font-semibold text-gold">03</span>
+                  <h3 class="mt-3 text-base font-semibold">El retiro tranquiliza</h3>
+                  <p class="mt-2 text-xs leading-6 text-muted">Saber cuándo y dónde retirar elimina la ansiedad de comprar comida online.</p>
+                </article>
+              </div>
+
+              <blockquote class="mt-8 rounded-3xl border border-line bg-surface-2 p-6 sm:p-8">
+                <p class="font-display text-xl font-medium italic leading-snug text-ink sm:text-2xl">“Quiero que salga bien. Si tengo que preguntar diez cosas por WhatsApp, capaz lo dejo para otro día.”</p>
+                <footer class="mt-4 text-[9px] font-semibold uppercase tracking-[0.16em] text-muted">Sofía, 29 · compradora frecuente de regalos</footer>
+              </blockquote>
+
+              <figure class="mt-8 overflow-hidden rounded-3xl border border-line bg-surface-2">
+                <img class="w-full" src="assets/img/caso-petunia-research.svg" alt="Tablero de research con benchmark, persona usuaria e insights de entrevistas" width="1400" height="900" loading="lazy" decoding="async">
+                <figcaption class="border-t border-line bg-bg px-5 py-4 text-[9px] font-semibold uppercase tracking-[0.16em] text-muted">Síntesis de research / benchmark + insights + persona</figcaption>
+              </figure>
+
+              <div class="case-prose mt-8">
+                <h3>Benchmark: qué tomamos y qué no</h3>
+                <ul>
+                  <li><strong>Milk Bar:</strong> personalidad fuerte y gifting como protagonista. Tomamos la idea de vender la ocasión, no solo el producto.</li>
+                  <li><strong>Pophams:</strong> fotografía cálida y jerarquía editorial simple. Tomamos el ritmo visual y el espacio para que el producto respire.</li>
+                  <li><strong>Crumbs &amp; Doilies:</strong> personalización clara y pasos cortos. Tomamos la lógica de elegir sin fricción.</li>
+                </ul>
+                <p>Lo que decidimos evitar: grillas infinitas, descripciones genéricas y carritos que esconden el costo de envío o el retiro hasta el final.</p>
+              </div>
+            </section>
+
+            <section class="reveal mt-20 scroll-mt-28" id="arquitectura" aria-labelledby="arquitectura-title">
+              <p class="eyebrow">03 / Arquitectura</p>
+              <h2 class="section-title mt-4 max-w-2xl" id="arquitectura-title">Una compra en tres decisiones.</h2>
+              <div class="case-prose mt-6">
+                <p>Ordené el sitio en cuatro áreas: <strong>descubrir, elegir, personalizar y confirmar</strong>. La navegación principal quedó corta —Tienda, Nosotras, Pedidos— y el carrito siempre visible. El retiro se eligió temprano, no al final, para que el checkout no sorprendiera a nadie.</p>
+                <p>Los wireframes se trabajaron primero en mobile, porque la mayoría de las compras por Instagram ocurren desde el teléfono. La versión desktop reutiliza la misma jerarquía, sin agregar contenido decorativo que distraiga.</p>
+              </div>
+
+              <figure class="mt-8 overflow-hidden rounded-3xl border border-line bg-surface-2">
+                <img class="w-full" src="assets/img/caso-petunia-wireframes.svg" alt="Wireframes de baja fidelidad para inicio, producto y checkout en formato mobile" width="1400" height="900" loading="lazy" decoding="async">
+                <figcaption class="border-t border-line bg-bg px-5 py-4 text-[9px] font-semibold uppercase tracking-[0.16em] text-muted">Wireframes / mobile first · jerarquía antes del color</figcaption>
+              </figure>
+
+              <div class="case-prose mt-8">
+                <h3>Decisiones de arquitectura</h3>
+                <ul>
+                  <li><strong>Filtros por ocasión y formato</strong> en lugar de categorías por tipo de producto.</li>
+                  <li><strong>Ficha con porciones, alérgenos y retiro</strong> visibles sin abrir un acordeón.</li>
+                  <li><strong>Checkout sin cuenta obligatoria</strong> y con confirmación del horario de retiro.</li>
+                  <li><strong>Estados vacíos y errores claros</strong> para que la persona siempre sepa qué hacer.</li>
+                </ul>
+              </div>
+            </section>
+
+            <section class="reveal mt-20 scroll-mt-28" id="sistema" aria-labelledby="sistema-title">
+              <p class="eyebrow">04 / Sistema visual</p>
+              <h2 class="section-title mt-4 max-w-2xl" id="sistema-title">Dulce, pero no empalagoso.</h2>
+              <div class="case-prose mt-6">
+                <p>La identidad toma la calidez de la repostería sin caer en el rosa genérico. La paleta combina <strong>fresa, vainilla, crema, cacao y pistacho</strong>, con la serif como voz principal y una sans geométrica para la interfaz. Los arcos, las líneas botánicas y los stickers aparecen como detalles, nunca como ruido.</p>
+                <p>El sistema se documentó en Figma con tokens de color, tipografía, radios, sombras y componentes. Cada componente tiene estados hover, focus y disabled, y se revisó el contraste para cumplir AA.</p>
+              </div>
+
+              <figure class="mt-8 overflow-hidden rounded-3xl border border-line bg-surface-2">
+                <img class="w-full" src="assets/img/caso-petunia-system.svg" alt="Tablero del sistema visual de Casa Petunia con paleta, tipografía, botones, chips, campos y tarjeta de producto" width="1400" height="900" loading="lazy" decoding="async">
+                <figcaption class="border-t border-line bg-bg px-5 py-4 text-[9px] font-semibold uppercase tracking-[0.16em] text-muted">Sistema visual / tokens + componentes + principios</figcaption>
+              </figure>
+
+              <div class="mt-8 grid gap-3 sm:grid-cols-2">
+                <div class="rounded-2xl border border-line bg-surface p-5">
+                  <p class="text-[9px] font-semibold uppercase tracking-[0.18em] text-muted">Tipografía</p>
+                  <p class="mt-2 font-display text-2xl font-semibold">Fraunces + Outfit</p>
+                  <p class="mt-1 text-xs leading-5 text-muted">Serif con carácter para la marca; sans clara para la compra.</p>
+                </div>
+                <div class="rounded-2xl border border-line bg-surface p-5">
+                  <p class="text-[9px] font-semibold uppercase tracking-[0.18em] text-muted">Accesibilidad</p>
+                  <p class="mt-2 text-lg font-semibold">Contraste AA + foco visible</p>
+                  <p class="mt-1 text-xs leading-5 text-muted">Estados de foco en todos los controles y textos legibles a 200%.</p>
+                </div>
+              </div>
+            </section>
+
+            <section class="reveal mt-20 scroll-mt-28" id="solucion" aria-labelledby="solucion-title">
+              <p class="eyebrow">05 / Solución</p>
+              <h2 class="section-title mt-4 max-w-2xl" id="solucion-title">Del antojo al retiro, sin tropiezos.</h2>
+              <div class="case-prose mt-6">
+                <p>La solución final es una tienda que combina una portada editorial con un flujo de compra directo. La home presenta la marca y los destacados; la ficha resuelve las dudas; el carrito y el checkout confirman el retiro y el pago en tres pasos.</p>
+              </div>
+
+              <figure class="mt-8 overflow-hidden rounded-3xl border border-line bg-surface-2">
+                <img class="w-full" src="assets/img/caso-petunia-screens.svg" alt="Cuatro pantallas finales de Casa Petunia: inicio, producto, carrito y checkout" width="1400" height="1000" loading="lazy" decoding="async">
+                <figcaption class="border-t border-line bg-bg px-5 py-4 text-[9px] font-semibold uppercase tracking-[0.16em] text-muted">UI final / home · producto · carrito · checkout</figcaption>
+              </figure>
+
+              <div class="case-prose mt-8">
+                <h3>Lo que cambió respecto del punto de partida</h3>
+                <ul>
+                  <li>El retiro dejó de ser una pregunta por WhatsApp y pasó a ser una decisión visible en producto y checkout.</li>
+                  <li>Las fichas ahora incluyen porciones, alérgenos y formato de regalo en el primer scroll.</li>
+                  <li>El checkout se redujo a tres pasos y ya no exige crear una cuenta.</li>
+                  <li>Los estados de error explican qué pasó y cómo resolverlo, sin culpar a la persona.</li>
+                </ul>
+              </div>
+            </section>
+
+            <section class="reveal mt-20 scroll-mt-28" id="validacion" aria-labelledby="validacion-title">
+              <p class="eyebrow">06 / Validación</p>
+              <h2 class="section-title mt-4 max-w-2xl" id="validacion-title">Probar antes de pulir.</h2>
+              <div class="case-prose mt-6">
+                <p>Hice dos rondas de prueba con cinco personas: una con wireframes y otra con el prototipo de alta fidelidad. Las tareas fueron elegir un producto para regalar, reservar el retiro y confirmar el pedido.</p>
+              </div>
+
+              <div class="mt-8 grid gap-4 sm:grid-cols-3">
+                <article class="rounded-2xl border border-line bg-surface p-5">
+                  <p class="text-[9px] font-semibold uppercase tracking-[0.18em] text-accent">Hallazgo 01</p>
+                  <h3 class="mt-2 text-sm font-semibold">“No sé cuánto rinde”</h3>
+                  <p class="mt-2 text-xs leading-6 text-muted">Las porciones no eran claras. Se agregó cantidad de personas y una referencia visual.</p>
+                </article>
+                <article class="rounded-2xl border border-line bg-surface p-5">
+                  <p class="text-[9px] font-semibold uppercase tracking-[0.18em] text-lilac">Hallazgo 02</p>
+                  <h3 class="mt-2 text-sm font-semibold">“¿Llega o lo retiro?”</h3>
+                  <p class="mt-2 text-xs leading-6 text-muted">El retiro aparecía tarde. Se adelantó a la ficha y se repitió en el checkout.</p>
+                </article>
+                <article class="rounded-2xl border border-line bg-surface p-5">
+                  <p class="text-[9px] font-semibold uppercase tracking-[0.18em] text-gold">Hallazgo 03</p>
+                  <h3 class="mt-2 text-sm font-semibold">“Quiero ver el regalo”</h3>
+                  <p class="mt-2 text-xs leading-6 text-muted">Faltaban fotos del packaging. Se incorporó una vista de la caja y una nota para regalar.</p>
+                </article>
+              </div>
+
+              <div class="case-prose mt-8">
+                <p>La segunda ronda no necesitó explicaciones para llegar al checkout. Las personas encontraron el retiro, entendieron las porciones y completaron el flujo sin ayuda. El test también mostró que el lenguaje de la marca puede ser cálido sin volverse confuso: las etiquetas de acción se mantuvieron directas.</p>
+              </div>
+            </section>
+
+            <section class="reveal mt-20 scroll-mt-28" id="resultados" aria-labelledby="resultados-title">
+              <p class="eyebrow">07 / Resultados</p>
+              <h2 class="section-title mt-4 max-w-2xl" id="resultados-title">Un sistema listo para crecer.</h2>
+              <div class="case-prose mt-6">
+                <p>El entregable final incluye la investigación sintetizada, la arquitectura, los wireframes, el sistema visual, doce pantallas de alta fidelidad y una primera implementación front-end responsive. Al ser un proyecto conceptual, no hay métricas de producción: los resultados son cualitativos y las métricas de negocio quedan propuestas para una próxima iteración.</p>
+              </div>
+
+              <div class="mt-8 grid gap-3 sm:grid-cols-2">
+                <div class="rounded-2xl border border-line bg-surface p-5">
+                  <p class="font-display text-4xl font-semibold text-accent">12</p>
+                  <p class="mt-2 text-sm font-semibold">Pantallas documentadas</p>
+                  <p class="mt-1 text-xs leading-5 text-muted">Home, tienda, producto, carrito, checkout, confirmación y estados.</p>
+                </div>
+                <div class="rounded-2xl border border-line bg-surface p-5">
+                  <p class="font-display text-4xl font-semibold text-lilac">01</p>
+                  <p class="mt-2 text-sm font-semibold">Sistema visual</p>
+                  <p class="mt-1 text-xs leading-5 text-muted">Tokens, componentes y reglas de uso listos para escalar.</p>
+                </div>
+                <div class="rounded-2xl border border-line bg-surface p-5">
+                  <p class="font-display text-4xl font-semibold">3</p>
+                  <p class="mt-2 text-sm font-semibold">Pasos de checkout</p>
+                  <p class="mt-1 text-xs leading-5 text-muted">Contacto, retiro y pago. Sin cuenta obligatoria.</p>
+                </div>
+                <div class="rounded-2xl border border-line bg-surface p-5">
+                  <p class="font-display text-4xl font-semibold">5</p>
+                  <p class="mt-2 text-sm font-semibold">Pruebas de usabilidad</p>
+                  <p class="mt-1 text-xs leading-5 text-muted">Dos rondas con hallazgos aplicados al prototipo.</p>
+                </div>
+              </div>
+
+              <div class="mt-8 rounded-3xl border border-dashed border-accent/40 bg-accent-soft p-6">
+                <p class="text-[9px] font-semibold uppercase tracking-[0.18em] text-accent">Métricas propuestas para la próxima etapa</p>
+                <ul class="mt-4 grid gap-3 text-sm leading-6 text-muted sm:grid-cols-3">
+                  <li><strong class="text-ink">Tasa de finalización</strong><br>Pedidos confirmados / carritos iniciados.</li>
+                  <li><strong class="text-ink">Tiempo hasta el carrito</strong><br>Segundos desde la home hasta agregar un producto.</li>
+                  <li><strong class="text-ink">Consultas por WhatsApp</strong><br>Reducción de preguntas repetidas sobre retiro y porciones.</li>
+                </ul>
+              </div>
+            </section>
+
+            <section class="reveal mt-20 scroll-mt-28" id="aprendizajes" aria-labelledby="aprendizajes-title">
+              <p class="eyebrow">08 / Aprendizajes</p>
+              <h2 class="section-title mt-4 max-w-2xl" id="aprendizajes-title">Diseñar también es decidir qué sacar.</h2>
+              <div class="case-prose mt-6">
+                <p>El mayor aprendizaje fue que la calidez no está en agregar adornos, sino en anticipar lo que la persona necesita. Un retiro visible, una porción clara y un checkout corto comunican más cuidado que cualquier ilustración.</p>
+                <p>También entendí el valor de documentar el sistema desde el principio: cuando llegó el momento de construir, las decisiones ya estaban tomadas y el front-end pudo avanzar sin reinventar componentes. La próxima iteración debería incluir pruebas con personas mayores y una revisión de accesibilidad con lector de pantalla.</p>
+              </div>
+
+              <div class="mt-8 flex flex-wrap gap-2">
+                <span class="tag">Research</span>
+                <span class="tag">Benchmark</span>
+                <span class="tag">Wireframes</span>
+                <span class="tag">Design system</span>
+                <span class="tag">Prototipo</span>
+                <span class="tag">Front-end</span>
+                <span class="tag">A11y</span>
+              </div>
+            </section>
+          </div>
+        </div>
+      </section>
+
+      <section class="border-y border-line bg-surface py-16 sm:py-20" aria-labelledby="otros-title">
+        <div class="container-page">
+          <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p class="eyebrow">Seguir explorando</p>
+              <h2 class="mt-3 font-display text-3xl font-semibold tracking-tight sm:text-4xl" id="otros-title">Otros proyectos</h2>
+            </div>
+            <a class="link-arrow" href="index.html#proyectos">
+              Ver todos
+              <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M5 12h14M13 6l6 6-6 6"/>
+              </svg>
+            </a>
+          </div>
+
+          <div class="mt-8 grid gap-6 md:grid-cols-3">
+            <a class="project-card group overflow-hidden rounded-3xl border border-line bg-bg" href="index.html#proyectos">
+              <div class="overflow-hidden border-b border-line bg-surface-2">
+                <img class="aspect-[3/2] w-full object-cover" src="assets/img/proyecto-lunaria.svg" alt="Concepto de aplicación Lunaria" width="1200" height="800" loading="lazy" decoding="async">
+              </div>
+              <div class="p-5">
+                <p class="text-[9px] font-semibold uppercase tracking-[0.18em] text-accent">App · 2025</p>
+                <h3 class="mt-2 text-lg font-semibold">Lunaria</h3>
+                <p class="mt-1 text-xs leading-5 text-muted">Rituales de bienestar y hábitos amables.</p>
+              </div>
+            </a>
+            <a class="project-card group overflow-hidden rounded-3xl border border-line bg-bg" href="index.html#proyectos">
+              <div class="overflow-hidden border-b border-line bg-surface-2">
+                <img class="aspect-[3/2] w-full object-cover" src="assets/img/proyecto-hilo-rojo.svg" alt="Concepto de tienda Hilo Rojo" width="1200" height="800" loading="lazy" decoding="async">
+              </div>
+              <div class="p-5">
+                <p class="text-[9px] font-semibold uppercase tracking-[0.18em] text-accent">E-commerce · 2025</p>
+                <h3 class="mt-2 text-lg font-semibold">Hilo Rojo</h3>
+                <p class="mt-1 text-xs leading-5 text-muted">Joyería artesanal y regalos con historia.</p>
+              </div>
+            </a>
+            <a class="project-card group overflow-hidden rounded-3xl border border-line bg-bg" href="index.html#proyectos">
+              <div class="overflow-hidden border-b border-line bg-surface-2">
+                <img class="aspect-[3/2] w-full object-cover" src="assets/img/proyecto-clavel.svg" alt="Concepto de landing Clavel" width="1200" height="800" loading="lazy" decoding="async">
+              </div>
+              <div class="p-5">
+                <p class="text-[9px] font-semibold uppercase tracking-[0.18em] text-accent">Landing · 2024</p>
+                <h3 class="mt-2 text-lg font-semibold">Clavel</h3>
+                <p class="mt-1 text-xs leading-5 text-muted">Identidad y suscripción para floristería de autor.</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="relative overflow-hidden py-16 sm:py-20" aria-labelledby="cta-title">
+        <div class="hero-halo absolute inset-0" aria-hidden="true"></div>
+        <div class="container-page relative">
+          <div class="mx-auto max-w-3xl rounded-[2.5rem] border border-line bg-surface p-8 text-center shadow-card sm:p-12">
+            <p class="eyebrow justify-center">Contacto</p>
+            <h2 class="section-title mt-4" id="cta-title">¿Tu proyecto necesita esta mezcla?</h2>
+            <p class="lead mx-auto mt-4 max-w-xl">Research, diseño y código con una mirada editorial. Contame qué tenés en mente y lo pensamos juntas.</p>
+            <div class="mt-7 flex flex-wrap justify-center gap-3">
+              <a class="btn btn-primary" href="index.html#contacto">Hablemos</a>
+              <a class="btn btn-ghost" href="index.html">Volver al portfolio</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="border-t border-line bg-bg py-10">
+      <div class="container-page">
+        <div class="flex flex-col gap-8 border-b border-line pb-8 sm:flex-row sm:items-start sm:justify-between">
+          <div>
+            <a class="inline-flex items-center gap-3" href="index.html" aria-label="Volver al inicio">
+              <span class="arch-frame flex h-10 w-9 items-center justify-center bg-accent font-display text-base font-semibold text-on-accent">CV</span>
+              <span class="leading-tight">
+                <span class="block font-display text-sm font-semibold tracking-tight">Cecilia Velzi</span>
+                <span class="mt-0.5 block text-[9px] font-semibold uppercase tracking-[0.18em] text-muted">UX/UI · Front-end</span>
+              </span>
+            </a>
+            <p class="mt-4 max-w-sm text-sm leading-6 text-muted">Diseño experiencias digitales que se sienten cercanas, claras y hechas con cuidado.</p>
+          </div>
+
+          <nav aria-label="Navegación del pie de página">
+            <ul class="grid grid-cols-2 gap-x-10 gap-y-1 text-sm">
+              <li><a class="inline-flex min-h-[36px] items-center text-muted transition-colors hover:text-accent" href="index.html#sobre-mi">Sobre mí</a></li>
+              <li><a class="inline-flex min-h-[36px] items-center text-muted transition-colors hover:text-accent" href="index.html#metricas">Métricas</a></li>
+              <li><a class="inline-flex min-h-[36px] items-center text-muted transition-colors hover:text-accent" href="index.html#skills">Skills</a></li>
+              <li><a class="inline-flex min-h-[36px] items-center text-muted transition-colors hover:text-accent" href="index.html#proyectos">Proyectos</a></li>
+              <li><a class="inline-flex min-h-[36px] items-center text-muted transition-colors hover:text-accent" href="index.html#trayectoria">Trayectoria</a></li>
+              <li><a class="inline-flex min-h-[36px] items-center text-muted transition-colors hover:text-accent" href="caso-estudio.html">Caso Casa Petunia</a></li>
+              <li><a class="inline-flex min-h-[36px] items-center text-muted transition-colors hover:text-accent" href="index.html#contacto">Contacto</a></li>
+              <li><a class="inline-flex min-h-[36px] items-center text-muted transition-colors hover:text-accent" href="https://www.behance.net/ceciliavelzi" target="_blank" rel="noopener noreferrer">Behance ↗</a></li>
+              <li><a class="inline-flex min-h-[36px] items-center text-muted transition-colors hover:text-accent" href="https://github.com/ceciliavelzi" target="_blank" rel="noopener noreferrer">GitHub ↗</a></li>
+              <li><a class="inline-flex min-h-[36px] items-center text-muted transition-colors hover:text-accent" href="https://www.linkedin.com/in/ceciliavelzi/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <div class="flex flex-col gap-4 pt-6 text-xs text-muted sm:flex-row sm:items-center sm:justify-between">
+          <p>© <span data-year>2026</span> Cecilia Velzi. Hecho con HTML, Tailwind y JavaScript.</p>
+          <div class="flex flex-wrap items-center gap-4">
+            <a class="inline-flex min-h-[36px] items-center transition-colors hover:text-accent" href="mailto:hola@ceciliavelzi.com">Email</a>
+            <a class="inline-flex min-h-[36px] items-center transition-colors hover:text-accent" href="https://www.behance.net/ceciliavelzi" target="_blank" rel="noopener noreferrer">Behance</a>
+            <a class="inline-flex min-h-[36px] items-center transition-colors hover:text-accent" href="#main">Volver arriba ↑</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/main.js" defer></script>
+  </body>
+</html>
