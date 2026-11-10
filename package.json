@@ -1,0 +1,16 @@
+{
+  "name": "portfolio-cecilia-velzi",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Portfolio de Cecilia Velzi — UX/UI + Front-end · Práctica final 2026",
+  "scripts": {
+    "dev": "tailwindcss -i ./src/input.css -o ./dist/styles.css --watch",
+    "build": "tailwindcss -i ./src/input.css -o ./dist/styles.css --minify",
+    "generate:og": "node scripts/generate-og.js",
+    "figma:build": "node figma-plugin/build.js"
+  },
+  "devDependencies": {
+    "sharp": "^0.33.5",
+    "tailwindcss": "^3.4.17"
+  }
+}
