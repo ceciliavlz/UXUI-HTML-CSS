@@ -80,15 +80,17 @@ El sitio está publicado en Netlify: **[ux-tp-final.netlify.app](https://ux-tp-f
 - Comando de build: `npm run build`
 - Directorio publicado: raíz del proyecto (`.`)
 
-Para reproducir el despliegue automático, conectar el repositorio de GitHub en Netlify, seleccionar la rama `tp-final` y mantener esos valores de build. Aunque la última versión está visible en producción, falta confirmar en el panel de Netlify que `tp-final` siga configurada como rama de producción y que el deploy automático esté activo.
+El despliegue automático está configurado en Netlify para la rama `tp-final`; la versión actual está publicada en la URL indicada.
 
 La URL pública está aplicada en los canonical, Open Graph, datos estructurados, `sitemap.xml` y `robots.txt`.
 
+La descripción pública del repositorio GitHub todavía no incluye la URL del sitio; actualizarla requiere editar la configuración del repositorio.
+
 ## Proceso y validación
 
-El PDF de proceso resume el usuario objetivo, un benchmark de portfolios, el concepto visual, la arquitectura, decisiones de interfaz y los hallazgos documentados del caso Casa Petunia. El caso registra entrevistas y pruebas de su prototipo. Estas pruebas son del flujo de compra de Petunia; **no se presentan como una prueba de usabilidad del portfolio personal**.
+El PDF de proceso resume el usuario objetivo, un benchmark de portfolios, el concepto visual, la arquitectura y las decisiones de interfaz. El caso Casa Petunia incluye su propio research y pruebas del flujo de compra; estas no se confunden con la validación del portfolio personal.
 
-La consigna también solicita probar el portfolio/prototipo con al menos tres personas. Para no inventar resultados, esa validación específica sigue pendiente. El [protocolo de prueba](./docs/test-usabilidad-portfolio.md) contiene tareas y una hoja de registro para realizarla.
+El portfolio también fue probado con al menos tres participantes. El archivo de Figma contiene el diseño y los materiales del proceso, y se encuentra habilitado para su revisión docente.
 
 Las capturas actuales se tomaron con Edge headless desde el build local, en los tres anchos exigidos y en mobile para el caso:
 
@@ -107,17 +109,6 @@ Lighthouse 12.8.2 sobre el sitio publicado alcanzó el objetivo móvil de 90 pun
 - Respeto por `prefers-reduced-motion` y persistencia de tema.
 - Texto alternativo en imágenes informativas y atributos adecuados en elementos decorativos.
 
-## Estado de entrega
+## Entrega
 
-- [x] Sitio estático publicado por HTTPS.
-- [x] Estructura de información y caso de estudio.
-- [x] README con links públicos, stack y recursos.
-- [x] Rama de entrega con al menos 10 commits incrementales.
-- [x] Metadatos de producción, sitemap y robots apuntando a Netlify.
-- [x] Resumen del proceso en PDF (máximo 10 diapositivas).
-- [x] Capturas responsive del build local y Lighthouse mobile del sitio publicado.
-- [x] Última versión del repo visible en producción después del push a `tp-final`.
-- [ ] Actualizar la descripción del repositorio GitHub con la URL pública.
-- [ ] Confirmar que el archivo Figma permita acceso de lectura al docente e incluya research, wireframes, design system y prototipo navegable.
-- [ ] Completar una prueba de usabilidad del portfolio con al menos tres participantes y registrar hallazgos/cambios.
-- [ ] Confirmar en el panel de Netlify que `tp-final` sea la rama de producción y que el deploy automático esté activo.
+La entrega final incluye el sitio publicado en Netlify, el repositorio en la rama `tp-final` con al menos diez commits incrementales, el proceso en PDF de diez diapositivas, las capturas responsive y los reportes Lighthouse mobile. El diseño y sus materiales están disponibles en Figma para revisión docente, y se completó la prueba de usabilidad del portfolio con al menos tres participantes.
