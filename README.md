@@ -1,6 +1,6 @@
 # Portfolio — Cecilia Velzi
 
-Portfolio personal de Cecilia Velzi, diseñadora UX/UI y front-end en Entre Ríos, Argentina. Proyecto final de Diseño UX/UI (2026), implementado como sitio estático en HTML, Tailwind CSS y JavaScript vanilla.
+Proyecto final de Diseño UX/UI (2026), implementado como sitio estático en HTML, Tailwind CSS y JavaScript vanilla.
 
 ## Enlaces
 
@@ -19,7 +19,7 @@ La home reúne las nueve áreas solicitadas: navegación, presentación, métric
 
 ### Dirección visual
 
-- **Idea:** experiencias digitales claras y cálidas, que se sienten como en casa.
+- **Idea:** experiencias digitales claras y cálidas.
 - **Tipografías:** Fraunces y Outfit; sus licencias SIL Open Font License están en `assets/fonts/`.
 - **Paleta:** marfil, tinta ciruela, berry, rosa, lila y dorado, con tokens específicos para tema claro y oscuro.
 - **Recursos:** arcos, detalles botánicos, textura sutil, retrato y mockups SVG originales.
