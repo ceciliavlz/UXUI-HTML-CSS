@@ -13,8 +13,6 @@ Proyecto final de Diseño UX/UI (2026), implementado como sitio estático en HTM
 
 ## Proyecto
 
-La hipótesis del portfolio es que una persona que visita —reclutadora, cliente o estudio— pueda entender en pocos segundos quién soy, qué hago, cómo trabajo y dónde contactarme. La propuesta visual combina una voz editorial y cálida con una interfaz funcional, accesible y responsive.
-
 La home reúne las nueve áreas solicitadas: navegación, presentación, métricas, habilidades, proyectos, experiencia/formación, sobre mí, contacto y footer. El caso de estudio separado documenta el proceso de Casa Petunia, un e-commerce conceptual de repostería artesanal.
 
 ### Dirección visual
@@ -95,8 +93,8 @@ El portfolio también fue probado con al menos tres participantes. El archivo de
 Las capturas actuales se tomaron con Edge headless desde el build local, en los tres anchos exigidos y en mobile para el caso:
 
 - [Home · 375 px](./docs/capturas/home-375.png)
-- [Home · 768 px](./docs/capturas/home-768.png)
-- [Home · 1280 px](./docs/capturas/home-1280.png)
+- [Home · 768 px](./docs/capturas/home-768.jpeg)
+- [Home · 1280 px](./docs/capturas/home-1280.jpeg)
 - [Casa Petunia · 375 px](./docs/capturas/case-375.png)
 
 Lighthouse 12.8.2 sobre el sitio publicado alcanzó el objetivo móvil de 90 puntos en las cuatro categorías: home 98/100/100/100 y caso 99/100/100/100 (performance/accesibilidad/buenas prácticas/SEO). Los reportes y su alcance están documentados en `docs/lighthouse/README.md`; conviene repetirlos tras cada cambio relevante de producción.
